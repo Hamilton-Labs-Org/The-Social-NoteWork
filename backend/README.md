@@ -84,7 +84,11 @@ See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 
 ## About The Project
 
-[![The Social NoteWork][product-screenshot]](/images/logo.png)
+<!-- [![The Social NoteWork][product-screenshot]](/images/logo.png) -->
+
+<p align="center"><a href="https://blog.hamilton-labs.com/projects/notework">
+<img src="images/logo.png" alt="Logo" width="auto" height="auto">
+</a></p>
 
 There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
 
