@@ -1,0 +1,28 @@
+{
+  "name": "TheSocialNoteWork.com",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Terence Hamilton",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint-config-prettier": "^9.1.0",
+    "nodemon": "^3.0.2",
+    "prettier": "3.1.1",
+    "reload": "^3.2.1"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.9.5",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "graphql": "^16.8.1",
+    "graphql-tag": "^2.12.6"
+  },
+  "type": "module"
+}

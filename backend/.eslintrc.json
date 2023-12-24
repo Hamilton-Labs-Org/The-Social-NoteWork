@@ -1,0 +1,15 @@
+{
+  "extends": ["prettier"],
+  "rules": {
+    "indent": "error",
+    "unicorn/template-indent": [
+      "error",
+      {
+        "tags": ["outdent", "dedent", "sql", "gql", "styled"],
+        "functions": ["dedent", "stripIndent"],
+        "selectors": ["templateLiteral"],
+        "comments": ["indent"]
+      }
+    ]
+  }
+}
