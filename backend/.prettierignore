@@ -1,0 +1,14 @@
+# Ignore artifacts:
+build
+coverage
+
+# Ignore all HTML files:
+**/*.html
+
+# Added just in case:
+build/
+website/build/
+schemas/
+apis/
+.widdershins/
+hooks/
