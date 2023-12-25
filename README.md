@@ -248,8 +248,8 @@ Use this space to list resources you find helpful and would like to give credit 
 [issues-shield]: https://img.shields.io/github/issues/HamiltonMultimedia/The-Social-NoteWork?style=for-the-badge&logo=github&color=yellow&link=https%3A%2F%2Fgithub.com%2FHamiltonMultimedia%2FThe-Social-NoteWork%2Fissues
 
 [issues-url]: https://github.com/HamiltonMultimedia/The-Social-NoteWork/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[license-shield]: https://img.shields.io/github/license/HamiltonMultimedia/The-Social-NoteWork?style=for-the-badge&label=LICENSE&color=green&link=https%3A%2F%2Fgithub.com%2FHamiltonMultimedia%2FThe-Social-NoteWork%2Fblob%2Fmain%2FLICENSE
+[license-url]: https://github.com/HamiltonMultimedia/The-Social-NoteWork/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&color=blue
 [linkedin-url]: https://www.linkedin.com/in/terence-hamilton/
 [product-screenshot]: images/logo.png
