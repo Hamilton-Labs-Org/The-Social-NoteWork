@@ -1,7 +1,7 @@
 {
-  "name": "TheSocialNoteWork.com",
+  "name": "tsn-gql-backend",
   "version": "1.0.0",
-  "description": "The Social NoteWork is a multi-platform, note-taking application with a social aspect.",
+  "description": "The expressjs graphql backend server app.",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.js",

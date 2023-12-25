@@ -1,0 +1,109 @@
+{
+  "version": "6.0",
+  "nxVersion": "17.2.7",
+  "deps": {
+    "nx": "^17.2.7"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {
+      "tsn-gql-backend": [
+        {
+          "file": "apps/backend/.env.example",
+          "hash": "8866442559125722853"
+        },
+        {
+          "file": "apps/backend/.eslintrc.json",
+          "hash": "17370428956354237514"
+        },
+        {
+          "file": "apps/backend/.gitignore",
+          "hash": "1610472615923636797"
+        },
+        {
+          "file": "apps/backend/.markdownlint.json",
+          "hash": "12953184460125275667"
+        },
+        {
+          "file": "apps/backend/.prettierignore",
+          "hash": "334000612844719014"
+        },
+        {
+          "file": "apps/backend/.prettierrc.json",
+          "hash": "3063590133897555193"
+        },
+        {
+          "file": "apps/backend/CHANGELOG.md",
+          "hash": "13525219639250003571"
+        },
+        {
+          "file": "apps/backend/LICENSE.md",
+          "hash": "9464804756506902274"
+        },
+        {
+          "file": "apps/backend/README.md",
+          "hash": "17370539631383933055"
+        },
+        {
+          "file": "apps/backend/apollo.config.js",
+          "hash": "16164797212746394979"
+        },
+        {
+          "file": "apps/backend/images/logo.png",
+          "hash": "7775532026230622557"
+        },
+        {
+          "file": "apps/backend/license.txt",
+          "hash": "12392656475233827907"
+        },
+        {
+          "file": "apps/backend/package-lock.json",
+          "hash": "1645138529894671274"
+        },
+        {
+          "file": "apps/backend/package.json",
+          "hash": "14485577649395203539",
+          "deps": [
+            "npm:@apollo/server",
+            "npm:body-parser",
+            "npm:cors",
+            "npm:express",
+            "npm:graphql",
+            "npm:graphql-tag",
+            "npm:eslint-config-prettier",
+            "npm:nodemon",
+            "npm:prettier",
+            "npm:reload"
+          ]
+        },
+        {
+          "file": "apps/backend/pnpm-lock.yaml",
+          "hash": "16143533307213887672"
+        },
+        {
+          "file": "apps/backend/src/index.js",
+          "hash": "4435425901244833359"
+        }
+      ]
+    },
+    "nonProjectFiles": [
+      {
+        "file": ".gitignore",
+        "hash": "10387282258793157824"
+      },
+      {
+        "file": "package.json",
+        "hash": "11525961815170827848"
+      },
+      {
+        "file": "pnpm-lock.yaml",
+        "hash": "1855842883025890163"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "hash": "7577147420081313510"
+      }
+    ]
+  }
+}

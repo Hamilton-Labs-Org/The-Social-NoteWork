@@ -1,0 +1,15 @@
+{
+  "name": "tsn-mono",
+  "version": "1.0.0",
+  "description": "Root level monorepo for TheSocialNoteWork project, structred for NX.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Terence Hamilton",
+  "license": "MIT",
+  "devDependencies": {
+    "nx": "^17.2.7"
+  }
+}
