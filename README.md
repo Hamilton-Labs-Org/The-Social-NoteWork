@@ -137,13 +137,23 @@ To set this project up locally and get a local copy up and running, follow these
 
 You will need the following installed and configured on your machine.
 
-- node.js
-  ```sh
-  npm install npm@latest -g
+- [node.js](https://nodejs.org/en) (required)  
+I recommend installing node with [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)  
+  If you need help try this [guide](https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/)
+  ```sh 
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
   ```
-- npm
+  or
+  ```sh 
+  wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+  ```
+- [pnpm](https://pnpm.io/installation#using-npm) 
   ```sh
-  npm install npm@latest -g
+  npm install -g pnpm
+  ```
+  Another option is to [install](https://pnpm.io/installation#using-npm) node & pnpm with this
+  ```sh 
+  npm install -g @pnpm/exe
   ```
 
 ### Installation
