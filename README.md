@@ -41,13 +41,13 @@ See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
     The Social NoteWork is a multi-platform, note-taking application with a 
     <em>social</em> aspect.
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">
+    <a href="https://blog.hamilton-labs.com/projects/notework">
     <strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://blog.hamilton-labs.com/projects/notework">View Demo</a>
     ·
-    <a href="https://github.com/othneildrew/Best-README-Template/issues">Report Bug</a>
+    <a href="https://github.com/HamiltonMultimedia/The-Social-NoteWork/issues">Report Bug</a>
     ·
     <a href="https://github.com/othneildrew/Best-README-Template/issues">
     Request Feature</a>
