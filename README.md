@@ -90,7 +90,9 @@ See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <img src="images/logo.png" alt="Logo" width="auto" height="auto"></img>
 </a></p>
 
-The Social NoteWork is a multi-platform, note-taking application with a social aspect, running a Node.js runtime/server and 6 separate clients. Mobile [Web, Android & iPhone] and Desktop [Windows, Mac & Linux].
+This logo was AI Generated with <a href="https://stablediffusionweb.com/" target="_blank" rel="noopener">Stable Diffusion Online</a>.
+
+The Social NoteWork is a multi-platform, note-taking application with a social aspect. It has a Node.js runtime/server and 6 separate clients. Mobile [Web, Android & iPhone] and Desktop [Windows, Mac & Linux].
 
 The clients:
 
@@ -101,7 +103,7 @@ The clients:
 - Mac
 - Windows
 
-I figured why stop at only one when we can target so many platforms so quickly.
+I figured why stop at only one when we can target so many platforms so quickly?
 
 Clone the repo and fire it up to get started.
 
@@ -109,16 +111,19 @@ Clone the repo and fire it up to get started.
 
 ### Built With
 
-This projects is built with all the latest versions of many frameworks/libraries used to bootstrap the project. I'll list the add-ons/plugins in the acknowledgements section below. Here are a few examples.
+This projects is built with all of the latest versions of various frameworks & libraries used to bootstrap the project. I'll list the add-ons/plugins in the acknowledgements section below.
 
-- [![Next][Next.js]][Next-url]
+  
+
+- [![Express][Express.js]][Express-url]
+- [![GraphQL][GraphQL]][GraphQL-url]
+- [![Apollo][Apollo]][Apollo-url]
 - [![React][React.js]][React-url]
-- [![Vue][Vue.js]][Vue-url]
-- [![Angular][Angular.io]][Angular-url]
+<!-- - [![Angular][Angular.io]][Angular-url]
 - [![Svelte][Svelte.dev]][Svelte-url]
 - [![Laravel][Laravel.com]][Laravel-url]
 - [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-- [![JQuery][JQuery.com]][JQuery-url]
+- [![JQuery][JQuery.com]][JQuery-url] -->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -126,13 +131,16 @@ This projects is built with all the latest versions of many frameworks/libraries
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To set this project up locally and get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+You will need the following installed and configured on your machine.
 
+- node.js
+  ```sh
+  npm install npm@latest -g
+  ```
 - npm
   ```sh
   npm install npm@latest -g
@@ -254,11 +262,18 @@ Use this space to list resources you find helpful and would like to give credit 
 [linkedin-url]: https://www.linkedin.com/in/terence-hamilton/
 [product-screenshot]: images/logo.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Express.js]: https://img.shields.io/badge/Express-white?style=for-the-badge&logo=Express&logoColor=black
+
+[Express-url]: https://expressjs.com/
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[GraphQL]: https://img.shields.io/badge/GraphQL-white?style=for-the-badge&logo=GraphQL&color=hotpink
+
+[GraphQL-url]: https://graphql.org/
 [React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
+[Apollo]: https://img.shields.io/badge/Apollo-white?style=for-the-badge&logo=Apollo%20GraphQL&color=purple
+
+[Apollo-url]: https://www.apollographql.com/
 [Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
 [Angular-url]: https://angular.io/
 [Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
