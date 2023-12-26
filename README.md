@@ -45,7 +45,7 @@ See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
     <strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://blog.hamilton-labs.com/projects/notework">View Demo</a>
+    <a href="https://blog.hamilton-labs.com/projects/notework">View Demo</a> (Coming Soon)
     ·
     <a href="https://github.com/HamiltonMultimedia/The-Social-NoteWork/issues">Report Bug</a>
     ·
@@ -158,20 +158,23 @@ I recommend installing node with [nvm](https://github.com/nvm-sh/nvm?tab=readme-
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+_Once you've installed and set your prerequisites up you can run the following commands._
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone git@github.com:HamiltonMultimedia/The-Social-NoteWork.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
-   npm install
+   pnpm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API'
+3. Start your dev environment `package.js`
+   ```sh
+   pnpx nx dev tsn-gql-backend
+   ```
+4. Now head over to this address 
+   ```sh
+   http://localhost:4000/api
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -190,9 +193,13 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 ## Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
+- [x] Add [MongoDB](https://www.mongodb.com/) Database
+- [x] Add User Accounts and Authentication
+- [ ] Add User Actions like:
+  - [ ] Create Notes
+  - [ ] Update Notes
+  - [ ] Delete Notes
+  - [ ] Mark Notes as Favorites
 - [ ] Add "components" document to easily copy & paste sections of the readme
 - [ ] Multi-language Support
   - [ ] Chinese
@@ -223,7 +230,7 @@ Don't forget to give the project a star! Thanks again!
 
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See [`LICENSE.txt`](https://github.com/HamiltonMultimedia/The-Social-NoteWork/blob/main/LICENSE) for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -231,9 +238,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+LinkedIn: [in/terence-hamilton](https://www.linkedin.com/in/terence-hamilton/) - Twitter: [@Hamilton_TPJ](https://twitter.com/Hamilton_TPJ)
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [The Social NoteWork](https://github.com/HamiltonMultimedia/The-Social-NoteWork)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -243,7 +250,8 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
-- [Choose an Open Source License](https://choosealicense.com)
+- [JavaScript Everywhere by Adam D. Scott](https://www.oreilly.com/library/view/javascript-everywhere/9781492046974/)
+- [othneildrew's Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 - [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
 - [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
 - [Malven's Grid Cheatsheet](https://grid.malven.co/)
