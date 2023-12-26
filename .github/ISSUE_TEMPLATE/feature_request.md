@@ -1,16 +1,9 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
+name: "Feature request \U0001F680"
+about: Suggest an idea
 title: "[FEATURE REQUEST]"
 labels: enhancement
 assignees: HamiltonMultimedia
-
----
-
----
-name: "Feature request \U0001F680"
-about: Suggest an idea
-labels: enhancement
 
 ---
 

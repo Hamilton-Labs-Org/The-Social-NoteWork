@@ -22,8 +22,7 @@ See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 
 <!-- [![Contributors][contributors-shield]][contributors-url] -->
 <!-- [![Forks][forks-shield]][forks-url] -->
-<!-- [![Stargazers][stars-shield]][stars-url] -->
-
+[![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
@@ -295,8 +294,8 @@ Use this space to list resources you find helpful and would like to give credit 
 [contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
 [forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
+[stars-shield]: https://img.shields.io/github/stars/HamiltonMultimedia/The-Social-NoteWork?style=for-the-badge
+[stars-url]: https://github.com/HamiltonMultimedia/The-Social-NoteWork/stargazers
 [issues-shield]: https://img.shields.io/github/issues/HamiltonMultimedia/The-Social-NoteWork?style=for-the-badge&logo=github&color=yellow&link=https%3A%2F%2Fgithub.com%2FHamiltonMultimedia%2FThe-Social-NoteWork%2Fissues
 
 [issues-url]: https://github.com/HamiltonMultimedia/The-Social-NoteWork/issues
