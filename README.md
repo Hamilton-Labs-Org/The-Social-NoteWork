@@ -169,7 +169,8 @@ I recommend installing node with [nvm](https://github.com/nvm-sh/nvm?tab=readme-
 
 Configure your [verified](https://docs.github.com/en/authentication/managing-commit-signature-verification/displaying-verification-statuses-for-all-of-your-commits) commit siging key. (required)
 
-I recommend following these [instructions](https://youtu.be/BMFvhl0WRFQ?si=YyriDAjOmNSnhBtS) if you havent already configured this.
+I recommend following these [instructions](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key#telling-git-about-your-ssh-key) if you havent already configured this.
+You could also see this [video](https://youtu.be/BMFvhl0WRFQ?si=YyriDAjOmNSnhBtS) guide.
 
 ### Installation
 
