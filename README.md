@@ -180,7 +180,7 @@ Optionally, you could sign all of your commits with this.
 ```sh
   git config --global commit.gpgsign true
 ```
-You could also see this [video](https://youtu.be/BMFvhl0WRFQ?si=YyriDAjOmNSnhBtS) guide.
+If you use 1Password this [video](https://youtu.be/BMFvhl0WRFQ?si=YyriDAjOmNSnhBtS) and this [guide](https://developer.1password.com/docs/ssh/git-commit-signing/) could also be options.
 
 ### Installation
 
@@ -210,7 +210,7 @@ _Once you've installed and set your prerequisites up you can run the following c
 
 ## Usage
 
-Once you've gone to the address mentioned in the previous section then you can test the query resolver out.
+Once you've gone to the address mentioned in the previous section then you can test the query resolver out in your browser.
 
 You can use the selector.  
 ![](images/query-gui.png)  
