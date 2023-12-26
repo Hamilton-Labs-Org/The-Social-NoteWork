@@ -43,3 +43,7 @@ dist
 .nx
 cache
 .nx/cache
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

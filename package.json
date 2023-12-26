@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "Root level monorepo for TheSocialNoteWork project, structred for NX.",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "keywords": [],
   "author": "Terence Hamilton",
   "license": "MIT",
   "devDependencies": {
+    "@playwright/test": "^1.40.1",
+    "@types/node": "^20.10.5",
     "nx": "^17.2.7"
   }
 }
