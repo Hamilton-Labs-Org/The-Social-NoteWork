@@ -109,7 +109,7 @@ Clone the repo and fire it up to get started.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Built With
+## Built With
 
 This projects is built with all of the latest versions of various frameworks & libraries used to bootstrap the project. I'll list the add-ons/plugins in the acknowledgements section below.
 
@@ -119,6 +119,7 @@ This projects is built with all of the latest versions of various frameworks & l
 - [![GraphQL][GraphQL]][GraphQL-url]
 - [![Apollo][Apollo]][Apollo-url]
 - [![MongoDB][MongoDB]][MongoDB-url]
+- [![JWT][JWT]][JWT-url]
 - [![React][React.js]][React-url]
 - [![React Native][React Native]][React-Native-url]
 - [![Electron][Electron]][Electron-url]
@@ -215,7 +216,7 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
 - [ ] Add User Accounts and Authentication
   - [ ] User Sign up
   - [ ] User Sign in/out
-  - [ ] User Auth Tokens (JWT)
+  - [ ] User Auth Tokens ([JWT](https://jwt.io/))
 - [ ] Add User Actions like:
   - [ ] Create Notes
   - [ ] Update Notes
@@ -319,8 +320,10 @@ Use this space to list resources you find helpful and would like to give credit 
 [GraphQL-url]: https://graphql.org/
 [React-url]: https://reactjs.org/
 [React-Native-url]: https://reactnative.dev/
-[MongoDB]: https://img.shields.io/badge/MongoDB-white?style=for-the-badge&logo=Mongodb&color=darkgreen
+[MongoDB]: https://img.shields.io/badge/Mongo--DB-white?style=for-the-badge&logo=Mongodb&color=darkgreen
 [MongoDB-url]: https://www.mongodb.com/
+[JWT]: https://img.shields.io/badge/JWT-white?style=for-the-badge&logo=jsonwebtokens&logoColor=hotpink&color=black
+[JWT-url]: https://jwt.io/
 
 [Apollo]: https://img.shields.io/badge/Apollo-white?style=for-the-badge&logo=Apollo%20GraphQL&color=purple
 
