@@ -32,5 +32,5 @@ jobs:
 
       - name: Lint
         run: |
-          pnpm lint
-          pnpm format
+          pnpm run lint
+          pnpm run format
