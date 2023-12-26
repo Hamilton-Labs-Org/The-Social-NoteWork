@@ -118,7 +118,10 @@ This projects is built with all of the latest versions of various frameworks & l
 - [![Express][Express.js]][Express-url]
 - [![GraphQL][GraphQL]][GraphQL-url]
 - [![Apollo][Apollo]][Apollo-url]
+- [![MongoDB][MongoDB]][MongoDB-url]
 - [![React][React.js]][React-url]
+- [![React Native][React Native]][React-Native-url]
+- [![Electron][Electron]][Electron-url]
 <!-- - [![Angular][Angular.io]][Angular-url]
 - [![Svelte][Svelte.dev]][Svelte-url]
 - [![Laravel][Laravel.com]][Laravel-url]
@@ -148,14 +151,14 @@ I recommend installing node with [nvm](https://github.com/nvm-sh/nvm?tab=readme-
   wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
   ```
 - [pnpm](https://pnpm.io/installation#using-npm) 
-  ```sh
+  ```sh 
   npm install -g pnpm
   ```
   Another option is to [install](https://pnpm.io/installation#using-npm) node & pnpm with this
   ```sh 
   npm install -g @pnpm/exe
   ```
-- [nx](https://nx.dev/) 
+- [nx](https://nx.dev/)
   ```sh 
   pnpm add nx -D -w
   ```
@@ -176,7 +179,7 @@ _Once you've installed and set your prerequisites up you can run the following c
    ```sh
    pnpx nx dev tsn-gql-backend
    ```
-4. Now head over to this address 
+4. Now head over to this address
    ```sh
    http://localhost:4000/api
    ```
@@ -187,9 +190,20 @@ _Once you've installed and set your prerequisites up you can run the following c
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Once you've gone to the address mentioned in the previous section then you can test the query resolver out.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+You can use the selector.  
+![](images/query-gui.png)  
+
+Or type them out by hand.  
+![](images/query_params.png)  
+
+Then observe the response.  
+![](images/response.png)
+
+
+
+_More [Documentation](https://blog.hamilton-labs.com/projects/notework) is coming soon_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -295,10 +309,18 @@ Use this space to list resources you find helpful and would like to give credit 
 [Express-url]: https://expressjs.com/
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[React Native]: https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[Electron-url]: https://www.electronjs.org/
+[Electron]: https://img.shields.io/badge/Electron-white?style=for-the-badge&logo=Electron&logoColor=%2375F3F9&color=272838
+
 [GraphQL]: https://img.shields.io/badge/GraphQL-white?style=for-the-badge&logo=GraphQL&color=hotpink
 
 [GraphQL-url]: https://graphql.org/
 [React-url]: https://reactjs.org/
+[React-Native-url]: https://reactnative.dev/
+[MongoDB]: https://img.shields.io/badge/MongoDB-white?style=for-the-badge&logo=Mongodb&color=darkgreen
+[MongoDB-url]: https://www.mongodb.com/
+
 [Apollo]: https://img.shields.io/badge/Apollo-white?style=for-the-badge&logo=Apollo%20GraphQL&color=purple
 
 [Apollo-url]: https://www.apollographql.com/
