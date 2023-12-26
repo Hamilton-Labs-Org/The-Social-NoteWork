@@ -163,6 +163,7 @@ I recommend installing node with [nvm](https://github.com/nvm-sh/nvm?tab=readme-
   pnpm add nx -D -w
   ```
 
+Configure your commit siging key. (required)
 ### Installation
 
 _Once you've installed and set your prerequisites up you can run the following commands._
