@@ -211,7 +211,7 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
 
 ## Roadmap
 
-- [x] Add [MongoDB](https://www.mongodb.com/) Database
+- [ ] Add [MongoDB](https://www.mongodb.com/) Database
 - [ ] Add User Accounts and Authentication
   - [ ] User Sign up
   - [ ] User Sign in/out
