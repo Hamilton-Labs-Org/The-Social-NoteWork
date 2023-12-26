@@ -215,6 +215,7 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
 - [ ] Add User Accounts and Authentication
   - [ ] User Sign up
   - [ ] User Sign in/out
+  - [ ] User Auth Tokens (JWT)
 - [ ] Add User Actions like:
   - [ ] Create Notes
   - [ ] Update Notes
