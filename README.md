@@ -110,18 +110,19 @@ Clone the repo and fire it up to get started.
 
 ## Built With
 
-This projects is built with all of the latest versions of various frameworks & libraries used to bootstrap the project. I'll list the add-ons/plugins in the acknowledgements section below.
+This projects is built with all of the latest versions of various frameworks & libraries used to bootstrap the project. I'll list the add-ons/plugins in the acknowledgements section below.  
 
-  
-
-- [![Express][Express.js]][Express-url]
-- [![GraphQL][GraphQL]][GraphQL-url]
+- [![Express][Express.js]][Express-url] 
+- [![GraphQL][GraphQL]][GraphQL-url] 
 - [![Apollo][Apollo]][Apollo-url]
-- [![MongoDB][MongoDB]][MongoDB-url]
-- [![JWT][JWT]][JWT-url]
-- [![React][React.js]][React-url]
-- [![React Native][React Native]][React-Native-url]
+- [![MongoDB][MongoDB]][MongoDB-url] 
+- [![JWT][JWT]][JWT-url] 
+- [![Expo][Expo]][Expo-url]
+- [![React][React.js]][React-url] 
+- [![React Native][React Native]][React-Native-url] 
 - [![Electron][Electron]][Electron-url]
+
+
 <!-- - [![Angular][Angular.io]][Angular-url]
 - [![Svelte][Svelte.dev]][Svelte-url]
 - [![Laravel][Laravel.com]][Laravel-url]
@@ -163,7 +164,13 @@ I recommend installing node with [nvm](https://github.com/nvm-sh/nvm?tab=readme-
   pnpm add nx -D -w
   ```
 
-Configure your commit siging key. (required)
+### Commit Signing Key
+
+
+Configure your [verified](https://docs.github.com/en/authentication/managing-commit-signature-verification/displaying-verification-statuses-for-all-of-your-commits) commit siging key. (required)
+
+I recommend following these [instructions](https://youtu.be/BMFvhl0WRFQ?si=YyriDAjOmNSnhBtS) if you havent already configured this.
+
 ### Installation
 
 _Once you've installed and set your prerequisites up you can run the following commands._
@@ -224,8 +231,8 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
   - [ ] Mark Notes as Favorites
 - [ ] Develop Mobile clients
   - [ ] Web (React)
-  - [ ] Android (React Native)
-  - [ ] iOS (React Native)
+  - [ ] Android (React Native - [Expo](https://expo.dev/))
+  - [ ] iOS (React Native - [Expo](https://expo.dev/))
 - [ ] Develop Desktop clients
   - [ ] Linux (Electron)
   - [ ] Windows (Electron)
@@ -324,6 +331,9 @@ Use this space to list resources you find helpful and would like to give credit 
 [MongoDB-url]: https://www.mongodb.com/
 [JWT]: https://img.shields.io/badge/JWT-white?style=for-the-badge&logo=jsonwebtokens&logoColor=hotpink&color=black
 [JWT-url]: https://jwt.io/
+[Expo]: https://img.shields.io/badge/Expo-black?style=for-the-badge&logo=Expo
+
+[Expo-url]: https://expo.dev/
 
 [Apollo]: https://img.shields.io/badge/Apollo-white?style=for-the-badge&logo=Apollo%20GraphQL&color=purple
 
