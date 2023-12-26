@@ -155,6 +155,10 @@ I recommend installing node with [nvm](https://github.com/nvm-sh/nvm?tab=readme-
   ```sh 
   npm install -g @pnpm/exe
   ```
+- [nx](https://nx.dev/) 
+  ```sh 
+  pnpm add nx -D -w
+  ```
 
 ### Installation
 
@@ -194,16 +198,22 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 ## Roadmap
 
 - [x] Add [MongoDB](https://www.mongodb.com/) Database
-- [x] Add User Accounts and Authentication
+- [ ] Add User Accounts and Authentication
+  - [ ] User Sign up
+  - [ ] User Sign in/out
 - [ ] Add User Actions like:
   - [ ] Create Notes
   - [ ] Update Notes
   - [ ] Delete Notes
   - [ ] Mark Notes as Favorites
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-  - [ ] Chinese
-  - [ ] Spanish
+- [ ] Develop Mobile clients
+  - [ ] Web (React)
+  - [ ] Android (React Native)
+  - [ ] iOS (React Native)
+- [ ] Develop Desktop clients
+  - [ ] Linux (Electron)
+  - [ ] Windows (Electron)
+  - [ ] Mac (Electron)
 
 See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
 
