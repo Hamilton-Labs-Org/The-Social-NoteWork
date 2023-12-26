@@ -32,5 +32,6 @@ jobs:
 
       - name: Lint
         run: |
+          pnpm install lint
           pnpm run lint
           pnpm run format
