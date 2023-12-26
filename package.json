@@ -1,6 +1,7 @@
 {
   "name": "tsn-mono",
   "version": "1.0.0",
+  "packageManager": "pnpm@8.13.1",
   "description": "Root level monorepo for TheSocialNoteWork project, structred for NX.",
   "main": "index.js",
   "scripts": {},
