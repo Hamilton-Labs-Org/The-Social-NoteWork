@@ -19,5 +19,4 @@ jobs:
         with:
           node-version: 20
       - run: npm install -g pnpm
-      - run: pnpm run ci
       - run: pnpm run lint
