@@ -1,0 +1,10 @@
+{
+  "targetDefaults": {
+    "dev": {
+      "cache": true
+    }
+  },
+  "affected": {
+    "defaultBase": "main"
+  }
+}

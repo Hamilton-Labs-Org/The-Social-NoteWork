@@ -1,6 +1,8 @@
 {
-  "trailingComma": "es5",
+  "extends": ["plugin:prettier/recommended"],
+  "trailingComma": "all",
   "tabWidth": 2,
-  "semi": false,
+  "useTabs": true,
+  "semi": true,
   "singleQuote": true
 }
