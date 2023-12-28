@@ -1,28 +1,23 @@
 name: CI
+
+env:
+  NODE_OPTIONS: --max-old-space-size=6144
+
 on:
   push:
     branches:
       # Change this if your primary branch is not main
       - database
-  pull_request:
+  pull_request: {}
 
 jobs:
-  main:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      # Cache node_modules
       - uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
-      - run: npm ci
-      - uses: nrwl/nx-set-shas@v3
-      # This line is needed for nx affected to work when CI is running on a PR
-      - run: git branch --track main origin/main
-
-      - run: npx nx format:check
-      - run: npx nx affected -t lint
+      - run: npm install -g pnpm
+      - run: pnpm run ci
+      - run: pnpm run lint
