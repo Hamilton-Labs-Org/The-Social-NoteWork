@@ -7,6 +7,7 @@ on:
       - database
   pull_request: {}
 
+  
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -15,5 +16,6 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20
+          cache-dependency-path: ./apps/backend/package-lock.json      
       - run: npm install -g pnpm
       - run: pnpm run lint
