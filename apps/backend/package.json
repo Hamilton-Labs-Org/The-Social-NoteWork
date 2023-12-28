@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nx exec -- nodemon src/index.js",
-    "lint": "eslint ./src  --ext .js"
+    "lint": "nx exec -- eslint ./src  --ext .js"
   },
   "keywords": [],
   "author": "Terence Hamilton",
