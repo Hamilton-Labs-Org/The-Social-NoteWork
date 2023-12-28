@@ -6,12 +6,17 @@ import express from 'express'
 import http from 'http'
 import cors from 'cors'
 import gql from 'graphql-tag'
+import dotenv from 'dotenv'
+dotenv.config()
+import db from './db.js'
+import models from './models/index.js'
 
 const port = process.env.PORT || 4000
 const host = process.env.HOST || 'http://localhost:'
 const endpoint = '/api'
 const app = express()
 const httpServer = http.createServer(app)
+const DB_HOST = process.env.DB_HOST
 
 let notes = [
   {
@@ -45,21 +50,33 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     hello: () => 'Hello world!',
-    notes: () => notes,
-    note: (parent, args) => {
-      return notes.find((note) => note.id === args.id)
+    // notes: () => notes, * ---> in-memory notes response
+    notes: async () => {
+      return await models.Note.find()
     },
+    note: async (parent, args) => {
+      return await models.Note.findById(args.id)
+    },
+    // note: (parent, args) => { * ---> in-memory note response
+    //   return notes.find((note) => note.id === args.id)
+    // },
   },
   Mutation: {
-    newNote: (parent, args) => {
-      let noteValue = {
-        id: String(notes.length + 1),
+    newNote: async (parent, args) => {
+      return await models.Note.create({
         content: args.content,
         author: 'Terence Hamilton',
-      }
-      notes.push(noteValue)
-      return noteValue
+      })
     },
+    // newNote: (parent, args) => {  * ---> In-memory mutation
+    //   let noteValue = {
+    //     id: String(notes.length + 1),
+    //     content: args.content,
+    //     author: 'Terence Hamilton',
+    //   }
+    //   notes.push(noteValue)
+    //   return noteValue
+    // },
   },
 }
 
@@ -76,3 +93,4 @@ app.use(endpoint, cors(), express.json(), expressMiddleware(server))
 app.listen(port, () =>
   console.log(`🚀 Server ready at ${host}${port}${endpoint}`)
 )
+db.connect(DB_HOST)
