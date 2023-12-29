@@ -20,5 +20,4 @@ jobs:
           cache-dependency-path: ./apps/backend/package-lock.json      
       - run: npm install -g pnpm
       - run: cd apps/backend/ && pnpm install 
-      - run: touch node_modules/.modules.yaml
       - run: pnpm nx lint tsn-gql-backend
