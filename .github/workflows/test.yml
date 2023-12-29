@@ -27,7 +27,7 @@ jobs:
           node --version
           echo pnpm version:
           pnpm --version
-          cd frontend
+          cd apps/backend/
           echo nx report:
           pnpm nx report
 
