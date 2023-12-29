@@ -190,10 +190,9 @@ _Once you've installed and set your prerequisites up you can run the following c
    ```sh
    git clone git@github.com:HamiltonMultimedia/The-Social-NoteWork.git
    ```
-2. Install NPM packages
+2. Install NPM packages for the backend
    ```sh
-   cd The-Social-NoteWork.com/apps/backend && \
-   pnpm install
+   cd The-Social-NoteWork.com/apps/backend/ && pnpm install
    ```
 3. Start your dev environment `package.js`
    ```sh
