@@ -198,7 +198,7 @@ _Once you've installed and set your prerequisites up you can run the following c
    ```sh
    pnpx nx dev tsn-gql-backend
    ```
-   If you get the error \"<span style="color:red">*Unable to create nodes for pnpm-lock.yaml using plugin nx-js-graph-plugin.*</span>\"
+   If you get the error *"$\textcolor{red}{\textsf{Unable to create nodes for pnpm-lock.yaml using plugin nx-js-graph-plugin. .}}$"* It's related to a known [issue](https://github.com/nrwl/nx/issues/15642) with nx.  \"<span style="color:red">*Unable to create nodes for pnpm-lock.yaml using plugin nx-js-graph-plugin.*</span>\"
    Run the command below and try again.👇🏾
    ```sh
    touch node_modules/.modules.yaml

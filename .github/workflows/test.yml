@@ -1,0 +1,37 @@
+name: pnpm install
+on:
+  workflow_dispatch:
+  push:
+jobs:
+  installing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+          run_install: false
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Initialize
+        run: |
+          cd frontend
+          pnpm i --frozen-lockfile
+
+      - name: Version dump
+        run: |
+          echo Node version:
+          node --version
+          echo pnpm version:
+          pnpm --version
+          cd frontend
+          echo nx report:
+          pnpm nx report
+
+      - name: Upload modules.yaml
+        uses: actions/upload-artifact@v3
+        with:
+          path: apps/backend/node_modules/.modules.yaml
