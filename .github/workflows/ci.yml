@@ -19,6 +19,6 @@ jobs:
           cache: 'npm'
           cache-dependency-path: ./apps/backend/package-lock.json      
       - run: npm install -g pnpm
-      - run: cd The-Social-NoteWork/apps/backend/ && pnpm install 
+      - run: pwd
       - run: touch node_modules/.modules.yaml
       - run: pnpm nx lint tsn-gql-backend
