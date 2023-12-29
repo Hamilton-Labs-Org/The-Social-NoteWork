@@ -192,7 +192,7 @@ _Once you've installed and set your prerequisites up you can run the following c
    ```
 2. Install NPM packages
    ```sh
-   cd TheSocialNoteWork.com && \
+   cd The-Social-NoteWork.com/apps/backend && \
    pnpm install
    ```
 3. Start your dev environment `package.js`
