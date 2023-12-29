@@ -194,10 +194,13 @@ _Once you've installed and set your prerequisites up you can run the following c
    ```sh
    cd The-Social-NoteWork.com/apps/backend/ && pnpm install
    ```
-3. Start your dev environment `package.js`
+3. Start your dev environment from [`package.js`](https://github.com/HamiltonMultimedia/The-Social-NoteWork/blob/main/package.json)  
    ```sh
    pnpx nx dev tsn-gql-backend
    ```
+   If you get the error "<span style="color:red">*Unable to create nodes for pnpm-lock.yaml using plugin nx-js-graph-plugin.*</span>"  
+   run `touch node_modules/.modules.yaml` and try again  
+   
 4. Now head over to this address
    ```sh
    http://localhost:4000/api
