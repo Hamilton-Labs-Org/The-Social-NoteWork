@@ -186,22 +186,25 @@ If you use 1Password this [video](https://youtu.be/BMFvhl0WRFQ?si=YyriDAjOmNSnhB
 
 _Once you've installed and set your prerequisites up you can run the following commands._
 
-1. Clone the repo
+1. Clone the repo.
    ```sh
    git clone git@github.com:HamiltonMultimedia/The-Social-NoteWork.git
    ```
-2. Install NPM packages for the backend
+2. Install NPM packages for the backend.
    ```sh
    cd The-Social-NoteWork/apps/backend/ && pnpm install
    ```
-3. Start your dev environment from [`package.js`](https://github.com/HamiltonMultimedia/The-Social-NoteWork/blob/main/package.json)  
+3. Start your dev environment from [`package.js`](https://github.com/HamiltonMultimedia/The-Social-NoteWork/blob/main/package.json).  
    ```sh
    pnpx nx dev tsn-gql-backend
    ```
-   If you get the error "<span style="color:red">*Unable to create nodes for pnpm-lock.yaml using plugin nx-js-graph-plugin.*</span>"  
-   run `touch node_modules/.modules.yaml` and try again  
+   If you get the error \"<span style="color:red">*Unable to create nodes for pnpm-lock.yaml using plugin nx-js-graph-plugin.*</span>\"
+   Run the command below and try again.👇🏾
+   ```sh
+   touch node_modules/.modules.yaml
+   ``` 
    
-4. Now head over to this address
+4. Now head over to this address.
    ```sh
    http://localhost:4000/api
    ```
