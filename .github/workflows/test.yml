@@ -19,7 +19,7 @@ jobs:
       - name: Initialize
         run: |
           cd apps/backend
-          pnpm i --frozen-lockfile
+          pnpm i --no-frozen-lockfile
 
       - name: Version dump
         run: |
