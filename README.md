@@ -192,7 +192,7 @@ _Once you've installed and set your prerequisites up you can run the following c
    ```
 2. Install NPM packages for the backend
    ```sh
-   cd The-Social-NoteWork.com/apps/backend/ && pnpm install
+   cd The-Social-NoteWork/apps/backend/ && pnpm install
    ```
 3. Start your dev environment from [`package.js`](https://github.com/HamiltonMultimedia/The-Social-NoteWork/blob/main/package.json)  
    ```sh
