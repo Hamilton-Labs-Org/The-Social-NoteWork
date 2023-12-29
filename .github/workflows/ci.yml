@@ -4,7 +4,7 @@ on:
   push:
     branches:
       # Change this if your primary branch is not main
-      - database
+      - main
   pull_request: {}
 
   
