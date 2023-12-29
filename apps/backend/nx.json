@@ -1,0 +1,13 @@
+{
+  "targetDefaults": {
+    "dev": {
+      "cache": true
+    },
+    "lint": {
+      "cache": true
+    }
+  },
+  "affected": {
+    "defaultBase": "main"
+  }
+}

@@ -4,25 +4,32 @@
   "description": "The expressjs graphql backend server app.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nx exec -- nodemon src/index.js",
+    "lint": "nx exec -- eslint ./src  --ext .js"
   },
   "keywords": [],
   "author": "Terence Hamilton",
   "license": "MIT",
   "devDependencies": {
+    "eslint": ">=5.16.0",
+    "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^9.1.0",
     "nodemon": "^3.0.2",
-    "prettier": "3.1.1",
-    "reload": "^3.2.1"
+    "nx": "17.2.8",
+    "prettier": "3.1.1"
   },
   "dependencies": {
     "@apollo/server": "^4.9.5",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "graphql": "^16.8.1",
-    "graphql-tag": "^2.12.6"
+    "graphql-tag": "^2.12.6",
+    "mongoose": "^8.0.3"
   },
-  "type": "module"
+  "type": "module",
+  "nx": {
+    "targets": {}
+  }
 }

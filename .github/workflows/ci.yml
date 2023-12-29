@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  push:
+    branches:
+      # Change this if your primary branch is not main
+      - database
+  pull_request: {}
+
+  
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: ./apps/backend/package-lock.json      
+      - run: npm install -g pnpm
+      - run: pnpm install 
+      - run: pnpm nx lint tsn-gql-backend
