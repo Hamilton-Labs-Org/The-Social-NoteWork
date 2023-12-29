@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 20
-          cache: 'pnpm'
+          cache: 'npm'
           cache-dependency-path: ./apps/backend/package-lock.json      
       - run: npm install -g pnpm
       - run: cd The-Social-NoteWork/apps/backend/ && pnpm install 
