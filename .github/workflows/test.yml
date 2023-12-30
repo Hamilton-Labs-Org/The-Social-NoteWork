@@ -31,7 +31,20 @@ jobs:
           cd apps/backend/
           pnpm nx report tsn-gql-notework
 
-      - name: Upload modules.yaml
-        uses: actions/upload-artifact@v3
-        with:
-          path: apps/backend/node_modules/.modules.yaml
+      # - name: Upload modules.yaml
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     path: apps/backend/node_modules/.modules.yaml
+
+      - name: Lint
+        run: pnpm nx lint tsn-gql-backend
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
