@@ -1,3 +1,4 @@
+// prettier-ignore
 module.exports = {
 	env: {
 		browser: true,
@@ -22,9 +23,16 @@ module.exports = {
 	rules: {
 		indent: [2, 'tab'],
 		'no-tabs': 0,
-		"new-cap": 0,
+		'new-cap': 0,
 		'object-curly-spacing': ['error', 'never'],
-		'no-trailing-spaces': ["error", { "skipBlankLines": true, "ignoreComments": true }],
-		'no-unused-vars': ["error", { argsIgnorePattern: "err", varsIgnorePattern: "notes" }] 
+		'no-trailing-spaces': [
+			'error',
+			{skipBlankLines: true, ignoreComments: true},
+		],
+		'no-unused-vars': [
+			'error',
+			{argsIgnorePattern: 'err', varsIgnorePattern: 'notes'},
+		],
+		'max-len': ['error', {code: 140}],
 	},
 };
