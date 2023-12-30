@@ -28,8 +28,7 @@ jobs:
           echo pnpm version:
           pnpm --version
           cd apps/backend/
-          echo nx report:
-          pnpm nx report
+          pnpm nx report tsn-gql-notework
 
       - name: Upload modules.yaml
         uses: actions/upload-artifact@v3
