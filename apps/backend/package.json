@@ -1,35 +1,44 @@
 {
-  "name": "tsn-gql-backend",
-  "version": "1.0.0",
-  "description": "The expressjs graphql backend server app.",
-  "main": "index.js",
-  "scripts": {
-    "dev": "nx exec -- nodemon src/index.js",
-    "lint": "nx exec -- eslint ./src  --ext .js"
-  },
-  "keywords": [],
-  "author": "Terence Hamilton",
-  "license": "MIT",
-  "devDependencies": {
-    "eslint": ">=5.16.0",
-    "eslint-config-google": "^0.14.0",
-    "eslint-config-prettier": "^9.1.0",
-    "nodemon": "^3.0.2",
-    "nx": "17.2.8",
-    "prettier": "3.1.1"
-  },
-  "dependencies": {
-    "@apollo/server": "^4.9.5",
-    "body-parser": "^1.20.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "graphql": "^16.8.1",
-    "graphql-tag": "^2.12.6",
-    "mongoose": "^8.0.3"
-  },
-  "type": "module",
-  "nx": {
-    "targets": {}
-  }
+	"name": "tsn-gql-backend",
+	"version": "1.0.0",
+	"description": "The expressjs graphql backend server app.",
+	"main": "index.js",
+	"type": "module",
+	"nx": {
+		"targets": {
+			"lint": {
+				"inputs": [
+					"^production"
+				],
+				"outputs": [
+					"{workspaceRoot}/apps/backend"
+				]
+			}
+		}
+	},
+	"scripts": {
+		"dev": "nx exec -- nodemon src/index.js",
+		"lint": "eslint ./src  --ext .js"
+	},
+	"keywords": [],
+	"author": "Terence Hamilton",
+	"license": "MIT",
+	"devDependencies": {
+		"eslint": ">=5.16.0",
+		"eslint-config-google": "^0.14.0",
+		"eslint-config-prettier": "^9.1.0",
+		"nodemon": "^3.0.2",
+		"nx": "17.2.8",
+		"prettier": "3.1.1"
+	},
+	"dependencies": {
+		"@apollo/server": "^4.9.5",
+		"body-parser": "^1.20.2",
+		"cors": "^2.8.5",
+		"dotenv": "^16.3.1",
+		"express": "^4.18.2",
+		"graphql": "^16.8.1",
+		"graphql-tag": "^2.12.6",
+		"mongoose": "^8.0.3"
+	  }
 }

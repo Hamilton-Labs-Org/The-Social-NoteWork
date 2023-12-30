@@ -1,7 +1,7 @@
 module.exports = {
   client: {
     service: {
-      name: 'TheSocialNoteWork.com',
+      name: 'The-Social-NoteWork',
       url: 'http://localhost:4000',
     },
   },

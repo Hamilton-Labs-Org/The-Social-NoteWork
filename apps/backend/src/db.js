@@ -5,7 +5,8 @@ export default {
 	connect: (DB_HOST) => {
 		mongoose.connect(DB_HOST).then(
 			() => {
-				/** ready to use. The `mongoose.connect()` promise resolves to mongoose instance. */
+				/** ready to use. The `mongoose.connect()`
+				 * promise resolves to mongoose instance. */
 				console.log('🚀 MongoDB is now connected.');
 			},
 			(err) => {

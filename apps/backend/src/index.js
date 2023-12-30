@@ -1,7 +1,8 @@
 // pnpm install @apollo/server express graphql cors http graphql-tag
-import { ApolloServer } from '@apollo/server';
-import { expressMiddleware } from '@apollo/server/express4';
-import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
+import {ApolloServer} from '@apollo/server';
+import {expressMiddleware} from '@apollo/server/express4';
+import {ApolloServerPluginDrainHttpServer}
+	from '@apollo/server/plugin/drainHttpServer';
 import express from 'express';
 import http from 'http';
 import cors from 'cors';
@@ -18,14 +19,14 @@ const app = express();
 const httpServer = http.createServer(app);
 const DB_HOST = process.env.DB_HOST;
 
-let notes = [
+const notes = [
 	{
 		id: '1',
 		content: 'This is the 1st note in our "notework"',
 		author: 'Terence Hamilton',
 	},
-	{ id: '2', content: 'This is the next note', author: 'Some Author' },
-	{ id: '3', content: 'Yet another note!', author: 'Another Author' },
+	{id: '2', content: 'This is the next note', author: 'Some Author'},
+	{id: '3', content: 'Yet another note!', author: 'Another Author'},
 ];
 
 const typeDefs = gql`
@@ -83,7 +84,7 @@ const resolvers = {
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
-	plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+	plugins: [ApolloServerPluginDrainHttpServer({httpServer})],
 });
 
 await server.start();
