@@ -97,22 +97,22 @@ The Social NoteWork is a multi-platform, note-taking application with a social a
 
 The clients:
 
-- Android
-- iOS
-- Web
-- Linux
-- Mac
-- Windows
+- Android 🦾
+- iOS 📱
+- Web 🌐
+- Linux 🐧
+- Mac 🍏
+- Windows 🪟
 
 I figured why stop at only one when we can target so many platforms so quickly?
 
-Clone the repo and fire it up to get started.
+Clone the repo and fire it up to get started. 🚀
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Built With
+## My Stack
 
-This projects is built with all of the latest versions of various frameworks & libraries used to bootstrap the project. I'll list the add-ons/plugins in the acknowledgements section below.  
+This project is built with all of the latest versions of various frameworks & libraries used to bootstrap the project. I'll list additional add-ons/plugins in the acknowledgements section below.  
 
 - [![Express][Express.js]][Express-url] 
 - [![GraphQL][GraphQL]][GraphQL-url] 
@@ -123,6 +123,8 @@ This projects is built with all of the latest versions of various frameworks & l
 - [![React][React.js]][React-url] 
 - [![React Native][React Native]][React-Native-url] 
 - [![Electron][Electron]][Electron-url]
+- [![ESbuild][ESbuild]][ESbuild-url]
+- [![TypeScript][TypeScript]][TypeScript-url]
 
 
 <!-- - [![Angular][Angular.io]][Angular-url]
@@ -194,12 +196,13 @@ _Once you've installed and set your prerequisites up you can run the following c
    ```sh
    cd The-Social-NoteWork/apps/backend/ && pnpm install
    ```
-3. Start your dev environment from [`package.js`](https://github.com/HamiltonMultimedia/The-Social-NoteWork/blob/main/package.json).  
+3. Start your dev environment from [`package.js`](https://github.com/HamiltonMultimedia/The-Social-NoteWork/blob/main/apps/backend/package.json).  
    ```sh
    pnpx nx dev tsn-gql-backend
    ```
-   If you get the error *"$\textcolor{red}{\textsf{Unable to create nodes for pnpm-lock.yaml using plugin nx-js-graph-plugin. .}}$"* It's related to a known [issue](https://github.com/nrwl/nx/issues/15642) with nx.  \"<span style="color:red">*Unable to create nodes for pnpm-lock.yaml using plugin nx-js-graph-plugin.*</span>\"
-   Run the command below and try again.👇🏾
+   If you get the error _"Unable to create nodes for pnpm-lock.yaml using plugin nx-js-graph-plugin."_  
+	 It's related to a known [issue](https://github.com/nrwl/nx/issues/15642) with nx.  
+	 Run the command below and try again.👇🏾
    ```sh
    touch node_modules/.modules.yaml
    ``` 
@@ -236,7 +239,7 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
 
 ## Roadmap
 
-- [ ] Add [MongoDB](https://www.mongodb.com/) Database
+- [X] Add [MongoDB](https://www.mongodb.com/) Database
 - [ ] Add User Accounts and Authentication
   - [ ] User Sign up
   - [ ] User Sign in/out
@@ -247,15 +250,15 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
   - [ ] Delete Notes
   - [ ] Mark Notes as Favorites
 - [ ] Develop Mobile clients
-  - [ ] Web (React)
+  - [ ] Web ([React](https://reactjs.org/))
   - [ ] Android (React Native - [Expo](https://expo.dev/))
   - [ ] iOS (React Native - [Expo](https://expo.dev/))
 - [ ] Develop Desktop clients
-  - [ ] Linux (Electron)
-  - [ ] Windows (Electron)
-  - [ ] Mac (Electron)
+  - [ ] Linux ([Electron](https://www.electronjs.org/))
+  - [ ] Windows ([Electron](https://www.electronjs.org/))
+  - [ ] Mac ([Electron](https://www.electronjs.org/))
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/HamiltonMultimedia/The-Social-NoteWork/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -298,7 +301,7 @@ Project Link: [The Social NoteWork](https://github.com/HamiltonMultimedia/The-So
 
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+Here are some resources I found helpful and would like to give thanks and credit to.
 
 - [JavaScript Everywhere by Adam D. Scott](https://www.oreilly.com/library/view/javascript-everywhere/9781492046974/)
 - [othneildrew's Best-README-Template](https://github.com/othneildrew/Best-README-Template)
@@ -338,6 +341,11 @@ Use this space to list resources you find helpful and would like to give credit 
 [React Native]: https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [Electron-url]: https://www.electronjs.org/
 [Electron]: https://img.shields.io/badge/Electron-white?style=for-the-badge&logo=Electron&logoColor=%2375F3F9&color=272838
+[ESbuild-url]: https://esbuild.github.io/
+[ESbuild]: https://img.shields.io/badge/ESbuild-yellow?style=for-the-badge&logo=esbuild&logoColor=black&link=https%3A%2F%2Fesbuild.github.io%2F
+[TypeScript-url]: https://www.typescriptlang.org/
+[TypeScript]: https://img.shields.io/badge/TypeScript-blue?style=for-the-badge&logo=TypeScript&logoColor=white&link=https%3A%2F%2Fwww.typescriptlang.org%2F
+
 
 [GraphQL]: https://img.shields.io/badge/GraphQL-white?style=for-the-badge&logo=GraphQL&color=hotpink
 

@@ -35,6 +35,8 @@ jspm_packages
 
 # Optional REPL history
 .node_repl_history
-.next
 
+# Just in case
+.next
 .nx/cache
+.DS_Store
