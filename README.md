@@ -238,11 +238,11 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
 
 - [x] Add [MongoDB](https://www.mongodb.com/) Database
   - [x] Implement [ODM](https://www.mongodb.com/docs/drivers/node/current/#object-document-mappers) interface via [Mongoose](https://mongoosejs.com/docs/)
-- [ ] Add User Actions like:
-  - [x] Create Notes (_via GraphQL Browser API_)
-  - [x] Read Notes (_via GraphQL Browser API_)
-  - [x] Update Notes (_via GraphQL Browser API_)
-  - [x] Delete Notes (_via GraphQL Browser API_)
+- [ ] Add User Actions like: (_via GraphQL Browser API_)
+  - [x] Create Notes
+  - [x] Read Notes
+  - [x] Update Notes
+  - [x] Delete Notes
   - [ ] Mark Notes as Favorites
 - [ ] Add User Accounts and Authentication
   - [ ] User Sign up
