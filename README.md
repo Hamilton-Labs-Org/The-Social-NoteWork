@@ -201,7 +201,7 @@ _Once you've installed and set your prerequisites up you can run the following c
    pnpx nx dev tsn-gql-backend
    ```
    If you get the error _"Unable to create nodes for pnpm-lock.yaml using plugin nx-js-graph-plugin."_  
-	 It's related to a known [issue](https://github.com/nrwl/nx/issues/15642) with nx.  
+	 It's related to a known [issue](https://github.com/nrwl/nx/issues/15642) with [nx](https://nx.dev/ci/recipes/set-up).  
 	 Run the command below and try again.👇🏾
    ```sh
    touch node_modules/.modules.yaml
@@ -240,15 +240,17 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
 ## Roadmap
 
 - [X] Add [MongoDB](https://www.mongodb.com/) Database
+	- [X] Implement [ODM](https://www.mongodb.com/docs/drivers/node/current/#object-document-mappers) interface via [Mongoose](https://mongoosejs.com/docs/)
+- [ ] Add User Actions like:
+  - [X] Create Notes (_via GraphQL Browser API_)
+  - [X] Read Notes (_via GraphQL Browser API_)
+  - [ ] Update Notes
+  - [ ] Delete Notes
+  - [ ] Mark Notes as Favorites
 - [ ] Add User Accounts and Authentication
   - [ ] User Sign up
   - [ ] User Sign in/out
   - [ ] User Auth Tokens ([JWT](https://jwt.io/))
-- [ ] Add User Actions like:
-  - [ ] Create Notes
-  - [ ] Update Notes
-  - [ ] Delete Notes
-  - [ ] Mark Notes as Favorites
 - [ ] Develop Mobile clients
   - [ ] Web ([React](https://reactjs.org/))
   - [ ] Android (React Native - [Expo](https://expo.dev/))
