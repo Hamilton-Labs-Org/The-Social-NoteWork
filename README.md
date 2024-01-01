@@ -241,8 +241,8 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
 - [ ] Add User Actions like:
   - [x] Create Notes (_via GraphQL Browser API_)
   - [x] Read Notes (_via GraphQL Browser API_)
-  - [x] Update Notes
-  - [x] Delete Notes
+  - [x] Update Notes (_via GraphQL Browser API_)
+  - [x] Delete Notes (_via GraphQL Browser API_)
   - [ ] Mark Notes as Favorites
 - [ ] Add User Accounts and Authentication
   - [ ] User Sign up
