@@ -40,3 +40,6 @@ jspm_packages
 .next
 .nx/cache
 .DS_Store
+
+# Testing biome ci soon
+../../.github/workflows/push.yml
