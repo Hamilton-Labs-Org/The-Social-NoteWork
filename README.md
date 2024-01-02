@@ -246,16 +246,51 @@ _Once you've installed and set your prerequisites up you can run the following c
 
 ## Usage
 
-Once you've gone to the address mentioned in the previous section then you can test the query resolver out in your browser.
+Once you've gone to the address mentioned in the previous section then you can test the resolver out in your browser.  
+These tests will be automated soon.
 
-You can use the selector.  
-![](images/query-gui.png)
+### Queries
+
+You can use the selector to draft your query request.  
+![](images/crud_img/query-gui.png)
 
 Or type them out by hand.  
-![](images/query_params.png)
+![](images/crud_img/query_params.png)
 
 Then observe the response.  
-![](images/response.png)
+![](images/crud_img/query_response.png)  
+
+### Mutations
+
+_Create notes with the selector and select the fields you want, optionally._  
+![](images/crud_img/create_note-gui.png)
+
+_Create them with a custom request that contains a variable._  
+![](images/crud_img/create_note_req.png)
+
+_Create request with a custom variable._  
+![](images/crud_img/create_note-var.png)
+
+_See the response._  
+![](images/crud_img/create_note-res.png)
+
+_Draft a note update request in the GUI._  
+![](images/crud_img/update_note-gui.png)
+
+_Update note with a custom mutation request._  
+![](images/crud_img/update_note-req.png)
+
+_GraphQL responds with your updated note._  
+![](images/crud_img/update_note-res.png)
+
+_Delete your note with the GUI's request selector._  
+![](images/crud_img/delete_note-gui.png)
+
+_Delete your note with a customized request. (Note ID required)_  
+![](images/crud_img/delete_note-req.png)
+
+_See the response of your delete request._  
+![](images/crud_img/delete_note-res.png)
 
 _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is coming soon_
 
