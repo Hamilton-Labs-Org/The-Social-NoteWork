@@ -313,6 +313,9 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
   - [X] User Sign in
   - [ ] User Sign out
   - [X] User Auth Tokens ([JWT](https://jwt.io/))
+- [ ] Link Users to their Notes  
+  - [ ] Implement User Permissions for Updates & Deletes
+  - [ ] Implement User Queries
 - [ ] Develop Mobile clients
   - [ ] Web ([React](https://reactjs.org/))
   - [ ] Android (React Native - [Expo](https://expo.dev/))
