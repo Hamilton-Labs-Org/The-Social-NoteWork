@@ -1,0 +1,12 @@
+{
+  "targetDefaults": {
+    "lint": {
+      "dependsOn": [
+        "^lint"
+      ]
+    }
+  },
+  "affected": {
+    "defaultBase": "main"
+  }
+}

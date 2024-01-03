@@ -47,7 +47,7 @@ const getUser = (token) => {
 	if (token) {
 		try {
 			// return the user information from the token return jwt.verify
-			token, process.env.JWT_SECRET;
+			return jwt.verify(token, process.env.JWT_SECRET);
 		} catch (err) {
 			// if there's a problem with the token, throw an error throw new
 			Error('Session invalid');
@@ -60,14 +60,14 @@ app.use(
 	cors(),
 	express.json(),
 	expressMiddleware(server, {
-		context: async ({req, res}) => {
+		context: async ({req}) => {
 			// get the user token from the headers
 			const token = req.headers.authorization;
 			// try to retrieve a user with the token
 			const user = getUser(token);
 			// for now, let's log the user to the console:
-			if (getUser(token)) {
-				return console.log(user);
+			if (user) {
+				console.log(user);
 			}
 			// add the db models and the user to the context
 			return {models, user};

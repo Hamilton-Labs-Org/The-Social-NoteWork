@@ -1,16 +1,21 @@
 // prettier-ignore
 
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import mongoose from 'mongoose';
 
 import dotenv from 'dotenv';
 dotenv.config();
 
 export default {
-	newNote: async (parent, args, {models}) => {
+	newNote: async (parent, args, {models, user}) => {
+		if (!user) {
+			throw new Error('You must be signed in to create a note');
+		}
 		return await models.Note.create({
 			content: args.content,
-			author: 'Terence Hamilton',
+			// author: 'Terence Hamilton',
+			author: new mongoose.Types.ObjectId(user.id),
 		});
 	},
 	deleteNote: async (parent, {id}, {models}) => {
@@ -71,13 +76,13 @@ export default {
 		// if no user is found, throw an authentication error
 		if (!user) {
 			// throw new AuthenticationError('Error signing in');
-			console.log('No user found');
+			throw new Error('Error signing in');
 		}
 		// if the passwords don't match, throw an authentication error
 		const valid = await bcrypt.compare(password, user.password);
 		if (!valid) {
 			// throw new AuthenticationError('Error signing in');
-			console.log('Wrong password');
+			throw new Error('Error signing in');
 		}
 		// create and return the json web token
 		return jwt.sign({id: user._id}, process.env.JWT_SECRET);

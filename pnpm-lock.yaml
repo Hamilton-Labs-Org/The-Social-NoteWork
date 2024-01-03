@@ -12,7 +12,7 @@ importers:
         specifier: ^20.10.5
         version: 20.10.5
       nx:
-        specifier: ^17.2.7
+        specifier: 17.2.7
         version: 17.2.7
 
   apps/backend:
