@@ -47,3 +47,6 @@ cache
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+# Just in case
+.DS_Store
