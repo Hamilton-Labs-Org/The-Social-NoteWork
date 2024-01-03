@@ -12,6 +12,14 @@ const typeDefs = gql`
 		updatedAt: DateTime!
 	}
 
+	type User {
+		id: ID!
+		username: String!
+		email: String!
+		avatar: String
+		notes: [Note!]!
+	}
+
 	type Query {
 		hello: String
 		notes: [Note!]!
@@ -22,6 +30,16 @@ const typeDefs = gql`
 		newNote(content: String!): Note
 		updateNote(id: ID!, content: String!): Note!
 		deleteNote(id: ID!): Boolean!
+		signUp(
+			username: String!
+			email: String!
+			password: String!
+		): String!
+		signIn(
+			username: String
+			email: String
+			password: String!
+		): String!
 	}
 `;
 

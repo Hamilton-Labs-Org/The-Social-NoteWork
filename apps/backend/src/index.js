@@ -5,6 +5,7 @@ import {ApolloServerPluginDrainHttpServer} from '@apollo/server/plugin/drainHttp
 import express from 'express';
 import http from 'http';
 import cors from 'cors';
+import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -41,13 +42,35 @@ const server = new ApolloServer({
 
 await server.start();
 
+// get the user info from a JWT
+const getUser = (token) => {
+	if (token) {
+		try {
+			// return the user information from the token return jwt.verify
+			token, process.env.JWT_SECRET;
+		} catch (err) {
+			// if there's a problem with the token, throw an error throw new
+			Error('Session invalid');
+		}
+	}
+};
+
 app.use(
 	'/',
 	cors(),
 	express.json(),
 	expressMiddleware(server, {
 		context: async ({req, res}) => {
-			return {models};
+			// get the user token from the headers
+			const token = req.headers.authorization;
+			// try to retrieve a user with the token
+			const user = getUser(token);
+			// for now, let's log the user to the console:
+			if (getUser(token)) {
+				return console.log(user);
+			}
+			// add the db models and the user to the context
+			return {models, user};
 		},
 	}),
 );

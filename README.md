@@ -38,7 +38,7 @@ See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
   <h3 align="center">The Social NoteWork</h3>
 
   <p align="center">
-    The Social NoteWork is a multi-platform, note-taking application with a 
+    The Social NoteWork is a multi-platform, note-taking application with a
     <em>social</em> aspect.
     <br />
     <a href="https://blog.hamilton-labs.com/projects/notework">
@@ -148,22 +148,31 @@ You will need the following installed and configured on your machine.
 - [node.js](https://nodejs.org/en) (required)  
   I recommend installing node with [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)  
    If you need help try this [guide](https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/)
+
   ```sh
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
   ```
+
   or
+
   ```sh
   wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
   ```
+
 - [pnpm](https://pnpm.io/installation#using-npm)
+
   ```sh
   npm install -g pnpm
   ```
+
   Another option is to [install](https://pnpm.io/installation#using-npm) node & pnpm with this
+
   ```sh
   npm install -g @pnpm/exe
   ```
+
 - [nx](https://nx.dev/)
+
   ```sh
   pnpm add nx -D -w
   ```
@@ -184,29 +193,49 @@ Optionally, you could sign all of your commits with this.
 
 If you use 1Password this [video](https://youtu.be/BMFvhl0WRFQ?si=YyriDAjOmNSnhBtS) and this [guide](https://developer.1password.com/docs/ssh/git-commit-signing/) could also be options.
 
+### MongoDB (Required)
+
+You will need access to a Mongo database.
+
+You have options:
+
+- Local installation [guide](https://www.mongodb.com/docs/manual/installation/)
+- Remote set up with MongoDB Atlas [guide](https://www.mongodb.com/docs/atlas/tutorial/deploy-free-tier-cluster/)
+
+Pick one, set it up and continue.
+
 ### Installation
 
 _Once you've installed and set your prerequisites up you can run the following commands._
 
 1. Clone the repo.
+
    ```sh
    git clone git@github.com:HamiltonMultimedia/The-Social-NoteWork.git
    ```
+
 2. Install NPM packages for the backend.
+
    ```sh
    cd The-Social-NoteWork/apps/backend/ && pnpm install
    ```
+
 3. Start your dev environment from [`package.js`](https://github.com/HamiltonMultimedia/The-Social-NoteWork/blob/main/apps/backend/package.json).
+
    ```sh
    pnpx nx dev tsn-gql-backend
    ```
+
    If you get the error _"Unable to create nodes for pnpm-lock.yaml using plugin nx-js-graph-plugin."_  
     It's related to a known [issue](https://github.com/nrwl/nx/issues/15642) with [nx](https://nx.dev/ci/recipes/set-up).  
     Run the command below and try again.👇🏾
+
    ```sh
    touch node_modules/.modules.yaml
    ```
+
 4. Now head over to this address.
+
    ```sh
    http://localhost:4000/api
    ```
@@ -217,16 +246,51 @@ _Once you've installed and set your prerequisites up you can run the following c
 
 ## Usage
 
-Once you've gone to the address mentioned in the previous section then you can test the query resolver out in your browser.
+Once you've gone to the address mentioned in the previous section then you can test the resolver out in your browser.  
+These tests will be automated soon.
 
-You can use the selector.  
-![](images/query-gui.png)
+### Queries
+
+You can use the selector to draft your query request.  
+![](images/crud_img/query-gui.png)
 
 Or type them out by hand.  
-![](images/query_params.png)
+![](images/crud_img/query_params.png)
 
 Then observe the response.  
-![](images/response.png)
+![](images/crud_img/query_response.png)  
+
+### Mutations
+
+_Create notes with the selector and select the fields you want, optionally._  
+![](images/crud_img/create_note-gui.png)
+
+_Create them with a custom request that contains a variable._  
+![](images/crud_img/create_note_req.png)
+
+_Create request with a custom variable._  
+![](images/crud_img/create_note-var.png)
+
+_See the response._  
+![](images/crud_img/create_note-res.png)
+
+_Draft a note update request in the GUI._  
+![](images/crud_img/update_note-gui.png)
+
+_Update note with a custom mutation request._  
+![](images/crud_img/update_note-req.png)
+
+_GraphQL responds with your updated note._  
+![](images/crud_img/update_note-res.png)
+
+_Delete your note with the GUI's request selector._  
+![](images/crud_img/delete_note-gui.png)
+
+_Delete your note with a customized request. (Note ID required)_  
+![](images/crud_img/delete_note-req.png)
+
+_See the response of your delete request._  
+![](images/crud_img/delete_note-res.png)
 
 _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is coming soon_
 
@@ -317,10 +381,6 @@ Here are some resources I found helpful and would like to give thanks and credit
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
 [stars-shield]: https://img.shields.io/github/stars/HamiltonMultimedia/The-Social-NoteWork?style=for-the-badge
 [stars-url]: https://github.com/HamiltonMultimedia/The-Social-NoteWork/stargazers
 [issues-shield]: https://img.shields.io/github/issues/HamiltonMultimedia/The-Social-NoteWork?style=for-the-badge&logo=github&color=yellow&link=https%3A%2F%2Fgithub.com%2FHamiltonMultimedia%2FThe-Social-NoteWork%2Fissues
@@ -329,11 +389,8 @@ Here are some resources I found helpful and would like to give thanks and credit
 [license-url]: https://github.com/HamiltonMultimedia/The-Social-NoteWork/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&color=blue
 [linkedin-url]: https://www.linkedin.com/in/terence-hamilton/
-[product-screenshot]: images/logo.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Express.js]: https://img.shields.io/badge/Express-white?style=for-the-badge&logo=Express&logoColor=black
 [Express-url]: https://expressjs.com/
-[Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React Native]: https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [Electron-url]: https://www.electronjs.org/
@@ -354,13 +411,3 @@ Here are some resources I found helpful and would like to give thanks and credit
 [Expo-url]: https://expo.dev/
 [Apollo]: https://img.shields.io/badge/Apollo-white?style=for-the-badge&logo=Apollo%20GraphQL&color=purple
 [Apollo-url]: https://www.apollographql.com/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com
