@@ -309,9 +309,10 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
   - [x] Delete Notes
   - [ ] Mark Notes as Favorites
 - [ ] Add User Accounts and Authentication
-  - [ ] User Sign up
-  - [ ] User Sign in/out
-  - [ ] User Auth Tokens ([JWT](https://jwt.io/))
+  - [X] User Sign up
+  - [X] User Sign in
+  - [ ] User Sign out
+  - [X] User Auth Tokens ([JWT](https://jwt.io/))
 - [ ] Develop Mobile clients
   - [ ] Web ([React](https://reactjs.org/))
   - [ ] Android (React Native - [Expo](https://expo.dev/))
