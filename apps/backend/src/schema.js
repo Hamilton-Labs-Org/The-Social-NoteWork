@@ -7,7 +7,7 @@ const typeDefs = gql`
 	type Note {
 		id: ID!
 		content: String!
-		author: String!
+		author: User!
 		createdAt: DateTime!
 		updatedAt: DateTime!
 		favoriteCount: Int!

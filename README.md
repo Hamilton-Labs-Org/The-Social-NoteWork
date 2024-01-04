@@ -301,13 +301,13 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
 
 - [x] Add [MongoDB](https://www.mongodb.com/) Database
   - [x] Implement [ODM](https://www.mongodb.com/docs/drivers/node/current/#object-document-mappers) interface via [Mongoose](https://mongoosejs.com/docs/)
-- [ ] Add User Actions like: (_via GraphQL Browser API_)
+- [x] Add User Actions:
   - [x] Create Notes
   - [x] Read Notes
   - [x] Update Notes
   - [x] Delete Notes
-  - [ ] Mark Notes as Favorites
-- [ ] Add User Accounts and Authentication
+  - [x] Mark Notes as Favorites
+- [X] Add User Accounts and Authentication
   - [X] User Sign up
   - [X] User Sign in
   - [ ] User Sign out
@@ -315,7 +315,7 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
 - [X] Link Users to their Notes  
   - [X] Implement User Permissions for Updates & Deletes
   - [X] Implement User Queries
-  - [ ] Implement Nested Queries
+  - [X] Implement Nested Queries
   - [X] Implement Toggling Note Favorites
 - [ ] Develop Mobile clients
   - [ ] Web ([React](https://reactjs.org/))
