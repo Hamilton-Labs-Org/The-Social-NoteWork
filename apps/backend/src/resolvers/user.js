@@ -6,6 +6,6 @@ export default {
 	// Resolve the list of favorites for a user when requested
 	// prettier-ignore
 	favorites: async (user, args, {models}) => {
-		return await models.Note.find({favoritedBy: user._id}).sort({_id: -1,});
+		return await models.Note.find({favoritedBy: user._id}).sort({_id: -1});
 	},
 };
