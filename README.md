@@ -20,13 +20,12 @@ See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-<!-- [![Contributors][contributors-shield]][contributors-url] -->
-<!-- [![Forks][forks-shield]][forks-url] -->
-
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
+[![Forks][forks-shield]][forks-url]
+[![Contributors][contributors-shield]][contributors-url]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -302,20 +301,22 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
 
 - [x] Add [MongoDB](https://www.mongodb.com/) Database
   - [x] Implement [ODM](https://www.mongodb.com/docs/drivers/node/current/#object-document-mappers) interface via [Mongoose](https://mongoosejs.com/docs/)
-- [ ] Add User Actions like: (_via GraphQL Browser API_)
+- [x] Add User Actions:
   - [x] Create Notes
   - [x] Read Notes
   - [x] Update Notes
   - [x] Delete Notes
-  - [ ] Mark Notes as Favorites
-- [ ] Add User Accounts and Authentication
+  - [x] Mark Notes as Favorites
+- [X] Add User Accounts and Authentication
   - [X] User Sign up
   - [X] User Sign in
   - [ ] User Sign out
   - [X] User Auth Tokens ([JWT](https://jwt.io/))
-- [ ] Link Users to their Notes  
-  - [ ] Implement User Permissions for Updates & Deletes
-  - [ ] Implement User Queries
+- [X] Link Users to their Notes  
+  - [X] Implement User Permissions for Updates & Deletes
+  - [X] Implement User Queries
+  - [X] Implement Nested Queries
+  - [X] Implement Toggling Note Favorites
 - [ ] Develop Mobile clients
   - [ ] Web ([React](https://reactjs.org/))
   - [ ] Android (React Native - [Expo](https://expo.dev/))
@@ -393,6 +394,11 @@ Here are some resources I found helpful and would like to give thanks and credit
 [license-url]: https://github.com/HamiltonMultimedia/The-Social-NoteWork/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&color=blue
 [linkedin-url]: https://www.linkedin.com/in/terence-hamilton/
+[forks-shield]: https://img.shields.io/github/forks/HamiltonMultimedia/The-Social-NoteWork?style=for-the-badge&logo=forgejo&logoColor=white&color=darkorange
+[forks-url]: https://github.com/HamiltonMultimedia/The-Social-NoteWork/forks
+[contributors-shield]: https://img.shields.io/github/contributors/HamiltonMultimedia/The-Social-NoteWork?style=for-the-badge&color=darkred
+[contributors-url]: https://github.com/HamiltonMultimedia/The-Social-NoteWork/graphs/contributors
+
 [Express.js]: https://img.shields.io/badge/Express-white?style=for-the-badge&logo=Express&logoColor=black
 [Express-url]: https://expressjs.com/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB

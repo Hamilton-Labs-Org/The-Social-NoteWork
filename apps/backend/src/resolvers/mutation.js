@@ -18,7 +18,22 @@ export default {
 			author: new mongoose.Types.ObjectId(user.id),
 		});
 	},
-	deleteNote: async (parent, {id}, {models}) => {
+	deleteNote: async (parent, {id}, {models, user}) => {
+		// if not a user, throw an Authentication Error
+		if (!user) {
+			throw new Error('You must be signed in to delete a note');
+		}
+
+		// find the note
+		const note = await models.Note.findById(id);
+		// if the note owner and current user don't match, throw a forbidden error
+		// prettier-ignore
+		if (note && String(note.author) !== user.id) {
+			throw new Error(
+				'You don\'t have permissions to delete this note',
+			);
+		}
+
 		try {
 			await models.Note.findOneAndDelete({_id: id});
 			return true;
@@ -26,7 +41,19 @@ export default {
 			return false;
 		}
 	},
-	updateNote: async (parent, {content, id}, {models}) => {
+	updateNote: async (parent, {content, id}, {models, user}) => {
+		if (!user) {
+			throw new Error('You must be signed in to update a note');
+		}
+		// find the note
+		const note = await models.Note.findById(id);
+		// if the note owner and current user don't match, throw a forbidden error
+		// prettier-ignore
+		if (note && String(note.author) !== user.id) {
+			throw new Error(
+				'You don\'t have permissions to update the note',
+			);
+		}
 		try {
 			return await models.Note.findOneAndUpdate(
 				{
@@ -86,5 +113,51 @@ export default {
 		}
 		// create and return the json web token
 		return jwt.sign({id: user._id}, process.env.JWT_SECRET);
+	},
+	toggleFavorite: async (parent, {id}, {models, user}) => {
+		// if no user context is passed, throw auth error
+		if (!user) {
+			throw new AuthenticationError();
+		}
+		// check to see if the user has already favorited the note
+		const noteCheck = await models.Note.findById(id);
+		const hasUser = noteCheck.favoritedBy.indexOf(user.id);
+
+		// if the user exists in the list
+		// pull them from the list and reduce the favoriteCount by 1
+		if (hasUser >= 0) {
+			return await models.Note.findByIdAndUpdate(
+				id,
+				{
+					$pull: {
+						favoritedBy: new mongoose.Types.ObjectId(user.id),
+					},
+					$inc: {
+						favoriteCount: -1,
+					},
+				},
+				{
+					// Set new to true to return the updated document
+					new: true,
+				},
+			);
+		} else {
+			// if the user doesn't exist in the list
+			// add them to the list and increment the favoriteCount by 1
+			return await models.Note.findByIdAndUpdate(
+				id,
+				{
+					$push: {
+						favoritedBy: new mongoose.Types.ObjectId(user.id),
+					},
+					$inc: {
+						favoriteCount: 1,
+					},
+				},
+				{
+					new: true,
+				},
+			);
+		}
 	},
 };
