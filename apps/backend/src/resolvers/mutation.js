@@ -27,9 +27,10 @@ export default {
 		// find the note
 		const note = await models.Note.findById(id);
 		// if the note owner and current user don't match, throw a forbidden error
+		// prettier-ignore
 		if (note && String(note.author) !== user.id) {
 			throw new Error(
-				"You don't have permissions to delete this note",
+				'You don\'t have permissions to delete this note',
 			);
 		}
 
@@ -47,9 +48,10 @@ export default {
 		// find the note
 		const note = await models.Note.findById(id);
 		// if the note owner and current user don't match, throw a forbidden error
+		// prettier-ignore
 		if (note && String(note.author) !== user.id) {
 			throw new Error(
-				"You don't have permissions to update the note",
+				'You don\'t have permissions to update the note',
 			);
 		}
 		try {
@@ -118,7 +120,7 @@ export default {
 			throw new AuthenticationError();
 		}
 		// check to see if the user has already favorited the note
-		let noteCheck = await models.Note.findById(id);
+		const noteCheck = await models.Note.findById(id);
 		const hasUser = noteCheck.favoritedBy.indexOf(user.id);
 
 		// if the user exists in the list
