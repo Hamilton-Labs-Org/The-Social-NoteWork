@@ -2,7 +2,8 @@
 logs
 *.log
 npm-debug.log*
-.env
+*.env
+apps/backend/.env
 
 # Runtime data
 pids
