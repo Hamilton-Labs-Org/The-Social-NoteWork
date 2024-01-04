@@ -315,7 +315,8 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
 - [X] Link Users to their Notes  
   - [X] Implement User Permissions for Updates & Deletes
   - [X] Implement User Queries
-  - [ ] Toggling Note Favorites
+  - [ ] Implement Nested Queries
+  - [ ] Implement Toggling Note Favorites
 - [ ] Develop Mobile clients
   - [ ] Web ([React](https://reactjs.org/))
   - [ ] Android (React Native - [Expo](https://expo.dev/))
