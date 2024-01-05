@@ -4,8 +4,11 @@ import {expressMiddleware} from '@apollo/server/express4';
 import {ApolloServerPluginDrainHttpServer} from '@apollo/server/plugin/drainHttpServer';
 import express from 'express';
 import http from 'http';
+import helmet from 'helmet';
 import cors from 'cors';
 import jwt from 'jsonwebtoken';
+import depthLimit from 'graphql-depth-limit';
+import {createComplexityLimitRule} from 'graphql-validation-complexity';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -23,6 +26,7 @@ const endpoint = '/api';
 const app = express();
 const httpServer = http.createServer(app);
 db.connect(DB_HOST);
+
 // const notes = [
 // 	{
 // 		id: '1',
@@ -37,6 +41,7 @@ db.connect(DB_HOST);
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
+	validationRules: [depthLimit(5), createComplexityLimitRule(1000)],
 	plugins: [ApolloServerPluginDrainHttpServer({httpServer})],
 });
 
@@ -57,6 +62,14 @@ const getUser = (token) => {
 
 app.use(
 	'/',
+	helmet({
+		contentSecurityPolicy: {
+			directives: {
+				/* ... */
+			},
+			reportOnly: true,
+		},
+	}),
 	cors(),
 	express.json(),
 	expressMiddleware(server, {
@@ -66,9 +79,9 @@ app.use(
 			// try to retrieve a user with the token
 			const user = getUser(token);
 			// for now, let's log the user to the console:
-			if (user) {
-				console.log(user);
-			}
+			// if (user) {
+			// 	console.log(user);
+			// }
 			// add the db models and the user to the context
 			return {models, user};
 		},
@@ -81,5 +94,3 @@ await new Promise((resolve) =>
 );
 
 console.log(`🚀 Server ready at ${host}${port}${endpoint}`);
-// prettier-ignore
-// app.listen(port, () => console.log(`🚀 Server ready at ${host}${port}${endpoint}`));

@@ -3,6 +3,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
+import {GraphQLError} from 'graphql';
 
 import dotenv from 'dotenv';
 dotenv.config();
@@ -10,7 +11,15 @@ dotenv.config();
 export default {
 	newNote: async (parent, args, {models, user}) => {
 		if (!user) {
-			throw new Error('You must be signed in to create a note');
+			// throw new Error('You must be signed in to create a note');
+			throw new GraphQLError(
+				'You must be signed in to create a note',
+				{
+					extensions: {
+						code: 'UNAUTHENTICATED',
+					},
+				},
+			);
 		}
 		return await models.Note.create({
 			content: args.content,
@@ -21,7 +30,15 @@ export default {
 	deleteNote: async (parent, {id}, {models, user}) => {
 		// if not a user, throw an Authentication Error
 		if (!user) {
-			throw new Error('You must be signed in to delete a note');
+			// throw new Error('You must be signed in to create a note');
+			throw new GraphQLError(
+				'You must be signed in to create a note',
+				{
+					extensions: {
+						code: 'UNAUTHENTICATED',
+					},
+				},
+			);
 		}
 
 		// find the note
@@ -29,8 +46,13 @@ export default {
 		// if the note owner and current user don't match, throw a forbidden error
 		// prettier-ignore
 		if (note && String(note.author) !== user.id) {
-			throw new Error(
+			throw new GraphQLError(
 				'You don\'t have permissions to delete this note',
+				{
+					extensions: {
+						code: 'FORBIDDEN',
+					},
+				},
 			);
 		}
 
@@ -43,15 +65,27 @@ export default {
 	},
 	updateNote: async (parent, {content, id}, {models, user}) => {
 		if (!user) {
-			throw new Error('You must be signed in to update a note');
+			throw new GraphQLError(
+				'You must be signed in to update a note',
+				{
+					extensions: {
+						code: 'FORBIDDEN',
+					},
+				},
+			);
 		}
 		// find the note
 		const note = await models.Note.findById(id);
 		// if the note owner and current user don't match, throw a forbidden error
 		// prettier-ignore
 		if (note && String(note.author) !== user.id) {
-			throw new Error(
+			throw new GraphQLError(
 				'You don\'t have permissions to update the note',
+				{
+					extensions: {
+						code: 'FORBIDDEN',
+					},
+				},
 			);
 		}
 		try {
@@ -89,7 +123,11 @@ export default {
 			return jwt.sign({id: user._id}, process.env.JWT_SECRET);
 		} catch (err) {
 			console.log(err);
-			throw new Error('Error creating account');
+			throw new GraphQLError('Error creating account', {
+				extensions: {
+					code: 'FORBIDDEN',
+				},
+			});
 		}
 	},
 	signIn: async (parent, {username, email, password}, {models}) => {
@@ -103,13 +141,21 @@ export default {
 		// if no user is found, throw an authentication error
 		if (!user) {
 			// throw new AuthenticationError('Error signing in');
-			throw new Error('Error signing in');
+			throw new GraphQLError('Error signing in', {
+				extensions: {
+					code: 'UNAUTHENTICATED',
+				},
+			});
 		}
 		// if the passwords don't match, throw an authentication error
 		const valid = await bcrypt.compare(password, user.password);
 		if (!valid) {
 			// throw new AuthenticationError('Error signing in');
-			throw new Error('Error signing in');
+			throw new GraphQLError('Error signing in', {
+				extensions: {
+					code: 'UNAUTHENTICATED',
+				},
+			});
 		}
 		// create and return the json web token
 		return jwt.sign({id: user._id}, process.env.JWT_SECRET);
@@ -117,7 +163,11 @@ export default {
 	toggleFavorite: async (parent, {id}, {models, user}) => {
 		// if no user context is passed, throw auth error
 		if (!user) {
-			throw new AuthenticationError();
+			throw new GraphQLError('You must sign in to favorite a note.', {
+				extensions: {
+					code: 'UNAUTHENTICATED',
+				},
+			});
 		}
 		// check to see if the user has already favorited the note
 		const noteCheck = await models.Note.findById(id);
