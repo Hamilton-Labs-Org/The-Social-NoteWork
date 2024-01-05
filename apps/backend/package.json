@@ -44,6 +44,7 @@
 		"graphql": "^16.8.1",
 		"graphql-iso-date": "^3.6.1",
 		"graphql-tag": "^2.12.6",
+		"helmet": "^7.1.0",
 		"mongoose": "^8.0.3"
 	}
 }

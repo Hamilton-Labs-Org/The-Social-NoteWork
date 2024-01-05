@@ -4,6 +4,7 @@ import {expressMiddleware} from '@apollo/server/express4';
 import {ApolloServerPluginDrainHttpServer} from '@apollo/server/plugin/drainHttpServer';
 import express from 'express';
 import http from 'http';
+import helmet from 'helmet';
 import cors from 'cors';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
@@ -23,6 +24,7 @@ const endpoint = '/api';
 const app = express();
 const httpServer = http.createServer(app);
 db.connect(DB_HOST);
+
 // const notes = [
 // 	{
 // 		id: '1',
@@ -57,6 +59,14 @@ const getUser = (token) => {
 
 app.use(
 	'/',
+	helmet({
+		contentSecurityPolicy: {
+			directives: {
+				/* ... */
+			},
+			reportOnly: true,
+		},
+	}),
 	cors(),
 	express.json(),
 	expressMiddleware(server, {
@@ -81,5 +91,3 @@ await new Promise((resolve) =>
 );
 
 console.log(`🚀 Server ready at ${host}${port}${endpoint}`);
-// prettier-ignore
-// app.listen(port, () => console.log(`🚀 Server ready at ${host}${port}${endpoint}`));
