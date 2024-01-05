@@ -11,22 +11,6 @@ See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 *** Thanks again! Now go create something AMAZING! :D
 -->
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-[![Forks][forks-shield]][forks-url]
-[![Contributors][contributors-shield]][contributors-url]
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -52,6 +36,23 @@ See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
     Request Feature</a>
   </p>
 </div>
+
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+*** See the bottom of this document for the declaration of the reference variables
+*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
+*** https://www.markdownguide.org/basic-syntax/#reference-style-links
+-->
+
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+[![Forks][forks-shield]][forks-url]
+[![Contributors][contributors-shield]][contributors-url]
+[![Build][build-shield]][build-url]
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -399,6 +400,9 @@ Here are some resources I found helpful and would like to give thanks and credit
 [forks-url]: https://github.com/HamiltonMultimedia/The-Social-NoteWork/forks
 [contributors-shield]: https://img.shields.io/github/contributors/HamiltonMultimedia/The-Social-NoteWork?style=for-the-badge&color=darkred
 [contributors-url]: https://github.com/HamiltonMultimedia/The-Social-NoteWork/graphs/contributors
+[build-shield]: https://img.shields.io/github/actions/workflow/status/HamiltonMultimedia/The-Social-NoteWork/test.yml?style=for-the-badge
+
+[build-url]: https://github.com/HamiltonMultimedia/The-Social-NoteWork/actions
 
 [Express.js]: https://img.shields.io/badge/Express-white?style=for-the-badge&logo=Express&logoColor=black
 [Express-url]: https://expressjs.com/
