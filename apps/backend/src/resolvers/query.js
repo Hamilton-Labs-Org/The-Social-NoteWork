@@ -1,7 +1,7 @@
 // prettier-ignore
 export default {
 	notes: async (parent, args, {models}) => {
-		return await models.Note.find();
+		return await models.Note.find().limit(100);
 	},
 	note: async (parent, args, {models}) => {
 		return await models.Note.findById(args.id);
@@ -29,8 +29,8 @@ export default {
 		// if there is a cursor
 		// our query will look for notes with an ObjectId less than that of the cursor
 		if (cursor) {
-		cursorQuery = {_id: {$lt: cursor}};
-	}
+			cursorQuery = {_id: {$lt: cursor}};
+		}
 		// find the limit + 1 of notes in our db, sorted newest to oldest
 		let notes = await models.Note.find(cursorQuery)
 			.sort({_id: -1})
@@ -44,5 +44,5 @@ export default {
 		// the new cursor will be the Mongo object ID of the last item in the feed array
 		const newCursor = notes[notes.length - 1]._id;
 		return {notes, cursor: newCursor, hasNextPage};
-	}
+	},
 };

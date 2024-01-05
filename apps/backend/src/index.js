@@ -7,6 +7,8 @@ import http from 'http';
 import helmet from 'helmet';
 import cors from 'cors';
 import jwt from 'jsonwebtoken';
+import depthLimit from 'graphql-depth-limit';
+import {createComplexityLimitRule} from 'graphql-validation-complexity';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -39,6 +41,7 @@ db.connect(DB_HOST);
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
+	validationRules: [depthLimit(5), createComplexityLimitRule(1000)],
 	plugins: [ApolloServerPluginDrainHttpServer({httpServer})],
 });
 
