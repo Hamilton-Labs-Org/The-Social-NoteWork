@@ -1,9 +1,9 @@
-name: pnpm install
+name: Lint via ESbuild
 on:
   workflow_dispatch:
   push:
 jobs:
-  installing:
+  linting:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -38,13 +38,3 @@ jobs:
 
       - name: Lint
         run: pnpm nx lint tsn-gql-backend
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
