@@ -12,3 +12,16 @@
 - Added this CHANGELOG.md :)
 - Added LICENSE.txt
 - Added README.md
+
+### v0.1.77 Additions
+
+- [MongoDB](https://www.mongodb.com/) connector via [Mongoose](https://mongoosejs.com/docs/)
+- [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) for our notes
+- Note [favorites](https://en.wikipedia.org/wiki/Facebook_like_button) toggling functionality
+- User accounts & [Auth](https://graphql.org/learn/authorization/#gatsby-focus-wrapper) with [JSON Web Tokens](https://jwt.io/)
+- Linked Users to their notes
+- User queries and nested queries
+- [Pagination](https://en.wikipedia.org/wiki/Pagination)
+- [Data Limits](https://www.apollographql.com/blog/securing-your-graphql-api-from-malicious-queries)
+- [Helmet](https://helmetjs.github.io/) Web Security
+- Apollo 4's [GraphQL Error Handling](https://www.apollographql.com/docs/apollo-server/migration/#error-formatting-changes)
