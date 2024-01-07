@@ -6,22 +6,28 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"recommended": false,
+			"suspicious": {
+				"noCommentText": "off"
+			},
+			"style":{
+				"noUselessElse": "off"
+			}
 		}
 	},
 	"formatter": {
-		"enabled": true
+		"enabled": false
 	},
 	"javascript": {
-    "formatter": {
-      "arrowParentheses":"always",
-			"quoteStyle":"single",
-      "jsxQuoteStyle": "single",
-      "semicolons": "always",
-      "trailingComma": "all",
-      "quoteProperties": "preserve",
-      "bracketSpacing": false,
-      "bracketSameLine": false
-    }
-  }
+		"formatter": {
+			"arrowParentheses": "always",
+			"quoteStyle": "single",
+			"jsxQuoteStyle": "single",
+			"semicolons": "always",
+			"trailingComma": "all",
+			"quoteProperties": "preserve",
+			"bracketSpacing": false,
+			"bracketSameLine": false
+		}
+	}
 }

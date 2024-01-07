@@ -18,7 +18,7 @@
 	},
 	"scripts": {
 		"dev": "nx exec -- nodemon src/index.js",
-		"lint": "eslint ./src  --ext .js"
+		"lint": "biome lint ./src"
 	},
 	"keywords": [],
 	"author": "Terence Hamilton",
