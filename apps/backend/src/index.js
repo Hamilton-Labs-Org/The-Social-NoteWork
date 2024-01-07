@@ -20,7 +20,7 @@ import resolvers from './resolvers/index.js';
 
 // Run our server on a port specified in our .env file or port 4000
 const port = process.env.PORT || 4000;
-const host = process.env.HOST || 'http://localhost:';
+const host = 'http://localhost:';
 const DB_HOST = process.env.DB_HOST;
 const endpoint = '/api';
 const app = express();

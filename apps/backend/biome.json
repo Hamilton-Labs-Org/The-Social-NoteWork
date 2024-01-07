@@ -16,10 +16,11 @@
 		}
 	},
 	"formatter": {
-		"enabled": false
+		"enabled": true
 	},
 	"javascript": {
 		"formatter": {
+			"enabled": true,
 			"arrowParentheses": "always",
 			"quoteStyle": "single",
 			"jsxQuoteStyle": "single",
