@@ -334,7 +334,9 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
   - [ ] Windows ([Electron](https://www.electronjs.org/))
   - [ ] Mac ([Electron](https://www.electronjs.org/))
 
-See the [open issues](https://github.com/HamiltonMultimedia/The-Social-NoteWork/issues) for a full list of proposed features (and known issues), when I get some. 😆
+See the [open issues](https://github.com/HamiltonMultimedia/The-Social-NoteWork/issues) for a full list of proposed features (and known issues), when I get some. 😆  
+
+Check out the [change log](https://github.com/HamiltonMultimedia/The-Social-NoteWork/blob/main/apps/backend/CHANGELOG.md) for a full list of updates.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
