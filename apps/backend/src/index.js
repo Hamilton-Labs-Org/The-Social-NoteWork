@@ -1,28 +1,28 @@
 // pnpm install @apollo/server express graphql cors http graphql-tag
-import {ApolloServer} from '@apollo/server';
-import {expressMiddleware} from '@apollo/server/express4';
-import {ApolloServerPluginDrainHttpServer} from '@apollo/server/plugin/drainHttpServer';
-import express from 'express';
-import http from 'http';
-import helmet from 'helmet';
-import cors from 'cors';
-import jwt from 'jsonwebtoken';
-import depthLimit from 'graphql-depth-limit';
-import {createComplexityLimitRule} from 'graphql-validation-complexity';
-import dotenv from 'dotenv';
+import { ApolloServer } from "@apollo/server";
+import { expressMiddleware } from "@apollo/server/express4";
+import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
+import express from "express";
+import http from "http";
+import helmet from "helmet";
+import cors from "cors";
+import jwt from "jsonwebtoken";
+import depthLimit from "graphql-depth-limit";
+import { createComplexityLimitRule } from "graphql-validation-complexity";
+import dotenv from "dotenv";
 dotenv.config();
 
 // Local module imports
-import db from './db.js';
-import models from './models/index.js';
-import typeDefs from './schema.js';
-import resolvers from './resolvers/index.js';
+import db from "./db.js";
+import models from "./models/index.js";
+import typeDefs from "./schema.js";
+import resolvers from "./resolvers/index.js";
 
 // Run our server on a port specified in our .env file or port 4000
 const port = process.env.PORT || 4000;
-const host = 'http://localhost:';
+const host = "http://localhost:";
 const DB_HOST = process.env.DB_HOST;
-const endpoint = '/api';
+const endpoint = "/api";
 const app = express();
 const httpServer = http.createServer(app);
 db.connect(DB_HOST);
@@ -42,7 +42,7 @@ const server = new ApolloServer({
 	typeDefs,
 	resolvers,
 	validationRules: [depthLimit(5), createComplexityLimitRule(1000)],
-	plugins: [ApolloServerPluginDrainHttpServer({httpServer})],
+	plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 
 await server.start();
@@ -55,13 +55,13 @@ const getUser = (token) => {
 			return jwt.verify(token, process.env.JWT_SECRET);
 		} catch (err) {
 			// if there's a problem with the token, throw an error throw new
-			Error('Session invalid');
+			Error("Session invalid");
 		}
 	}
 };
 
 app.use(
-	'/',
+	"/",
 	helmet({
 		contentSecurityPolicy: {
 			directives: {
@@ -73,7 +73,7 @@ app.use(
 	cors(),
 	express.json(),
 	expressMiddleware(server, {
-		context: async ({req}) => {
+		context: async ({ req }) => {
 			// get the user token from the headers
 			const token = req.headers.authorization;
 			// try to retrieve a user with the token
@@ -83,14 +83,12 @@ app.use(
 			// 	console.log(user);
 			// }
 			// add the db models and the user to the context
-			return {models, user};
+			return { models, user };
 		},
 	}),
 );
 
 // Modified server startup
-await new Promise((resolve) =>
-	httpServer.listen({port: 4000}, resolve),
-);
+await new Promise((resolve) => httpServer.listen({ port: port }, resolve));
 
 console.log(`🚀 Server ready at ${host}${port}${endpoint}`);
