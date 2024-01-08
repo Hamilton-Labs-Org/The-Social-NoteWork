@@ -113,7 +113,7 @@ Clone the repo and fire it up to get started. 🚀
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## My Stack
+## My Stack [(MERN)](https://www.mongodb.com/languages/mern-stack-tutorial)
 
 This project is built with all of the latest versions of various frameworks & libraries used to bootstrap the project. I'll list additional add-ons/plugins in the acknowledgements section below.
 
