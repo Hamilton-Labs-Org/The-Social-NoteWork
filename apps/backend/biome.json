@@ -1,16 +1,16 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.4.1/schema.json",
+	"$schema": "https://biomejs.dev/schemas/1.5.0/schema.json",
 	"organizeImports": {
 		"enabled": true
 	},
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": false,
+			"recommended": true,
 			"suspicious": {
 				"noCommentText": "off"
 			},
-			"style":{
+			"style": {
 				"noUselessElse": "off"
 			}
 		}
@@ -26,9 +26,17 @@
 			"jsxQuoteStyle": "single",
 			"semicolons": "always",
 			"trailingComma": "all",
-			"quoteProperties": "preserve",
+			"quoteProperties": "asNeeded",
 			"bracketSpacing": false,
 			"bracketSameLine": false
+		}
+	},
+	"json": {
+		"formatter": {
+			"enabled": true
+		},
+		"parser": {
+			"allowComments": true
 		}
 	}
 }

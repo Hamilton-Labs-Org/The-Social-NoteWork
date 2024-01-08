@@ -12,14 +12,11 @@ export default {
 	newNote: async (parent, args, {models, user}) => {
 		if (!user) {
 			// throw new Error('You must be signed in to create a note');
-			throw new GraphQLError(
-				'You must be signed in to create a note',
-				{
-					extensions: {
-						code: 'UNAUTHENTICATED',
-					},
+			throw new GraphQLError('You must be signed in to create a note', {
+				extensions: {
+					code: 'UNAUTHENTICATED',
 				},
-			);
+			});
 		}
 		return await models.Note.create({
 			content: args.content,
@@ -31,14 +28,11 @@ export default {
 		// if not a user, throw an Authentication Error
 		if (!user) {
 			// throw new Error('You must be signed in to create a note');
-			throw new GraphQLError(
-				'You must be signed in to create a note',
-				{
-					extensions: {
-						code: 'UNAUTHENTICATED',
-					},
+			throw new GraphQLError('You must be signed in to create a note', {
+				extensions: {
+					code: 'UNAUTHENTICATED',
 				},
-			);
+			});
 		}
 
 		// find the note
@@ -46,14 +40,11 @@ export default {
 		// if the note owner and current user don't match, throw a forbidden error
 		// prettier-ignore
 		if (note && String(note.author) !== user.id) {
-			throw new GraphQLError(
-				'You don\'t have permissions to delete this note',
-				{
-					extensions: {
-						code: 'FORBIDDEN',
-					},
+			throw new GraphQLError("You don't have permissions to delete this note", {
+				extensions: {
+					code: 'FORBIDDEN',
 				},
-			);
+			});
 		}
 
 		try {
@@ -65,28 +56,22 @@ export default {
 	},
 	updateNote: async (parent, {content, id}, {models, user}) => {
 		if (!user) {
-			throw new GraphQLError(
-				'You must be signed in to update a note',
-				{
-					extensions: {
-						code: 'FORBIDDEN',
-					},
+			throw new GraphQLError('You must be signed in to update a note', {
+				extensions: {
+					code: 'FORBIDDEN',
 				},
-			);
+			});
 		}
 		// find the note
 		const note = await models.Note.findById(id);
 		// if the note owner and current user don't match, throw a forbidden error
 		// prettier-ignore
 		if (note && String(note.author) !== user.id) {
-			throw new GraphQLError(
-				'You don\'t have permissions to update the note',
-				{
-					extensions: {
-						code: 'FORBIDDEN',
-					},
+			throw new GraphQLError("You don't have permissions to update the note", {
+				extensions: {
+					code: 'FORBIDDEN',
 				},
-			);
+			});
 		}
 		try {
 			return await models.Note.findOneAndUpdate(
