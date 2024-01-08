@@ -1,5 +1,5 @@
 // Require the mongoose library
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 export default {
 	connect: (DB_HOST) => {
@@ -7,12 +7,12 @@ export default {
 			() => {
 				/** ready to use. The `mongoose.connect()`
 				 * promise resolves to mongoose instance. */
-				console.log("🚀 MongoDB is now connected.");
+				console.log('🚀 MongoDB is now connected.');
 			},
 			(err) => {
 				/** handle initial connection error */
 				console.log(
-					"🪫 MongoDB connection error. Please make sure MongoDB is running.",
+					'🪫 MongoDB connection error. Please make sure MongoDB is running.',
 				);
 				process.exit();
 			},
