@@ -128,6 +128,7 @@ This project is built with all of the latest versions of various frameworks & li
 - [![Electron][Electron]][Electron-url]
 - [![ESbuild][ESbuild]][ESbuild-url]
 - [![TypeScript][TypeScript]][TypeScript-url]
+- [![Nx][Nx]][Nx-url]
 
 <!-- - [![Angular][Angular.io]][Angular-url]
 - [![Svelte][Svelte.dev]][Svelte-url]
@@ -326,7 +327,7 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
   - [X] Helmet Security
   - [X] Apollo 4's GraphQL Error Handlers
 - [ ] Develop Mobile clients
-  - [ ] Web ([React](https://reactjs.org/))
+  - [X] Web ([React](https://reactjs.org/))
   - [ ] Android (React Native - [Expo](https://expo.dev/))
   - [ ] iOS (React Native - [Expo](https://expo.dev/))
 - [ ] Develop Desktop clients
@@ -423,6 +424,9 @@ Here are some resources I found helpful and would like to give thanks and credit
 [ESbuild]: https://img.shields.io/badge/ESbuild-yellow?style=for-the-badge&logo=esbuild&logoColor=black&link=https%3A%2F%2Fesbuild.github.io%2F
 [TypeScript-url]: https://www.typescriptlang.org/
 [TypeScript]: https://img.shields.io/badge/TypeScript-blue?style=for-the-badge&logo=TypeScript&logoColor=white&link=https%3A%2F%2Fwww.typescriptlang.org%2F
+[Nx-url]: https://nx.dev/
+[Nx]: https://img.shields.io/badge/Nx-darkblue?style=for-the-badge&logo=nx&link=https%3A%2F%2Fnx.dev%2F
+
 [GraphQL]: https://img.shields.io/badge/GraphQL-white?style=for-the-badge&logo=GraphQL&color=hotpink
 [GraphQL-url]: https://graphql.org/
 [React-url]: https://reactjs.org/
