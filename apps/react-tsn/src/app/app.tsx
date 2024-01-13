@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 import NxWelcome from "./nx-welcome";
-import StartHere from "./start-here";
+import Pages from "../pages";
+
 const StyledApp = styled.div`
   // Your style here
 `;
@@ -9,8 +10,8 @@ const StyledApp = styled.div`
 export function App() {
 	return (
 		<StyledApp>
-			{/* <NxWelcome title="to The Social NoteWork" /> */}
-			<StartHere start="Start Here" />
+			{/* <NxWelcome title="react-tsn" /> */}
+			<Pages />
 		</StyledApp>
 	);
 }
