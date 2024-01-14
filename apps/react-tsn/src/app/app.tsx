@@ -11,8 +11,10 @@ export function App() {
 	return (
 		<StyledApp>
 			{/* <NxWelcome title="react-tsn" /> */}
-			<GlobalStyle />
-			<Pages />
+			<div>
+				<GlobalStyle />
+				<Pages />
+			</div>
 		</StyledApp>
 	);
 }
