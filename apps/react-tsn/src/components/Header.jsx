@@ -9,6 +9,7 @@ const HeaderBar = styled.header`
 	height: 64px;
 	position: fixed;
 	align-items: center;
+
 	// background-color: #fff;
 	background-color: #0D1B2A;
 	color: #E5E5E5;

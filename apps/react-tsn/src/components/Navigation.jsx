@@ -7,7 +7,6 @@ padding: 1em;
 // background: #f5f4f0;
 background: #415A77;
 
-
       @media (max-width: 700px) {
         padding-top: 64px;
 }
@@ -32,6 +31,7 @@ a {
 	text-decoration: none;
 	font-weight: bold;
 	font-size: 1.1em;
+
 	color: white;
 	color: #333;
 	color: #E0E1DD;
@@ -45,6 +45,7 @@ a:hover{
 }
 a:focus {
 	color: #778DA9;
+
 }
 `;
 
