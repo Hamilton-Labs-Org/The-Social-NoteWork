@@ -13,13 +13,13 @@ import Favorites from "./favorites";
 // define routes and export the module
 const Pages = () => {
 	return (
-		<Routes>
-			<Route path="/" element={<Layout />}>
-				<Route index path="/home" element={<Home />} />
+		<Layout>
+			<Routes>
+				<Route exact path="/" element={<Home />} />
 				<Route path="/mynotes" element={<MyNotes />} />
 				<Route path="/favorites" element={<Favorites />} />
-			</Route>
-		</Routes>
+			</Routes>
+		</Layout>
 	);
 };
 
