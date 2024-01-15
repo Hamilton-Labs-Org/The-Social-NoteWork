@@ -9,7 +9,9 @@ const HeaderBar = styled.header`
 	height: 64px;
 	position: fixed;
 	align-items: center;
-	background-color: #fff;
+	// background-color: #fff;
+	background-color: #0D1B2A;
+	color: #E5E5E5;
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
 	z-index: 1;
 `;
@@ -24,6 +26,7 @@ const Header = () => {
 	return (
 		<HeaderBar>
 			<img src={logo} alt="NoteWork Logo" height="40" />
+			<span>&nbsp;&nbsp;</span>
 			<LogoText>The Social NoteWork</LogoText>
 		</HeaderBar>
 	);

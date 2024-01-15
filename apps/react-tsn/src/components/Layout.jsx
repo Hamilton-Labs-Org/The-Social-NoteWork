@@ -30,6 +30,8 @@ const Main = styled.main`
 	margin-left: 220px;
 	height: calc(100% - 64px);
 	width: calc(100% - 220px);
+	color: #E5E5E5;
+	background: #1B263B;
 }
 `;
 
