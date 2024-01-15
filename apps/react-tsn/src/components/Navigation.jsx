@@ -4,7 +4,8 @@ import styled from "styled-components";
 
 const Nav = styled.nav` 
 padding: 1em; 
-background: #f5f4f0;
+// background: #f5f4f0;
+background: #415A77;
 
       @media (max-width: 700px) {
         padding-top: 64px;
@@ -22,6 +23,7 @@ padding: 0;
 list-style: none; 
 line-height: 2;
 
+
 /* We can nest styles in styled-components */
 /* The following styles will apply to links within the NavList component */ 
 
@@ -29,14 +31,21 @@ a {
 	text-decoration: none;
 	font-weight: bold;
 	font-size: 1.1em;
+
+	color: white;
 	color: #333;
+	color: #E0E1DD;
 }
 a:visited {
 	color: #333;
+	color: #E5E5E5;
 }
-a:hover,
-a:focus {
+a:hover{
 	color: #0077cc;
+}
+a:focus {
+	color: #778DA9;
+
 }
 `;
 
