@@ -148,7 +148,7 @@ To set this project up locally and get a local copy up and running, follow these
 
 You will need the following installed and configured on your machine.
 
-- [node.js](https://nodejs.org/en) (required)  
+- <a target="_blank" rel="noopener noreferrer nofollow" href="https://nodejs.org/en">node.js</a> (Required)  
   I recommend installing node with [nvm](https://github.com/nvm-sh/nvm?tab=readme-ov-file#installing-and-updating)  
    If you need help try this [guide](https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/)
 
@@ -205,43 +205,116 @@ You have options:
 - Local installation [guide](https://www.mongodb.com/docs/manual/installation/)
 - Remote set up with MongoDB Atlas [guide](https://www.mongodb.com/docs/atlas/tutorial/deploy-free-tier-cluster/)
 
-Pick one, set it up and continue.
+Pick one or both options above, set it up and install the [mongo-shell](https://www.mongodb.com/docs/mongodb-shell/install/#procedure).
 
 ### Installation
 
 _Once you've installed and set your prerequisites up you can run the following commands._
 
-1. Clone the repo.
+1. Start your Mongo Database Management System. 🌱  
+If you installed MongoDB with Homebrew,  
+you can use this command.
+
+   ```sh
+   brew services start mongodb-community@7.0 
+   ```  
+
+   If the previous command gave you an error you can try this one.
+
+   ```sh
+   brew services restart mongodb-community@7.0
+   ```
+
+2. Create a new database
+
+   Enter the mongo-shell.
+
+   ```sh
+   mongosh
+   ```
+
+    This creates and selects the database, making it active in your environment.
+
+   ```sh
+   use <database name>
+   ```
+
+   This exits you from the mongo-shell and returns you back to your normal shell ([bash](https://www.gnu.org/software/bash/), [zsh](https://zsh.sourceforge.io/) or [others](https://stackoverflow.com/questions/199661/what-linux-shell-should-i-use)).
+
+   ```sh
+   exit
+   ```
+
+3. Clone the repo.
 
    ```sh
    git clone git@github.com:HamiltonMultimedia/The-Social-NoteWork.git
    ```
 
-2. Install NPM packages for the backend.
+4. Set up the backend's .env file.
+
+   ```sh
+   cd The-Social-NoteWork/apps/backend/ && cp .env.example .env
+   ```  
+
+   If you installed MongoDB locally.  
+   Edit your .env file to have this line. 👇🏾  
+   Replacing \<database name\> with the name you chose.
+
+   ```sh
+   DB_HOST=mongodb://127.0.0.1:27017/<database name>
+   ```
+
+   If you used [MongoDB Atlas](https://www.mongodb.com/docs/atlas/) as your database.  
+  Follow these [instructions](https://www.mongodb.com/docs/atlas/tutorial/connect-to-your-cluster/#prerequisites) to [connect to your cluster](https://www.mongodb.com/docs/atlas/#build-with-mongodb-on-aws--azure--and-google-cloud) and add the [connection URI](https://www.mongodb.com/docs/drivers/node/current/fundamentals/connection/connect/#std-label-node-connect-to-mongodb) to your .env file.
+
+5. Install NPM packages for the backend.
 
    ```sh
    cd The-Social-NoteWork/apps/backend/ && pnpm install
    ```
 
-3. Start your dev environment from [`package.js`](https://github.com/HamiltonMultimedia/The-Social-NoteWork/blob/main/apps/backend/package.json).
+6. Start your Express.js backend dev environment. ⚙️
 
    ```sh
-   pnpx nx dev tsn-gql-backend
+   pnpm nx dev tsn-gql-backend
    ```
 
    If you get the error _"Unable to create nodes for pnpm-lock.yaml using plugin nx-js-graph-plugin."_  
-    It's related to a known [issue](https://github.com/nrwl/nx/issues/15642) with [nx](https://nx.dev/ci/recipes/set-up).  
-    Run the command below and try again.👇🏾
+   It's related to a known [issue](https://github.com/nrwl/nx/issues/15642) with [nx](https://nx.dev/ci/recipes/set-up).  
+   Run the command below and try again.👇🏾
 
    ```sh
    touch node_modules/.modules.yaml
    ```
 
-4. Now head over to this address.
+7. Now head over to the backend's [GraphQL Playground](https://www.apollographql.com/docs/apollo-server/v2/testing/graphql-playground/) address.
 
    ```sh
    http://localhost:4000/api
    ```
+
+8. Now we'll prepare the frontend's dev environment.  
+ In a separate terminal window, run the following command to install the project's dependencies.  
+ _(assuming the repo is in your home folder)_
+
+   ```sh
+   cd ~/The-Social-NoteWork/apps/react-tsn && pnpm install
+   ```
+
+9. Fire up your frontend dev environment. 🔥
+
+   ```sh
+   pnpm nx serve react-tsn
+   ```
+
+10. Navigate to the frontend's server address.  
+
+    ```sh
+    http://localhost:4200/
+    ```
+
+11. Enjoy [developing](https://aws.amazon.com/what-is/sdlc/) your [FullStack](https://www.mongodb.com/languages/full-stack-development) [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) app! 🛠
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
