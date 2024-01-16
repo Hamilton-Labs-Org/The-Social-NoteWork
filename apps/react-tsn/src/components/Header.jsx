@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import logo from "../img/logo.svg";
+import logo from "../img/logo.png";
 
 const HeaderBar = styled.header` 
 	width: 100%;
