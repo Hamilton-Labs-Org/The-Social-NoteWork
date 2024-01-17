@@ -9,6 +9,7 @@ import Layout from "../components/Layout";
 import Home from "./home";
 import MyNotes from "./mynotes";
 import Favorites from "./favorites";
+import NotePage from "./note";
 
 // define routes and export the module
 const Pages = () => {
@@ -18,6 +19,7 @@ const Pages = () => {
 				<Route exact path="/" element={<Home />} />
 				<Route path="/mynotes" element={<MyNotes />} />
 				<Route path="/favorites" element={<Favorites />} />
+				<Route path="/note/:id" element={<NotePage />} />
 			</Routes>
 		</Layout>
 	);
