@@ -24,6 +24,8 @@ const Main = styled.main`
 	width: 100%;
 	padding: 1em;
 	overflow-y: scroll;
+	color: #E5E5E5;
+	background: #1B263B;
 /* Again apply media query styles to screens above 700px */
 @media (min-width: 700px) {
 	flex: 1;

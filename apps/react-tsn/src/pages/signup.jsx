@@ -41,9 +41,6 @@ const SignUp = (props) => {
 
 	return (
 		<>
-			<div>
-				<p>Sign Up</p>
-			</div>
 			<Wrapper>
 				<h2>Sign Up</h2>
 				<Form>
