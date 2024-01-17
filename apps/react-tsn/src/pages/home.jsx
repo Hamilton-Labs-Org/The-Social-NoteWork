@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import Button from "../components/Button";
 import { useQuery, gql } from "@apollo/client";
 import Markdown from "react-markdown";
+import Button from "../components/Button";
+import NoteFeed from "../components/NoteFeed";
 
 const Home = () => {
 	useEffect(() => {
@@ -43,15 +44,7 @@ query NoteFeed($cursor: String) {
 			<div>
 				<p> </p>
 			</div>
-			<div>
-				{data.noteFeed.notes.map((note) => (
-					<article key={note.id}>
-						{" "}
-						{note.author.username} {note.createdAt} {note.favoriteCount}{" "}
-						<Markdown children={note.content} />
-					</article>
-				))}
-			</div>
+			<NoteFeed notes={data.noteFeed.notes} />
 		</>
 	);
 };
