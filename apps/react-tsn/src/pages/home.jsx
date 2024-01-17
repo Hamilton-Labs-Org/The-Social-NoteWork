@@ -45,6 +45,8 @@ query NoteFeed($cursor: String) {
 				<p> </p>
 			</div>
 			<NoteFeed notes={data.noteFeed.notes} />
+			{/* Only display the Load More button if hasNextPage is true */}{" "}
+			{data.noteFeed.hasNextPage && <Button>Load more</Button>}
 		</>
 	);
 };

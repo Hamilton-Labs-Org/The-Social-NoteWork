@@ -2,6 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 
+import { Link } from "react-router-dom";
+
 import Note from "../components/Note";
 
 // the note query, which accepts an ID variable
@@ -39,6 +41,7 @@ const NotePage = (props) => {
 				<p>ID: {id}</p>
 			</div>
 			<Note note={data.note} />
+			<Link to={{ id }}>Permalink</Link>
 		</>
 	);
 };
