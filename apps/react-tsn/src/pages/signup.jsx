@@ -74,7 +74,7 @@ const SignUp = (props) => {
 						placeholder="Password"
 						onChange={onChange}
 					/>
-					<button type="submit">Submit</button>
+					<Button type="submit">Submit</Button>
 				</Form>
 			</Wrapper>
 		</>
