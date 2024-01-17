@@ -96,6 +96,9 @@ importers:
       '@swc/helpers':
         specifier: ~0.5.2
         version: 0.5.3
+      date-fns:
+        specifier: ^3.2.0
+        version: 3.2.0
       graphql:
         specifier: ^16.8.1
         version: 16.8.1
@@ -5586,6 +5589,10 @@ packages:
       whatwg-mimetype: 3.0.0
       whatwg-url: 12.0.1
     dev: true
+
+  /date-fns@3.2.0:
+    resolution: {integrity: sha512-E4KWKavANzeuusPi0jUjpuI22SURAznGkx7eZV+4i6x2A+IZxAMcajgkvuDAU1bg40+xuhW1zRdVIIM/4khuIg==}
+    dev: false
 
   /debug@2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
