@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
-import { useQuery, gql } from "@apollo/client";
-import Markdown from "react-markdown";
 import Button from "../components/Button";
-import NoteFeed from "../components/NoteFeed";
+import { useQuery, gql } from "@apollo/client";
 
 const Home = () => {
 	useEffect(() => {
@@ -32,8 +30,7 @@ query NoteFeed($cursor: String) {
 	if (loading)
 		// if the data is loading, display a loading message
 		return <p>Loading...</p>;
-	// if there is an error fetching the data, display an error message
-	if (error) return <p>Error!</p>;
+	// if there is an error fetching the data, display an error message if (error) return <p>Error!</p>;
 	return (
 		<>
 			<div>
@@ -42,9 +39,10 @@ query NoteFeed($cursor: String) {
 				<Button>Click me!</Button>
 			</div>
 			<div>
-				<p> </p>
+				{data.noteFeed.notes.map((note) => (
+					<div key={note.id}>{note.author.username}</div>
+				))}
 			</div>
-			<NoteFeed notes={data.noteFeed.notes} />
 		</>
 	);
 };
