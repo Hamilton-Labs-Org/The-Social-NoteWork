@@ -3,7 +3,7 @@ import {
 	ApolloClient,
 	InMemoryCache,
 	ApolloProvider,
-	gql,
+	createHttpLink,
 } from "@apollo/client";
 import GlobalStyle from "../components/GlobalStyle.jsx";
 import NxWelcome from "./nx-welcome";
@@ -13,7 +13,7 @@ const StyledApp = styled.div`
   // Your style here
 `;
 
-const uri = "http://localhost:4000/api";
+const uri = import.meta.env.VITE_REACT_APP_API_URI;
 const cache = new InMemoryCache();
 
 // configure Apollo Client
