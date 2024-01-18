@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useMutation, useApolloClient, gql } from "@apollo/client";
 import styled from "styled-components";
 import Button from "../components/Button";
+import { token } from "morgan";
 
 const Wrapper = styled.div` 
 border: 1px solid #fca311; 
@@ -50,6 +51,8 @@ const SignUp = (props) => {
 		onCompleted: (data) => {
 			// console.log the JSON Web Token when the mutation is complete
 			console.log(data.signUp);
+			localStorage.setItem("token", data.signUp);
+			console.log(localStorage.getItem(toString(token)));
 		},
 	});
 
