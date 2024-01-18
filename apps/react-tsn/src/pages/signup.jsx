@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 // include the props passed to the component for later use
 import { useMutation, useApolloClient, gql } from "@apollo/client";
 import styled from "styled-components";
@@ -46,6 +47,7 @@ const SignUp = (props) => {
 			[event.target.name]: event.target.value,
 		});
 	};
+	const navigate = useNavigate();
 	//add the mutation hook
 	const [signUp, { loading, error }] = useMutation(SIGNUP_USER, {
 		onCompleted: (data) => {
@@ -53,6 +55,9 @@ const SignUp = (props) => {
 			console.log(data.signUp);
 			localStorage.setItem("token", data.signUp);
 			console.log(localStorage.getItem(toString(token)));
+			// redirect the user to the homepage
+			// props.history.push("/");
+			navigate("/");
 		},
 	});
 
