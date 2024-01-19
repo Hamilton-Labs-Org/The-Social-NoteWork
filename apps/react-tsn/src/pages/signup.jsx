@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 // include the props passed to the component for later use
-import { useMutation, useApolloClient, gql } from "@apollo/client";
+import { useMutation, gql } from "@apollo/client";
 import styled from "styled-components";
 import Button from "../components/Button";
-import { token } from "morgan";
+import { isLoggedInVar } from "../app/cache";
 
 const Wrapper = styled.div` 
 border: 1px solid #fca311; 
@@ -49,17 +49,13 @@ const SignUp = (props) => {
 	};
 	const navigate = useNavigate();
 
-	// Apollo Client
-	const client = useApolloClient();
-
 	//add the mutation hook
 	const [signUp, { loading, error }] = useMutation(SIGNUP_USER, {
 		onCompleted: (data) => {
 			// console.log the JSON Web Token when the mutation is complete
 			console.log(data.signUp);
 			localStorage.setItem("token", data.signUp);
-			// update the local cache
-			client.writeData({ data: { isLoggedIn: true } });
+			isLoggedInVar(true);
 			// redirect the user to the homepage
 			// props.history.push("/");
 			navigate("/");

@@ -1,14 +1,15 @@
 import styled from "styled-components";
 import {
 	ApolloClient,
-	InMemoryCache,
+	NormalizedCacheObject,
 	ApolloProvider,
-	ApolloLink,
 	HttpLink,
+	useQuery,
 	gql,
 } from "@apollo/client";
 import GlobalStyle from "../components/GlobalStyle.jsx";
 import NxWelcome from "./nx-welcome";
+import { cache } from "./cache.js";
 import Pages from "../pages";
 
 const StyledApp = styled.div`
@@ -16,24 +17,26 @@ const StyledApp = styled.div`
 `;
 
 const uri = import.meta.env.VITE_REACT_APP_API_URI;
-const httpLink = new HttpLink({ uri });
 
 export const typeDefs = gql`
    extend type Query {
      isLoggedIn: Boolean!
-     cartItems: [ID!]!
    }
  `;
-const cache = new InMemoryCache();
+
+// check for a token and return the headers to the context
+
 // check for a token and return the headers to the context
 
 // configure Apollo Client
-const client = new ApolloClient({
-	cache: new InMemoryCache(),
-	headers: {
-		authorization: localStorage.getItem("token") || "", // however you get your token
-	},
-	uri: uri,
+const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
+	cache,
+	link: new HttpLink({
+		uri: uri,
+		headers: {
+			authorization: localStorage.getItem("token"), // however you get your token
+		},
+	}),
 	typeDefs,
 	resolvers: {},
 	connectToDevTools: true,
