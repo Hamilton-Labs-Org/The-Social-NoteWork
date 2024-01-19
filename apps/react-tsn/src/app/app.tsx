@@ -5,6 +5,7 @@ import {
 	ApolloProvider,
 	ApolloLink,
 	HttpLink,
+	gql,
 } from "@apollo/client";
 import GlobalStyle from "../components/GlobalStyle.jsx";
 import NxWelcome from "./nx-welcome";
@@ -15,26 +16,33 @@ const StyledApp = styled.div`
 `;
 
 const uri = import.meta.env.VITE_REACT_APP_API_URI;
-const httpLink = new HttpLink({ uri: uri });
+const httpLink = new HttpLink({ uri });
+
+export const typeDefs = gql`
+   extend type Query {
+     isLoggedIn: Boolean!
+     cartItems: [ID!]!
+   }
+ `;
 const cache = new InMemoryCache();
 // check for a token and return the headers to the context
-const authLink = new ApolloLink((operation, forward) => {
-	operation.setContext(({ headers }) => ({
-		headers: {
-			authorization: localStorage.getItem("token") || "", // however you get your token
-			...headers,
-		},
-	}));
-	return forward(operation);
-});
 
 // configure Apollo Client
 const client = new ApolloClient({
-	link: authLink.concat(httpLink),
-	uri,
-	cache,
+	cache: new InMemoryCache(),
+	headers: {
+		authorization: localStorage.getItem("token") || "", // however you get your token
+	},
+	uri: uri,
+	typeDefs,
 	resolvers: {},
 	connectToDevTools: true,
+});
+
+// write the cache data on initial load
+cache.writeQuery({
+	query: gql`query isUserLoggedIn {isLoggedIn @client}`,
+	data: { isLoggedIn: !!localStorage.getItem("token") },
 });
 
 export function App() {

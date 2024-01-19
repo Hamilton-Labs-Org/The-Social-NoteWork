@@ -48,13 +48,18 @@ const SignUp = (props) => {
 		});
 	};
 	const navigate = useNavigate();
+
+	// Apollo Client
+	const client = useApolloClient();
+
 	//add the mutation hook
 	const [signUp, { loading, error }] = useMutation(SIGNUP_USER, {
 		onCompleted: (data) => {
 			// console.log the JSON Web Token when the mutation is complete
 			console.log(data.signUp);
 			localStorage.setItem("token", data.signUp);
-			console.log(localStorage.getItem(toString(token)));
+			// update the local cache
+			client.writeData({ data: { isLoggedIn: true } });
 			// redirect the user to the homepage
 			// props.history.push("/");
 			navigate("/");
