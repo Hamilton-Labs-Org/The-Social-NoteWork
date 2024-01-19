@@ -42,12 +42,6 @@ const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
 	connectToDevTools: true,
 });
 
-// write the cache data on initial load
-cache.writeQuery({
-	query: gql`query isUserLoggedIn {isLoggedIn @client}`,
-	data: { isLoggedIn: !!localStorage.getItem("token") },
-});
-
 export function App() {
 	return (
 		<ApolloProvider client={client}>

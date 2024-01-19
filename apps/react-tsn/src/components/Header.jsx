@@ -27,12 +27,28 @@ padding: 0;
 display: inline;
 `;
 
-const Header = () => {
+const UserState = styled.div` 
+margin-left: auto;
+`;
+
+const Header = (props) => {
+	// query hook for user logged in state
+
 	return (
 		<HeaderBar>
 			<img src={logo} alt="NoteWork Logo" height="40" />
 			<span>&nbsp;&nbsp;</span>
 			<LogoText>The Social NoteWork</LogoText>
+			<UserState>
+				{isLoggedInVar ? (
+					<p>Log Out</p>
+				) : (
+					<p>
+						<Link to={"/signin"}>Sign In</Link> or{" "}
+						<Link to={"/signup"}>Sign Up</Link>
+					</p>
+				)}
+			</UserState>
 		</HeaderBar>
 	);
 };
