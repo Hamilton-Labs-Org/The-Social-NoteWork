@@ -121,6 +121,7 @@ This project is built with all of the latest versions of various frameworks & li
 - [![GraphQL][GraphQL]][GraphQL-url]
 - [![Apollo][Apollo]][Apollo-url]
 - [![MongoDB][MongoDB]][MongoDB-url]
+- [![NodeJS][NodeJS]][NodeJS-url]
 - [![JWT][JWT]][JWT-url]
 - [![Expo][Expo]][Expo-url]
 - [![React][React.js]][React-url]
@@ -505,7 +506,10 @@ Here are some resources I found helpful and would like to give thanks and credit
 [React-url]: https://reactjs.org/
 [React-Native-url]: https://reactnative.dev/
 [MongoDB]: https://img.shields.io/badge/Mongo--DB-white?style=for-the-badge&logo=Mongodb&color=darkgreen
+[NodeJS]: https://img.shields.io/badge/node_js-darkgreen?style=for-the-badge&logo=nodedotjs&logoColor=brightgreen&link=https%3A%2F%2Fnodejs.org%2Fen%2Fabout
+
 [MongoDB-url]: https://www.mongodb.com/
+[NodeJS-url]: https://nodejs.org/en/about
 [JWT]: https://img.shields.io/badge/JWT-white?style=for-the-badge&logo=jsonwebtokens&logoColor=hotpink&color=black
 [JWT-url]: https://jwt.io/
 [Expo]: https://img.shields.io/badge/Expo-black?style=for-the-badge&logo=Expo
