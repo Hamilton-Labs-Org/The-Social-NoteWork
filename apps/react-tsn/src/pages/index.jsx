@@ -11,6 +11,7 @@ import MyNotes from "./mynotes";
 import Favorites from "./favorites";
 import NotePage from "./note";
 import SignUp from "./signup";
+import SignIn from "./signin";
 
 // define routes and export the module
 const Pages = () => {
@@ -22,6 +23,7 @@ const Pages = () => {
 				<Route path="/favorites" element={<Favorites />} />
 				<Route path="/note/:id" element={<NotePage />} />
 				<Route path="/signup" element={<SignUp />} />
+				<Route path="/signin" element={<SignIn />} />
 			</Routes>
 		</Layout>
 	);

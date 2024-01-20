@@ -1,10 +1,11 @@
 import React from "react";
 // new dependencies
-import { useQuery, gql } from "@apollo/client";
-import { Link } from "react-router-dom";
+import { useApolloClient, gql, useQuery } from "@apollo/client";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../img/logo.png";
 import { isLoggedInVar } from "../app/cache";
+import ButtonAsLink from "./ButtonAsLink";
 
 const HeaderBar = styled.header` 
 	width: 100%;
@@ -32,16 +33,30 @@ margin-left: auto;
 `;
 
 const Header = (props) => {
+	const client = new useApolloClient();
 	// query hook for user logged in state
-
+	const navigate = useNavigate();
 	return (
 		<HeaderBar>
 			<img src={logo} alt="NoteWork Logo" height="40" />
 			<span>&nbsp;&nbsp;</span>
 			<LogoText>The Social NoteWork</LogoText>
 			<UserState>
-				{isLoggedInVar ? (
-					<p>Log Out</p>
+				{isLoggedInVar() ? (
+					<ButtonAsLink
+						onClick={() => {
+							//collect the garbage
+							client.cache.gc();
+							//remove the token and everything in local storage
+							localStorage.clear();
+							//change isLoggedIn to false
+							isLoggedInVar(false);
+							// navigate to homepage
+							navigate("/signin");
+						}}
+					>
+						Logout
+					</ButtonAsLink>
 				) : (
 					<p>
 						<Link to={"/signin"}>Sign In</Link> or{" "}
