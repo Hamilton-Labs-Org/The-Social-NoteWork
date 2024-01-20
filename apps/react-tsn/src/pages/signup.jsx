@@ -75,49 +75,6 @@ const SignUp = (props) => {
 			{loading && <p>Loading...</p>}
 			{/* if there is an error, display a error message*/}{" "}
 			{error && <p>Error creating an account!</p>}
-			<Wrapper>
-				<h2>Sign Up</h2>
-				<Form
-					onSubmit={(event) => {
-						event.preventDefault();
-						signUp({
-							variables: {
-								...values,
-							},
-						});
-						console.log(values);
-					}}
-				>
-					<label htmlFor="username">Username:</label>
-					<input
-						required
-						type="text"
-						id="username"
-						name="username"
-						placeholder="username"
-						onChange={onChange}
-					/>
-					<label htmlFor="email">Email:</label>
-					<input
-						required
-						type="email"
-						id="email"
-						name="email"
-						placeholder="Email"
-						onChange={onChange}
-					/>
-					<label htmlFor="password">Password:</label>
-					<input
-						required
-						type="password"
-						id="password"
-						name="password"
-						placeholder="Password"
-						onChange={onChange}
-					/>
-					<Button type="submit">Submit</Button>
-				</Form>
-			</Wrapper>
 		</>
 	);
 };

@@ -24,11 +24,10 @@ const SignIn = (props) => {
 		onCompleted: (data) => {
 			// store the token
 			localStorage.setItem("token", data.signIn);
-			// update the local cache
-			client.writeData({ data: { isLoggedIn: true } }); // redirect the user to the homepage props.history.push('/');
+			console.log(data.signIn);
+			// Update the local cache
 			isLoggedInVar(true);
 			// redirect the user to the homepage
-			// props.history.push("/");
 			navigate("/");
 		},
 	});
