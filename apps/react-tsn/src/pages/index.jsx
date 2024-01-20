@@ -3,6 +3,12 @@ import React from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import { useQuery, gql } from "@apollo/client";
 
+// import ProtectedRoute component
+import ProtectedRoute from "../components/ProtectedRoute";
+
+// import cache
+import { isLoggedInVar } from "../app/cache";
+
 // import shared layout component
 import Layout from "../components/Layout";
 
@@ -29,19 +35,19 @@ const Pages = () => {
 					exact
 					path="/*"
 					element={
-						<PrivateRoute redirectTo="/signin">
+						<ProtectedRoute isAllowed={isLoggedInVar()} redirectTo="/signin">
 							<Home />
-						</PrivateRoute>
+						</ProtectedRoute>
 					}
 				/>
-				<Route
+				{/* <Route
 					path="/mynotes/*"
 					element={
 						<PrivateRoute redirectTo="/signin">
 							<MyNotes />
 						</PrivateRoute>
 					}
-				/>
+				/> */}
 				<Route
 					path="/favorites/*"
 					element={
