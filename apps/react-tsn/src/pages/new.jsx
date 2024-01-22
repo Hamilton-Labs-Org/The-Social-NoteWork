@@ -40,6 +40,7 @@ const NewNote = (props) => {
 		refetchQueries: [{ query: GET_NOTES }],
 		onCompleted: (data) => {
 			// when complete, redirect the user to the note page
+			console.log(data);
 			// props.history.push(`note/${data.newNote.id}`);
 			navigate(`note/${data.newNote.id}`);
 		},
@@ -50,7 +51,7 @@ const NewNote = (props) => {
 			{/* as the mutation is loading, display a loading message*/}
 			{loading && <p>Loading...</p>}
 			{/* if there is an error, display a error message*/}
-			{error && <p>Error saving the note</p> && console.log(data)}
+			{error && <p>Error saving the note</p>}
 			{/* the form component, passing the mutation data as a prop */}
 			<NoteForm action={data} />
 		</>

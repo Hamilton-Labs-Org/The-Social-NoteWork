@@ -32,7 +32,7 @@ const UserState = styled.div`
 margin-left: auto;
 `;
 
-const Header = (props) => {
+const Header = (props, note) => {
 	const client = new useApolloClient();
 	// query hook for user logged in state
 	const navigate = useNavigate();

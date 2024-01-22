@@ -43,6 +43,7 @@ const NoteForm = (props) => {
 					value={value.content}
 					onChange={onChange}
 				/>
+				<p> </p>
 				<Button type="submit">Save</Button>
 			</Form>
 		</Wrapper>

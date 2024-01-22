@@ -7,7 +7,7 @@ import {
 	useQuery,
 	gql,
 } from "@apollo/client";
-import { setContext } from "@apollo/client/link/context";
+
 import GlobalStyle from "../components/GlobalStyle.jsx";
 import NxWelcome from "./nx-welcome";
 import { cache } from "./cache.js";
