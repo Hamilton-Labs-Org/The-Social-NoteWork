@@ -25,18 +25,6 @@ export const typeDefs = gql`
    }
  `;
 
-// const authLink = setContext((_, { headers }) => {
-// 	// get the authentication token from local storage if it exists
-// 	const token = localStorage.getItem("token");
-// 	// return the headers to the context so httpLink can read them
-// 	return {
-// 		headers: {
-// 			...headers,
-// 			authorization: token ? `Bearer ${token}` : "",
-// 		},
-// 	};
-// });
-
 // configure Apollo Client
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
 	link: new HttpLink({
