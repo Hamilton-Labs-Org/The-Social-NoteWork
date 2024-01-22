@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 // import the GET_NOTE query
 import { GET_NOTE, GET_ME } from "../gql/query";
-import {} from "../gql/query";
+import { EDIT_NOTE } from "../gql/mutation";
 
 import { Link } from "react-router-dom";
 
@@ -21,6 +21,15 @@ const EditNote = (props) => {
 	const { loading, error, data } = useQuery(GET_NOTE, { variables: { id } });
 	// fetch the current user's data
 	const { data: userdata } = useQuery(GET_ME);
+	// define our mutation
+	const [editNote] = useMutation(EDIT_NOTE, {
+		variables: {
+			id,
+		},
+		onCompleted: () => {
+			props.history.push(`/note/${id}`);
+		},
+	});
 	if (loading)
 		// if the data is loading, display a loading message
 
@@ -33,8 +42,8 @@ const EditNote = (props) => {
 		return <p>You do not have access to edit this note</p>;
 	}
 	// return <Note note={data.note} />;
-	// pass the data to the form component
-	return <NoteForm content={data.note.content} />;
+	// pass the data and mutation to the form component
+	return <NoteForm content={data.note.content} action={editNote} />;
 };
 
 export default EditNote;
