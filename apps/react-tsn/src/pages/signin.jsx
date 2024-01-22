@@ -19,7 +19,6 @@ const SignIn = (props) => {
 	});
 
 	const navigate = useNavigate();
-	const client = useApolloClient();
 	const [signIn, { loading, error }] = useMutation(SIGNIN_USER, {
 		onCompleted: (data) => {
 			// store the token

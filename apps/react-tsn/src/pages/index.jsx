@@ -18,6 +18,7 @@ import Favorites from "./favorites";
 import NotePage from "./note";
 import SignUp from "./signup";
 import SignIn from "./signin";
+import NewNote from "./new";
 
 // define routes and export the module
 const Pages = () => {
@@ -46,6 +47,14 @@ const Pages = () => {
 					element={
 						<ProtectedRoute isAllowed={isLoggedInVar()} redirectTo="/signin">
 							<Favorites />
+						</ProtectedRoute>
+					}
+				/>
+				<Route
+					path="/new/*"
+					element={
+						<ProtectedRoute isAllowed={isLoggedInVar()} redirectTo="/signin">
+							<NewNote />
 						</ProtectedRoute>
 					}
 				/>
