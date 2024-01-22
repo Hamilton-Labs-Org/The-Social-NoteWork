@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 // import the NoteForm component
 import NoteForm from "../components/NoteForm";
 
-import { GET_NOTES } from "../gql/query";
+import { GET_MY_NOTES, GET_NOTES } from "../gql/query";
 
 // within the NewNote component update the mutation
 //everything else stays the same
@@ -36,8 +36,8 @@ const NewNote = (props) => {
 
 	const navigate = useNavigate();
 	const [data, { loading, error }] = useMutation(NEW_NOTE, {
-		// refetch the GET_NOTES query to update the cache
-		refetchQueries: [{ query: GET_NOTES }],
+		// refetch the GET_NOTES and GET_MY_NOTES queries to update the cache
+		refetchQueries: [{ query: GET_MY_NOTES }, { query: GET_NOTES }],
 		onCompleted: (data) => {
 			// when complete, redirect the user to the note page
 			console.log(data);
