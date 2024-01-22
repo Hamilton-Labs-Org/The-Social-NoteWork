@@ -8,7 +8,7 @@ import styled from "styled-components";
 // import logged in user UI components
 import NoteUser from "./NoteUser";
 // import the IS_LOGGED_IN local query
-import { isLoggedInVar } from "../app/cache";
+import { IS_LOGGED_IN } from "../gql/query";
 
 const StyledNote = styled.article`
 	max-width: 800px;
@@ -31,7 +31,7 @@ const UserActions = styled.div`
 `;
 
 const Note = ({ note }) => {
-	const { loading, error, data } = useQuery(isLoggedInVar);
+	const { loading, error, data } = useQuery(IS_LOGGED_IN);
 	if (loading)
 		// if the data is loading, display a loading message
 		return <p>Loading...</p>;
