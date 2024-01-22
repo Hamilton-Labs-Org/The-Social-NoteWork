@@ -45,7 +45,7 @@ const Note = ({ note }) => {
 					<br />
 					{format(note.createdAt, "MMM Do yyyy")}
 				</MetaInfo>
-				{data.isLoggedInVar ? (
+				{data.isLoggedIn ? (
 					<UserActions>
 						<NoteUser note={note} />
 					</UserActions>

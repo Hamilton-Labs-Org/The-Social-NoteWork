@@ -13,13 +13,11 @@ const NoteUser = (props) => {
 
 	return (
 		<>
-			Favorites: {props.note.favoriteCount}
-			<br />
 			{data.me.id === props.note.author.id && (
-				<>
-					<Link to={`/edit/${props.note.id}`}>Edit</Link>;
-				</>
+				<Link to={`/edit/${props.note.id}`}>Edit</Link>
 			)}
+			<br />
+			Favorites: {props.note.favoriteCount}
 		</>
 	);
 };
