@@ -72,9 +72,28 @@ id
  }
 `;
 
+// add GET_ME to our queries
+const GET_ME = gql` 
+query me {
+me { 
+id
+          favorites {
+            id
+} 
+}
+} 
+`;
+
 const IS_LOGGED_IN = gql` {
     isLoggedIn @client
   }
 `;
 
-export { GET_NOTES, GET_NOTE, IS_LOGGED_IN, GET_MY_NOTES, GET_MY_FAVORITES };
+export {
+	GET_NOTES,
+	GET_NOTE,
+	IS_LOGGED_IN,
+	GET_MY_NOTES,
+	GET_MY_FAVORITES,
+	GET_ME,
+};

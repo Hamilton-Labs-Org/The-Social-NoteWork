@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 
 import Note from "../components/Note";
 
+// import the NoteForm component
+import NoteForm from "../components/NoteForm";
+
 // the note query, which accepts an ID variable
 
 // import the GET_NOTE query
