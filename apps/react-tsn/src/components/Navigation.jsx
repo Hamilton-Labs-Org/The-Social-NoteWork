@@ -44,7 +44,8 @@ a:hover{
 	color: #0077cc;
 }
 a:focus {
-	color: #778DA9;
+	// color: #778DA9;
+	color: #fca311;
 
 }
 `;
@@ -59,6 +60,7 @@ const Navigation = () => {
 							<span aria-hidden="true" role="img">
 								🏠
 							</span>
+							<span>&nbsp;</span>
 							Home
 						</Link>
 					</li>
@@ -67,6 +69,7 @@ const Navigation = () => {
 							<span aria-hidden="true" role="img">
 								📝
 							</span>
+							<span>&nbsp;</span>
 							New Note
 						</Link>
 					</li>
@@ -75,6 +78,7 @@ const Navigation = () => {
 							<span aria-hidden="true" role="img">
 								📓
 							</span>
+							<span>&nbsp;</span>
 							My Notes
 						</Link>
 					</li>
@@ -83,6 +87,7 @@ const Navigation = () => {
 							<span aria-hidden="true" role="img">
 								⭐️
 							</span>
+							<span>&nbsp;</span>
 							Favorites
 						</Link>
 					</li>
