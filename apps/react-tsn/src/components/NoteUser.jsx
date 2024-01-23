@@ -6,6 +6,8 @@ import { GET_ME } from "../gql/query";
 // import the DeleteNote component
 import DeleteNote from "./DeleteNote";
 
+import FavoriteNote from "./FavoriteNote";
+
 const NoteUser = (props) => {
 	const { loading, error, data } = useQuery(GET_ME);
 	// if the data is loading, display a loading message
@@ -15,6 +17,14 @@ const NoteUser = (props) => {
 
 	return (
 		<>
+			Favorites: {props.note.favoriteCount}
+			<br />
+			<FavoriteNote
+				me={data.me}
+				noteId={props.note.id}
+				favoriteCount={props.note.favoriteCount}
+			/>
+			<br />
 			{data.me.id === props.note.author.id && (
 				<>
 					<Link to={`/edit/${props.note.id}`}>Edit</Link>
@@ -22,8 +32,6 @@ const NoteUser = (props) => {
 					<DeleteNote noteId={props.note.id} />
 				</>
 			)}
-			<br />
-			Favorites: {props.note.favoriteCount}
 		</>
 	);
 };
