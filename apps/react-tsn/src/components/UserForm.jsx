@@ -35,11 +35,11 @@ const UserForm = (props) => {
 	return (
 		<Wrapper>
 			{/* Display the appropriate form header */}
-			{props.formType === "signup" ? <h2>Sign Up</h2> : <h2>Sign In</h2>}{" "}
+			{props.formType === "signup" ? <h2>Sign Up</h2> : <h2>Sign In</h2>}
 			{/* perform the mutation when a user submits the form */}
 			<Form
-				onSubmit={(e) => {
-					e.preventDefault();
+				onSubmit={(event) => {
+					event.preventDefault();
 					props.action({
 						variables: {
 							...values,

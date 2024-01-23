@@ -32,7 +32,7 @@ const UserState = styled.div`
 margin-left: auto;
 `;
 
-const Header = (props) => {
+const Header = (props, note) => {
 	const client = new useApolloClient();
 	// query hook for user logged in state
 	const navigate = useNavigate();
@@ -49,6 +49,8 @@ const Header = (props) => {
 							client.cache.gc();
 							//remove the token and everything in local storage
 							localStorage.clear();
+							// clear the app cache
+							client.resetStore();
 							//change isLoggedIn to false
 							isLoggedInVar(false);
 							// navigate to homepage
