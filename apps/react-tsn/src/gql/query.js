@@ -77,6 +77,7 @@ const GET_ME = gql`
 query me {
 me { 
 id
+username
 		favorites {
 			id
 } 
