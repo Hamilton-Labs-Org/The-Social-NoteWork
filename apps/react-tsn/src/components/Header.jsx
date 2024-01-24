@@ -1,6 +1,6 @@
 import React from "react";
 // new dependencies
-import { useApolloClient, gql, useQuery } from "@apollo/client";
+import { useApolloClient } from "@apollo/client";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../img/logo.png";
@@ -32,7 +32,7 @@ const UserState = styled.div`
 margin-left: auto;
 `;
 
-const Header = (props, note) => {
+const Header = () => {
 	const client = new useApolloClient();
 	// query hook for user logged in state
 	const navigate = useNavigate();
