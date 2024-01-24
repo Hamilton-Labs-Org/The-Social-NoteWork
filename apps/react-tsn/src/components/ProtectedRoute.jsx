@@ -1,7 +1,8 @@
 import { Navigate, Outlet } from "react-router-dom";
+import { isLoggedInVar } from "../app/cache";
 
 export default function ProtectedRoute({
-	isAllowed,
+	isAllowed = isLoggedInVar(),
 	redirectTo = "/signin",
 	children,
 }) {

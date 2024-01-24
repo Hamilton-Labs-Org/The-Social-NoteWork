@@ -1,13 +1,10 @@
 // import React and routing dependencies
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-
 // import ProtectedRoute component
 import ProtectedRoute from "../components/ProtectedRoute";
-
 // import cache
 import { isLoggedInVar } from "../app/cache";
-
 // import shared layout component
 import Layout from "../components/Layout";
 

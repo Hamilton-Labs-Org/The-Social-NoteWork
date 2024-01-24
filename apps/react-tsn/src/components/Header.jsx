@@ -51,10 +51,10 @@ const Header = () => {
 							onClick={() => {
 								//collect the garbage
 								client.cache.gc();
-								//remove the token and everything in local storage
-								localStorage.clear();
 								// clear the app cache
 								client.resetStore();
+								//remove the token and everything in local storage
+								localStorage.clear();
 								//change isLoggedIn to false
 								isLoggedInVar(false);
 								// navigate to homepage

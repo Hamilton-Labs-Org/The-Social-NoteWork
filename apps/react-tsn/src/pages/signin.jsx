@@ -7,6 +7,12 @@ import UserForm from "../components/UserForm";
 import { isLoggedInVar, isUserLoggedInVar } from "../app/cache";
 import { SIGNIN_USER } from "../gql/mutation";
 import { GET_ME } from "../gql/query";
+function refreshPage() {
+	setTimeout(() => {
+		window.location.reload(false);
+	}, 500);
+	console.log("page to reload");
+}
 
 const SignIn = (props) => {
 	useEffect(() => {
@@ -17,14 +23,17 @@ const SignIn = (props) => {
 	const navigate = useNavigate();
 	const [signIn, { loading, error }] = useMutation(SIGNIN_USER, {
 		onCompleted: (data) => {
+			//remove the token and everything in local storage
 			localStorage.clear();
 			// store the token
 			localStorage.setItem("token", data.signIn);
 			console.log(data);
 			// Update the local cache
 			isLoggedInVar(true);
+			console.log(isLoggedInVar());
 			// redirect the user to the homepage
-			navigate("/");
+			navigate("/home");
+			refreshPage();
 		},
 	});
 	const { data } = useQuery(GET_ME, {
@@ -34,6 +43,7 @@ const SignIn = (props) => {
 			localStorage.setItem("username", user);
 			console.log("From signin page", localStorage.getItem("username"));
 			console.log(isUserLoggedInVar());
+			navigate("/home");
 		},
 	});
 	return (
