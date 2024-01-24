@@ -19,11 +19,6 @@ const Home = () => {
 	return (
 		<>
 			<div>
-				<h2>This is the home page</h2>
-				{/* add a list of links here */}
-				<Button>Click me!</Button>
-			</div>
-			<div>
 				<p> </p>
 			</div>
 			<NoteFeed notes={data.noteFeed.notes} />
