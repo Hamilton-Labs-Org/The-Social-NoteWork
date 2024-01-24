@@ -3,30 +3,13 @@ import { useQuery, gql } from "@apollo/client";
 import Markdown from "react-markdown";
 import Button from "../components/Button";
 import NoteFeed from "../components/NoteFeed";
+import { GET_NOTES } from "../gql/query";
 
 const Home = () => {
 	useEffect(() => {
 		// update the document title
 		document.title = "Home - NoteWork";
 	});
-	// our GraphQL query, stored as a variable
-	const GET_NOTES = gql`
-query NoteFeed($cursor: String) {
-        noteFeed(cursor: $cursor) {
-          cursor
-          hasNextPage
-          notes {
-            id
-            createdAt
-            content
-            favoriteCount
-            author {
-              username
-              id
-              avatar
-} }
-} }
-`;
 	// query hook
 	const { data, loading, error, fetchMore } = useQuery(GET_NOTES);
 	if (loading)
