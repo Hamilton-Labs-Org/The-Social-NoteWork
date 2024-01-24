@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useMutation, useApolloClient, gql } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 
 import UserForm from "../components/UserForm";
