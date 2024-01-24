@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 
 import UserForm from "../components/UserForm";
 
-import { isLoggedInVar } from "../app/cache";
+import { isLoggedInVar, isUserLoggedIn } from "../app/cache";
 import { SIGNIN_USER } from "../gql/mutation";
+import { GET_ME } from "../gql/query";
 
 const SignIn = (props) => {
 	useEffect(() => {
@@ -18,11 +19,20 @@ const SignIn = (props) => {
 		onCompleted: (data) => {
 			// store the token
 			localStorage.setItem("token", data.signIn);
-			console.log(data.signIn);
+			console.log(data);
 			// Update the local cache
 			isLoggedInVar(true);
 			// redirect the user to the homepage
 			navigate("/");
+		},
+	});
+	const { data } = useQuery(GET_ME, {
+		onCompleted: (data) => {
+			const user = data.me.username;
+			console.log(user);
+			localStorage.setItem("username", user);
+			console.log("From signin page", localStorage.getItem("username"));
+			console.log(isUserLoggedIn());
 		},
 	});
 	return (
