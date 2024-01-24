@@ -32,6 +32,13 @@ const UserState = styled.div`
 margin-left: auto;
 `;
 
+function refreshPage() {
+	setTimeout(() => {
+		window.location.reload(false);
+	}, 500);
+	console.log("page to reload");
+}
+
 const Header = () => {
 	const client = new useApolloClient();
 	// query hook for user logged in state
@@ -59,6 +66,7 @@ const Header = () => {
 								isLoggedInVar(false);
 								// navigate to homepage
 								navigate("/signin");
+								refreshPage();
 							}}
 						>
 							Logout
