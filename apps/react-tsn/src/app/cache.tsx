@@ -8,7 +8,7 @@ export const cache: InMemoryCache = new InMemoryCache({
 					return isLoggedInVar();
 				},
 				isUserLoggedIn() {
-					return isUserLoggedIn();
+					return isUserLoggedInVar();
 				},
 			},
 		},
@@ -16,6 +16,6 @@ export const cache: InMemoryCache = new InMemoryCache({
 });
 
 export const isLoggedInVar = makeVar<boolean>(!!localStorage.getItem("token"));
-export const isUserLoggedIn = makeVar<boolean>(
+export const isUserLoggedInVar = makeVar<boolean>(
 	!!localStorage.getItem("username"),
 );

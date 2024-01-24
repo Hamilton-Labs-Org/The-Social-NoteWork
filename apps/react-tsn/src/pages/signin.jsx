@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import UserForm from "../components/UserForm";
 
-import { isLoggedInVar, isUserLoggedIn } from "../app/cache";
+import { isLoggedInVar, isUserLoggedInVar } from "../app/cache";
 import { SIGNIN_USER } from "../gql/mutation";
 import { GET_ME } from "../gql/query";
 
@@ -17,6 +17,7 @@ const SignIn = (props) => {
 	const navigate = useNavigate();
 	const [signIn, { loading, error }] = useMutation(SIGNIN_USER, {
 		onCompleted: (data) => {
+			localStorage.clear();
 			// store the token
 			localStorage.setItem("token", data.signIn);
 			console.log(data);
@@ -32,7 +33,7 @@ const SignIn = (props) => {
 			console.log(user);
 			localStorage.setItem("username", user);
 			console.log("From signin page", localStorage.getItem("username"));
-			console.log(isUserLoggedIn());
+			console.log(isUserLoggedInVar());
 		},
 	});
 	return (

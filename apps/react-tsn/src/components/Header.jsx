@@ -4,7 +4,7 @@ import { useApolloClient } from "@apollo/client";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../img/logo.png";
-import { isLoggedInVar } from "../app/cache";
+import { isLoggedInVar, isUserLoggedInVar } from "../app/cache";
 import ButtonAsLink from "./ButtonAsLink";
 
 const HeaderBar = styled.header` 
@@ -43,22 +43,27 @@ const Header = () => {
 			<LogoText>The Social NoteWork</LogoText>
 			<UserState>
 				{isLoggedInVar() ? (
-					<ButtonAsLink
-						onClick={() => {
-							//collect the garbage
-							client.cache.gc();
-							//remove the token and everything in local storage
-							localStorage.clear();
-							// clear the app cache
-							client.resetStore();
-							//change isLoggedIn to false
-							isLoggedInVar(false);
-							// navigate to homepage
-							navigate("/signin");
-						}}
-					>
-						Logout
-					</ButtonAsLink>
+					<div>
+						Logged in as: &nbsp;
+						{localStorage.getItem("username")}
+						&nbsp; &nbsp;
+						<ButtonAsLink
+							onClick={() => {
+								//collect the garbage
+								client.cache.gc();
+								//remove the token and everything in local storage
+								localStorage.clear();
+								// clear the app cache
+								client.resetStore();
+								//change isLoggedIn to false
+								isLoggedInVar(false);
+								// navigate to homepage
+								navigate("/signin");
+							}}
+						>
+							Logout
+						</ButtonAsLink>
+					</div>
 				) : (
 					<p>
 						<Link to={"/signin"}>Sign In</Link> or{" "}
