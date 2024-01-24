@@ -35,7 +35,7 @@ margin-left: auto;
 function refreshPage() {
 	setTimeout(() => {
 		window.location.reload(false);
-	}, 500);
+	}, 35);
 	console.log("page to reload");
 }
 
@@ -56,17 +56,15 @@ const Header = () => {
 						&nbsp; &nbsp;
 						<ButtonAsLink
 							onClick={() => {
+								// navigate to homepage
+								navigate("/");
+								refreshPage();
 								//collect the garbage
 								client.cache.gc();
-								// clear the app cache
-								client.resetStore();
 								//remove the token and everything in local storage
 								localStorage.clear();
 								//change isLoggedIn to false
 								isLoggedInVar(false);
-								// navigate to homepage
-								navigate("/signin");
-								refreshPage();
 							}}
 						>
 							Logout

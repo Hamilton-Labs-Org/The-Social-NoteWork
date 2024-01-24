@@ -10,7 +10,7 @@ import { GET_ME } from "../gql/query";
 function refreshPage() {
 	setTimeout(() => {
 		window.location.reload(false);
-	}, 500);
+	}, 35);
 	console.log("page to reload");
 }
 
@@ -23,6 +23,7 @@ const SignIn = (props) => {
 	const navigate = useNavigate();
 	const [signIn, { loading, error }] = useMutation(SIGNIN_USER, {
 		onCompleted: (data) => {
+			refreshPage();
 			//remove the token and everything in local storage
 			localStorage.clear();
 			// store the token
@@ -33,7 +34,6 @@ const SignIn = (props) => {
 			console.log(isLoggedInVar());
 			// redirect the user to the homepage
 			navigate("/home");
-			refreshPage();
 		},
 	});
 	const { data } = useQuery(GET_ME, {

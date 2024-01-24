@@ -6,6 +6,13 @@ import UserForm from "../components/UserForm";
 import { isLoggedInVar } from "../app/cache";
 import { SIGNUP_USER } from "../gql/mutation";
 
+function refreshPage() {
+	setTimeout(() => {
+		window.location.reload(false);
+	}, 35);
+	console.log("page to reload");
+}
+
 const SignUp = (props) => {
 	useEffect(() => {
 		// update the document title
@@ -17,6 +24,7 @@ const SignUp = (props) => {
 	//add the mutation hook
 	const [signUp, { loading, error }] = useMutation(SIGNUP_USER, {
 		onCompleted: (data) => {
+			refreshPage();
 			// console.log the JSON Web Token when the mutation is complete
 			console.log(data.signUp);
 			localStorage.setItem("token", data.signUp);
