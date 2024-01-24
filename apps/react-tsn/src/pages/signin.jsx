@@ -5,12 +5,7 @@ import { useNavigate } from "react-router-dom";
 import UserForm from "../components/UserForm";
 
 import { isLoggedInVar } from "../app/cache";
-
-const SIGNIN_USER = gql`
-mutation signIn($email: String, $password: String!) {
-        signIn(email: $email, password: $password)
-      }
-`;
+import { SIGNIN_USER } from "../gql/mutation";
 
 const SignIn = (props) => {
 	useEffect(() => {

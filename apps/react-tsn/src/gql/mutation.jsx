@@ -1,4 +1,11 @@
 import { gql } from "@apollo/client";
+
+const SIGNIN_USER = gql`
+mutation signIn($email: String, $password: String!) {
+        signIn(email: $email, password: $password)
+      }
+`;
+
 const EDIT_NOTE = gql`
 mutation updateNote($id: ID!, $content: String!) {
         updateNote(id: $id, content: $content) {
@@ -32,4 +39,4 @@ const TOGGLE_FAVORITE = gql` mutation toggleFavorite($id: ID!) {
 } 
 `;
 
-export { EDIT_NOTE, DELETE_NOTE, TOGGLE_FAVORITE };
+export { SIGNIN_USER, EDIT_NOTE, DELETE_NOTE, TOGGLE_FAVORITE };
