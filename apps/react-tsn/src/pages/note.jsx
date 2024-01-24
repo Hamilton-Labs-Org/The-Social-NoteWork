@@ -24,7 +24,7 @@ const NotePage = (props) => {
 				<p>ID: {id}</p>
 			</div>
 			<Note note={data.note} />
-			<Link to={{ id }}>Permalink</Link>
+			<Link to={`/note/${id}`}>Permalink</Link>
 		</>
 	);
 };
