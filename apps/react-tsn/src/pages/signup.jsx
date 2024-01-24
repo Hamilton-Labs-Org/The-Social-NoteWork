@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 // include the props passed to the component for later use
-import { useMutation, gql } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import UserForm from "../components/UserForm";
 import { isLoggedInVar } from "../app/cache";
 import { SIGNUP_USER } from "../gql/mutation";
@@ -33,7 +33,7 @@ const SignUp = (props) => {
 	return (
 		<>
 			<UserForm action={signUp} formType="signup" />
-			{/* if the data is loading, display a loading message*/}{" "}
+			{/* if the data is loading, display a loading message*/}
 			{loading && <p>Loading...</p>}
 			{/* if there is an error, display a error message*/}{" "}
 			{error && <p>Error creating an account!</p>}
