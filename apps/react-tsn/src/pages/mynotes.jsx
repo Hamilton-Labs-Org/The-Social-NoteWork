@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 
 import NoteFeed from "../components/NoteFeed";
 import { GET_MY_NOTES } from "../gql/query";
@@ -22,12 +22,5 @@ const MyNotes = () => {
 	} else {
 		return <p>No notes yet</p>;
 	}
-	// return (
-	// 	<>
-	// 		<div>
-	// 			<h2>These are my notes</h2>
-	// 		</div>
-	// 	</>
-	// );
 };
 export default MyNotes;
