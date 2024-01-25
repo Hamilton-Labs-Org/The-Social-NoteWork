@@ -26,7 +26,6 @@ const SignUp = (props) => {
 		onCompleted: (data) => {
 			refreshPage();
 			// console.log the JSON Web Token when the mutation is complete
-			console.log(data.signUp);
 			localStorage.setItem("token", data.signUp);
 			isLoggedInVar(true);
 			// redirect the user to the homepage
