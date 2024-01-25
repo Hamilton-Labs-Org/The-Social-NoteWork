@@ -31,14 +31,14 @@ const SignIn = (props) => {
 			// Update the local cache
 			isLoggedInVar(true);
 			// redirect the user to the homepage
-			navigate("/home");
+			navigate("/");
 		},
 	});
 	const { data } = useQuery(GET_ME, {
 		onCompleted: (data) => {
 			const user = data.me.username;
 			localStorage.setItem("username", user);
-			navigate("/home");
+			navigate("/");
 		},
 	});
 	return (
