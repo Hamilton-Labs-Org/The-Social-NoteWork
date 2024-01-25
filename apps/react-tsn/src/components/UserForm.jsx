@@ -7,7 +7,8 @@ const Wrapper = styled.div`
 border: 1px solid #fca311; 
 max-width: 500px; 
 padding: 1em;
-      margin: 0 auto;
+margin: 0 auto;
+margin-top: 25%;
     `;
 
 const Form = styled.form` 
@@ -48,7 +49,7 @@ const UserForm = (props) => {
 				}}
 			>
 				{props.formType === "signup" && (
-					<React.Fragment>
+					<>
 						<label htmlFor="username">Username:</label>
 						<input
 							required
@@ -58,7 +59,7 @@ const UserForm = (props) => {
 							placeholder="username"
 							onChange={onChange}
 						/>
-					</React.Fragment>
+					</>
 				)}
 				<label htmlFor="email">Email:</label>
 				<input
