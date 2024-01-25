@@ -1,34 +1,17 @@
 import React, { useEffect } from "react";
-import { useMutation, gql } from "@apollo/client";
-import { useNavigate } from "react-router-dom";
+import { useMutation, useQuery } from "@apollo/client";
+import { useNavigate, useParams } from "react-router-dom";
 // import the NoteForm component
 import NoteForm from "../components/NoteForm";
 
-import { GET_MY_NOTES, GET_NOTES } from "../gql/query";
+import { GET_MY_NOTES, GET_NOTE, GET_NOTES } from "../gql/query";
+import { NEW_NOTE } from "../gql/mutation";
 
 // within the NewNote component update the mutation
 //everything else stays the same
 
-// our new note query
-const NEW_NOTE = gql`
-mutation newNote($content: String!) {
-        newNote(content: $content) {
-          id
-          content
-          createdAt
-          favoriteCount
-          favoritedBy {
-id
-username 
-}
-author {
-username
-id 
-}
-} 
-}
-`;
 const NewNote = (props) => {
+	const { id } = useParams();
 	useEffect(() => {
 		//update the document title
 		document.title = "New Note - NoteWork";
@@ -37,12 +20,16 @@ const NewNote = (props) => {
 	const navigate = useNavigate();
 	const [data, { loading, error }] = useMutation(NEW_NOTE, {
 		// refetch the GET_NOTES and GET_MY_NOTES queries to update the cache
-		refetchQueries: [{ query: GET_MY_NOTES }, { query: GET_NOTES }],
+		refetchQueries: [
+			{ query: GET_MY_NOTES },
+			{ query: GET_NOTES },
+			{ query: GET_NOTE, variables: { id } },
+		],
 		onCompleted: (data) => {
 			// when complete, redirect the user to the note page
-			console.log(data);
-			// props.history.push(`note/${data.newNote.id}`);
-			navigate(`note/${data.newNote.id}`);
+			console.log(data.newNote.createdAt);
+			navigate(`/note/${data.newNote.id}`);
+			console.log(data.newNote.id);
 		},
 	});
 

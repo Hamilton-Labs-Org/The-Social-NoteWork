@@ -1,10 +1,10 @@
 import React from "react";
 // new dependencies
-import { useApolloClient, gql, useQuery } from "@apollo/client";
+import { useApolloClient } from "@apollo/client";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../img/logo.png";
-import { isLoggedInVar } from "../app/cache";
+import { isLoggedInVar, isUserLoggedInVar } from "../app/cache";
 import ButtonAsLink from "./ButtonAsLink";
 
 const HeaderBar = styled.header` 
@@ -32,7 +32,14 @@ const UserState = styled.div`
 margin-left: auto;
 `;
 
-const Header = (props, note) => {
+function refreshPage() {
+	setTimeout(() => {
+		window.location.reload(false);
+	}, 35);
+	console.log("page to reload");
+}
+
+const Header = () => {
 	const client = new useApolloClient();
 	// query hook for user logged in state
 	const navigate = useNavigate();
@@ -43,22 +50,26 @@ const Header = (props, note) => {
 			<LogoText>The Social NoteWork</LogoText>
 			<UserState>
 				{isLoggedInVar() ? (
-					<ButtonAsLink
-						onClick={() => {
-							//collect the garbage
-							client.cache.gc();
-							//remove the token and everything in local storage
-							localStorage.clear();
-							// clear the app cache
-							client.resetStore();
-							//change isLoggedIn to false
-							isLoggedInVar(false);
-							// navigate to homepage
-							navigate("/signin");
-						}}
-					>
-						Logout
-					</ButtonAsLink>
+					<div>
+						Logged in as: &nbsp;
+						{localStorage.getItem("username")}
+						&nbsp; &nbsp;
+						<ButtonAsLink
+							onClick={() => {
+								// navigate to homepage
+								navigate("/");
+								refreshPage();
+								//collect the garbage
+								client.cache.gc();
+								//remove the token and everything in local storage
+								localStorage.clear();
+								//change isLoggedIn to false
+								isLoggedInVar(false);
+							}}
+						>
+							Logout
+						</ButtonAsLink>
+					</div>
 				) : (
 					<p>
 						<Link to={"/signin"}>Sign In</Link> or{" "}

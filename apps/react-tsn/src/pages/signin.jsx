@@ -1,16 +1,18 @@
 import React, { useEffect } from "react";
-import { useMutation, useApolloClient, gql } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 
 import UserForm from "../components/UserForm";
 
-import { isLoggedInVar } from "../app/cache";
-
-const SIGNIN_USER = gql`
-mutation signIn($email: String, $password: String!) {
-        signIn(email: $email, password: $password)
-      }
-`;
+import { isLoggedInVar, isUserLoggedInVar } from "../app/cache";
+import { SIGNIN_USER } from "../gql/mutation";
+import { GET_ME } from "../gql/query";
+function refreshPage() {
+	setTimeout(() => {
+		window.location.reload(false);
+	}, 35);
+	console.log("page to reload");
+}
 
 const SignIn = (props) => {
 	useEffect(() => {
@@ -21,13 +23,27 @@ const SignIn = (props) => {
 	const navigate = useNavigate();
 	const [signIn, { loading, error }] = useMutation(SIGNIN_USER, {
 		onCompleted: (data) => {
+			refreshPage();
+			//remove the token and everything in local storage
+			localStorage.clear();
 			// store the token
 			localStorage.setItem("token", data.signIn);
-			console.log(data.signIn);
+			console.log(data);
 			// Update the local cache
 			isLoggedInVar(true);
+			console.log(isLoggedInVar());
 			// redirect the user to the homepage
-			navigate("/");
+			navigate("/home");
+		},
+	});
+	const { data } = useQuery(GET_ME, {
+		onCompleted: (data) => {
+			const user = data.me.username;
+			console.log(user);
+			localStorage.setItem("username", user);
+			console.log("From signin page", localStorage.getItem("username"));
+			console.log(isUserLoggedInVar());
+			navigate("/home");
 		},
 	});
 	return (
