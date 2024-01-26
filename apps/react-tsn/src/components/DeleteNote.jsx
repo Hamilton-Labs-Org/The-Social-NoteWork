@@ -18,8 +18,6 @@ const DeleteNote = (props) => {
 		refetchQueries: [{ query: GET_MY_NOTES, GET_NOTES }],
 		onCompleted: (data) => {
 			// redirect the user to the "my notes" page
-			// props.history.push("/mynotes");
-			console.log(data);
 			navigate("/mynotes");
 		},
 	});

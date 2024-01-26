@@ -5,10 +5,6 @@ import { useMutation, useQuery } from "@apollo/client";
 import { GET_NOTE, GET_ME } from "../gql/query";
 import { EDIT_NOTE } from "../gql/mutation";
 
-import { Link } from "react-router-dom";
-
-import Note from "../components/Note";
-
 // import the NoteForm component
 import NoteForm from "../components/NoteForm";
 
@@ -27,7 +23,6 @@ const EditNote = (props) => {
 			id,
 		},
 		onCompleted: () => {
-			// props.history.push(`/note/${id}`);
 			navigate(`/note/${id}`);
 		},
 	});

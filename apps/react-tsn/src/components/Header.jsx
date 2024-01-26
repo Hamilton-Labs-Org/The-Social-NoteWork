@@ -4,7 +4,7 @@ import { useApolloClient } from "@apollo/client";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../img/logo.png";
-import { isLoggedInVar, isUserLoggedInVar } from "../app/cache";
+import { isLoggedInVar } from "../app/cache";
 import ButtonAsLink from "./ButtonAsLink";
 
 const HeaderBar = styled.header` 

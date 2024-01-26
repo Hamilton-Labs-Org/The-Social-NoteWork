@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 import UserForm from "../components/UserForm";
 
-import { isLoggedInVar, isUserLoggedInVar } from "../app/cache";
+import { isLoggedInVar } from "../app/cache";
 import { SIGNIN_USER } from "../gql/mutation";
 import { GET_ME } from "../gql/query";
 function refreshPage() {
@@ -28,22 +28,17 @@ const SignIn = (props) => {
 			localStorage.clear();
 			// store the token
 			localStorage.setItem("token", data.signIn);
-			console.log(data);
 			// Update the local cache
 			isLoggedInVar(true);
-			console.log(isLoggedInVar());
 			// redirect the user to the homepage
-			navigate("/home");
+			navigate("/");
 		},
 	});
 	const { data } = useQuery(GET_ME, {
 		onCompleted: (data) => {
 			const user = data.me.username;
-			console.log(user);
 			localStorage.setItem("username", user);
-			console.log("From signin page", localStorage.getItem("username"));
-			console.log(isUserLoggedInVar());
-			navigate("/home");
+			navigate("/");
 		},
 	});
 	return (

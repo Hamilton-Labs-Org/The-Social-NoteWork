@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 
 import NoteFeed from "../components/NoteFeed";
 // import the query
@@ -25,13 +25,5 @@ const Favorites = () => {
 	} else {
 		return <p>No favorites yet</p>;
 	}
-
-	// return (
-	// 	<>
-	// 		<div>
-	// 			<h2>These are my favorites</h2>
-	// 		</div>
-	// 	</>
-	// );
 };
 export default Favorites;

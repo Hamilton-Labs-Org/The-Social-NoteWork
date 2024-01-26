@@ -127,6 +127,7 @@ This project is built with all of the latest versions of various frameworks & li
 - [![React][React.js]][React-url]
 - [![React Native][React Native]][React-Native-url]
 - [![Electron][Electron]][Electron-url]
+- [![PostHog][PostHog]][PostHog-url]
 - [![ESbuild][ESbuild]][ESbuild-url]
 - [![TypeScript][TypeScript]][TypeScript-url]
 - [![Nx][Nx]][Nx-url]
@@ -496,6 +497,10 @@ Here are some resources I found helpful and would like to give thanks and credit
 [Electron]: https://img.shields.io/badge/Electron-white?style=for-the-badge&logo=Electron&logoColor=%2375F3F9&color=272838
 [ESbuild-url]: https://esbuild.github.io/
 [ESbuild]: https://img.shields.io/badge/ESbuild-yellow?style=for-the-badge&logo=esbuild&logoColor=black&link=https%3A%2F%2Fesbuild.github.io%2F
+
+[PostHog-url]: https://posthog.com/
+[PostHog]: https://img.shields.io/badge/PostHog-yellow?style=for-the-badge&logo=posthog&logoColor=orange&labelColor=blue&link=https%3A%2F%2Fposthog.com%2F
+
 [TypeScript-url]: https://www.typescriptlang.org/
 [TypeScript]: https://img.shields.io/badge/TypeScript-blue?style=for-the-badge&logo=TypeScript&logoColor=white&link=https%3A%2F%2Fwww.typescriptlang.org%2F
 [Nx-url]: https://nx.dev/
