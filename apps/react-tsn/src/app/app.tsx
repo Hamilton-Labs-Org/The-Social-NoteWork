@@ -4,12 +4,10 @@ import {
 	NormalizedCacheObject,
 	ApolloProvider,
 	HttpLink,
-	useQuery,
 	gql,
 } from "@apollo/client";
 
 import GlobalStyle from "../components/GlobalStyle.jsx";
-import NxWelcome from "./nx-welcome";
 import { cache } from "./cache.js";
 import Pages from "../pages";
 
