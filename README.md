@@ -182,13 +182,13 @@ You will need the following installed and configured on your machine.
   pnpm add nx -D -w
   ```
 
-### Commit Signing Key (Required)
+### Commit Signing Key (Required for contributors)
 
 Configure your [verified](https://docs.github.com/en/authentication/managing-commit-signature-verification/displaying-verification-statuses-for-all-of-your-commits) commit siging key.
 
 I recommend following these [instructions](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key#telling-git-about-your-ssh-key) to use your current SSH key for signing commits, if you havent already configured this.
 
-If not, you could use these [instrutions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to generate a separate SSH key, add it to your GitHub account [as a signing key](https://github.com/orgs/community/discussions/40047#discussioncomment-4234972), and then use it for [signing your commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key#telling-git-about-your-ssh-key).
+If not, you could use these [instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to generate a separate SSH key, add it to your GitHub account [as a signing key](https://github.com/orgs/community/discussions/40047#discussioncomment-4234972), and then use it for [signing your commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key#telling-git-about-your-ssh-key).
 
 Optionally, you could sign all of your commits with this.
 
@@ -229,7 +229,8 @@ you can use this command.
 
 2. Create a new database
 
-   Enter the mongo-shell.
+   Enter the mongo-shell.  
+  You will need to [install](https://www.mongodb.com/docs/mongodb-shell/install/) it if you don't already have it.
 
    ```sh
    mongosh
