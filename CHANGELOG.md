@@ -1,6 +1,19 @@
 # Changelog
 
-## v0.1.80
+### v0.2.28  
+
+- Integrated metrics & event tracking via [PostHog](https://posthog.com/)
+
+### v0.2.24  
+
+- Integrated [React](https://react.dev/) Frontend
+- Added [Apollo Client](https://www.apollographql.com/docs/react/)
+- Added Web Authentication and Authorization
+- Added [AC3's new local cache](https://www.apollographql.com/docs/react/migrating/apollo-client-3-migration/) system
+- Added CRUD over Apollo Client API
+- Added Toggle Favorites and User's notes feed.
+
+### v0.1.80
 
 - Integrated [Biome's](https://biomejs.dev) CI linter
 

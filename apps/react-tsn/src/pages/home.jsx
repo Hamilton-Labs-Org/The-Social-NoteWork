@@ -3,11 +3,15 @@ import { useQuery } from "@apollo/client";
 import Button from "../components/Button";
 import NoteFeed from "../components/NoteFeed";
 import { GET_NOTES } from "../gql/query";
+import posthog from "posthog-js";
 
 const Home = () => {
 	useEffect(() => {
 		// update the document title
 		document.title = "Home - NoteWork";
+		posthog.capture("Home Page Visited", {
+			property: "homepage",
+		});
 	});
 	// query hook
 	const { data, loading, error, fetchMore } = useQuery(GET_NOTES);

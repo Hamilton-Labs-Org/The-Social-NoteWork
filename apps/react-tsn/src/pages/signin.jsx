@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
+import posthog from "posthog-js";
 
 import UserForm from "../components/UserForm";
 
 import { isLoggedInVar } from "../app/cache";
 import { SIGNIN_USER } from "../gql/mutation";
 import { GET_ME } from "../gql/query";
+
 function refreshPage() {
 	setTimeout(() => {
 		window.location.reload(false);
@@ -38,6 +40,8 @@ const SignIn = (props) => {
 		onCompleted: (data) => {
 			const user = data.me.username;
 			localStorage.setItem("username", user);
+			// Posthog event
+			posthog.capture("Login", { property: user });
 			navigate("/");
 		},
 	});
