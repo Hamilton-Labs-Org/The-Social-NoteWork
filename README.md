@@ -389,7 +389,7 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
 - [X] Add User Accounts and Authentication
   - [X] User Sign up
   - [X] User Sign in
-  - [ ] User Sign out
+  - [X] User Sign out
   - [X] User Auth Tokens ([JWT](https://jwt.io/))
 - [X] Link Users to their Notes  
   - [X] User Permissions for Updates & Deletes
@@ -406,6 +406,10 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
     - [X] Added Authentication
     - [X] Added Authorization
     - [X] Added CRUD
+    - [X] Added Note Editing
+    - [X] Added Favoriting
+    - [X] Added Sorting by Favorites
+    - [X] Added Sorting by User
     - [X] Added Metrics Tracking
   - [ ] Android (React Native - [Expo](https://expo.dev/))
   - [ ] iOS (React Native - [Expo](https://expo.dev/))
