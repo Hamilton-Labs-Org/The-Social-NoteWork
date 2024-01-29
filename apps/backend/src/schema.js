@@ -47,6 +47,7 @@ const typeDefs = gql`
 			username: String!
 			email: String!
 			password: String!
+			confirmed: Boolean!
 		): String!
 		signIn(
 			username: String

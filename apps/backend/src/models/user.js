@@ -15,6 +15,10 @@ const UserSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		confirmed: {
+			type: Boolean,
+			defaultValue: false,
+		},
 	},
 	{
 		// Assigns createdAt and updatedAt fields with a Date type
