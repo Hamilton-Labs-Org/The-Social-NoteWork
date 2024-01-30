@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 const typeDefs = gql`
 	#graphql
@@ -47,7 +47,6 @@ const typeDefs = gql`
 			username: String!
 			email: String!
 			password: String!
-			confirmed: Boolean!
 		): String!
 		signIn(
 			username: String
@@ -58,4 +57,4 @@ const typeDefs = gql`
 	}
 `;
 
-export {typeDefs as default};
+export { typeDefs as default };
