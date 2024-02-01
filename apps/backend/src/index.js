@@ -74,7 +74,6 @@ app.use(
 			// 	console.log(user);
 			// }
 			// add the db models and the user to the context
-
 			return {models, user};
 		},
 	}),
