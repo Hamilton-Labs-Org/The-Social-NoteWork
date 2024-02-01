@@ -74,14 +74,8 @@ app.use(
 			// 	console.log(user);
 			// }
 			// add the db models and the user to the context
-			const transporter = nodemailer.createTransport({
-				service: process.env.SERVICE,
-				auth: {
-					user: process.env.GMAIL_USER,
-					pass: process.env.GMAIL_PASS,
-				},
-			});
-			return {models, user, transporter};
+
+			return {models, user};
 		},
 	}),
 );
