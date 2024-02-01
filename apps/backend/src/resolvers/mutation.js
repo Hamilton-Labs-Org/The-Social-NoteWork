@@ -116,6 +116,7 @@ export default {
 				email,
 				// avatar,
 				password: hashed,
+				verified: false,
 			});
 
 			if (!user.verified) {
@@ -130,7 +131,7 @@ export default {
 				}
 
 				return res.status(400).send({
-					message: 'An Email sent to your account please verify',
+					message: 'An Email was sent to your account please verify',
 				});
 			}
 
