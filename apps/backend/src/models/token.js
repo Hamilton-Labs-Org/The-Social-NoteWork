@@ -10,6 +10,7 @@ const tokenSchema = new Schema({
 		unique: true,
 	},
 	token: {type: String, required: true},
+	url: {type: String, required: false},
 	createdAt: {type: Date, default: Date.now, expires: 3600},
 });
 

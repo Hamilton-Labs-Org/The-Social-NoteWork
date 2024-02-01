@@ -4,7 +4,6 @@ import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
 import mongoose from 'mongoose';
-import models from '../models/index.js';
 import Token from '../models/token.js';
 import sendEmail from '../utils/sendEmail.js';
 import {GraphQLError} from 'graphql';
@@ -119,6 +118,14 @@ export default {
 				verified: false,
 			});
 
+			const name = models.User.findOne({username});
+
+			if (username === name) {
+				return () => {
+					console.log(name, ' already exists please sign in.');
+				};
+			}
+
 			if (!user.verified) {
 				const token = await Token.findOne({id: user._id});
 				if (!token) {
@@ -126,7 +133,10 @@ export default {
 						userId: user._id,
 						token: crypto.randomBytes(32).toString('hex'),
 					}).save();
+
 					const url = `${process.env.BASE_URL}users/${user.id}/verify/${token.token}`;
+
+					await Token.updateOne({userId: user}, {url: url});
 					await sendEmail(user.email, 'Verify Email', url);
 				}
 
@@ -156,7 +166,6 @@ export default {
 		});
 		// if no user is found, throw an authentication error
 		if (!user) {
-			// throw new AuthenticationError('Error signing in');
 			throw new GraphQLError('Error signing in', {
 				extensions: {
 					code: 'UNAUTHENTICATED',
