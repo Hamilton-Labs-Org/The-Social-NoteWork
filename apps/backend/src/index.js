@@ -28,16 +28,6 @@ const app = express();
 const httpServer = http.createServer(app);
 db.connect(DB_HOST);
 
-// const notes = [
-// 	{
-// 		id: '1',
-// 		content: 'This is the 1st note in our "notework"',
-// 		author: 'Terence Hamilton',
-// 	},
-// 	{id: '2', content: 'This is the next note', author: 'Some Author'},
-// 	{id: '3', content: 'Yet another note!', author: 'Another Author'},
-// ];
-
 // Apollo Server setup
 const server = new ApolloServer({
 	typeDefs,
@@ -102,7 +92,7 @@ app.get('/:id/verify/:token/', async (req, res) => {
 		if (!user) return res.status(400).send({message: 'Invalid link'});
 
 		const token = await Token.findOne({
-			userId: user._id,
+			userId: models.User.id,
 			token: req.params.token,
 		});
 		if (!token)
