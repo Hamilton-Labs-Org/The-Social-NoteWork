@@ -34,7 +34,10 @@ const SignUp = (props) => {
 	});
 
 	if (loading) return <p>Loading</p>;
-	if (error) return <p>An error occurred</p>;
+	if (error) {
+		console.log(JSON.stringify(error));
+		return <p>An error occurred</p>;
+	}
 
 	return (
 		<>

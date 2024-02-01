@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 import 'dotenv/config';
 
-module.exports = async (email, subject, text) => {
+export default async (email, subject, text) => {
 	try {
 		const transporter = nodemailer.createTransport({
 			host: process.env.HOST,

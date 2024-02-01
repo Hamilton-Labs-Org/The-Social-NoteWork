@@ -17,6 +17,7 @@ import SignUp from './signup';
 import SignIn from './signin';
 import NewNote from './new';
 import EditNote from './edit';
+import EmailVerify from '../components/EmailVerify';
 
 // define routes and export the module
 const Pages = () => {
@@ -67,7 +68,7 @@ const Pages = () => {
 				<Route path="/note/:id" element={<NotePage />} />
 				<Route path="/signup" element={<SignUp />} />
 				<Route path="/signin" element={<SignIn />} />
-				<Route path="/users/:id/verify/:token" element={<EmailVerify />} />
+				<Route path="/:id/verify/:token" element={<EmailVerify />} />
 			</Routes>
 		</Layout>
 	);

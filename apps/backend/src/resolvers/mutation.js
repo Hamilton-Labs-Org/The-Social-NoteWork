@@ -2,13 +2,14 @@
 
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
+import crypto from 'crypto';
 import mongoose from 'mongoose';
-import models from '../models/index';
-import sendEmail from 'utils/sendEmail';
+import models from '../models/index.js';
+import Token from '../models/token.js';
+import sendEmail from '../utils/sendEmail.js';
 import {GraphQLError} from 'graphql';
 
-import dotenv from 'dotenv';
-dotenv.config();
+import 'dotenv/config';
 
 export default {
 	newNote: async (parent, args, {models, user}) => {
@@ -106,36 +107,37 @@ export default {
 		// normalize email address
 		email = email.trim().toLowerCase();
 		// hash the password
-		const hashed = await bcrypt.hash(password, 10); // create the gravatar url
+		const hashed = await bcrypt.hash(password, 10);
+		// create the gravatar url
 		// const avatar = gravatar(email);
 		try {
-			if (!models.User.verified) {
-				let token = await models.Token.findOne({
-					userId: models.User.id,
-				});
-				if (!token) {
-					token = await new Token({
-						userId: models.User.id,
-						token: crypto.randomBytes(32).toString('hex'),
-					}).save();
-					const url = `${process.env.BASE_URL}users/${user.id}/verify/${token.token}`;
-					await sendEmail(email, 'Verify Email', url);
-				}
-				return res.status(400).send({
-					message:
-						'Please verify your account with the link sent to your Email',
-				});
-			}
 			const user = await models.User.create({
 				username,
 				email,
 				// avatar,
 				password: hashed,
 			});
+
+			if (!user.verified) {
+				const token = await Token.findOne({id: user._id});
+				if (!token) {
+					const token = await new Token({
+						userId: user._id,
+						token: crypto.randomBytes(32).toString('hex'),
+					}).save();
+					const url = `${process.env.BASE_URL}users/${user.id}/verify/${token.token}`;
+					await sendEmail(user.email, 'Verify Email', url);
+				}
+
+				return res.status(400).send({
+					message: 'An Email sent to your account please verify',
+				});
+			}
+
 			// create and return the json web token
 			return await jwt.sign({id: user._id}, process.env.JWT_SECRET);
 		} catch (err) {
-			console.log(err);
+			console.log(JSON.stringify(err));
 			throw new GraphQLError('Error creating account', {
 				extensions: {
 					code: 'FORBIDDEN',
@@ -170,6 +172,23 @@ export default {
 				},
 			});
 		}
+
+		if (!user.verified) {
+			let token = await Token.findOne({id: user._id});
+			if (!token) {
+				token = await new Token({
+					id: user._id,
+					token: crypto.randomBytes(32).toString('hex'),
+				}).save();
+				const url = `${process.env.BASE_URL}users/${user.id}/verify/${token.token}`;
+				await sendEmail(user.email, 'Verify Email', url);
+			}
+
+			return res.status(400).send({
+				message: 'An Email sent to your account please verify',
+			});
+		}
+
 		// create and return the json web token
 		return jwt.sign({id: user._id}, process.env.JWT_SECRET);
 	},
