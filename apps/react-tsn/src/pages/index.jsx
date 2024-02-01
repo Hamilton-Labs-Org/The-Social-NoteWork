@@ -1,22 +1,22 @@
 // import React and routing dependencies
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React from 'react';
+import {Route, Routes} from 'react-router-dom';
 // import ProtectedRoute component
-import ProtectedRoute from "../components/ProtectedRoute";
+import ProtectedRoute from '../components/ProtectedRoute';
 // import cache
-import { isLoggedInVar } from "../app/cache";
+import {isLoggedInVar} from '../app/cache';
 // import shared layout component
-import Layout from "../components/Layout";
+import Layout from '../components/Layout';
 
 // import routes
-import Home from "./home";
-import MyNotes from "./mynotes";
-import Favorites from "./favorites";
-import NotePage from "./note";
-import SignUp from "./signup";
-import SignIn from "./signin";
-import NewNote from "./new";
-import EditNote from "./edit";
+import Home from './home';
+import MyNotes from './mynotes';
+import Favorites from './favorites';
+import NotePage from './note';
+import SignUp from './signup';
+import SignIn from './signin';
+import NewNote from './new';
+import EditNote from './edit';
 
 // define routes and export the module
 const Pages = () => {
@@ -67,6 +67,7 @@ const Pages = () => {
 				<Route path="/note/:id" element={<NotePage />} />
 				<Route path="/signup" element={<SignUp />} />
 				<Route path="/signin" element={<SignIn />} />
+				<Route path="/users/:id/verify/:token" element={<EmailVerify />} />
 			</Routes>
 		</Layout>
 	);
