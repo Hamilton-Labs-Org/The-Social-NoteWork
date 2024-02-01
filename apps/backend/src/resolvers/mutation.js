@@ -136,7 +136,6 @@ export default {
 
 					const url = `${process.env.BASE_URL}users/${user.id}/verify/${token.token}`;
 
-					await Token.updateOne({userId: user}, {url: url});
 					await sendEmail(user.email, 'Verify Email', url);
 				}
 
