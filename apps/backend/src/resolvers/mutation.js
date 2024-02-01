@@ -3,6 +3,8 @@
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
 import mongoose from 'mongoose';
+import models from '../models/index';
+import sendEmail from 'utils/sendEmail';
 import {GraphQLError} from 'graphql';
 
 import dotenv from 'dotenv';
@@ -100,17 +102,30 @@ export default {
 			throw new Error('Error updating note');
 		}
 	},
-	signUp: async (
-		parent,
-		{username, email, password, confirmed},
-		{models},
-	) => {
+	signUp: async (parent, {username, email, password}, {models}) => {
 		// normalize email address
 		email = email.trim().toLowerCase();
 		// hash the password
 		const hashed = await bcrypt.hash(password, 10); // create the gravatar url
 		// const avatar = gravatar(email);
 		try {
+			if (!models.User.verified) {
+				let token = await models.Token.findOne({
+					userId: models.User.id,
+				});
+				if (!token) {
+					token = await new Token({
+						userId: models.User.id,
+						token: crypto.randomBytes(32).toString('hex'),
+					}).save();
+					const url = `${process.env.BASE_URL}users/${user.id}/verify/${token.token}`;
+					await sendEmail(email, 'Verify Email', url);
+				}
+				return res.status(400).send({
+					message:
+						'Please verify your account with the link sent to your Email',
+				});
+			}
 			const user = await models.User.create({
 				username,
 				email,
