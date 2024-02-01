@@ -79,7 +79,7 @@ app.use(
 	}),
 );
 
-app.get('/:id/verify/:token/', async (req, res) => {
+app.get('${endpoint}/:id/verify/:token/', async (req, res) => {
 	try {
 		const user = await models.User.findOne({id: req.params.id});
 		if (!user) return res.status(400).send({message: 'Invalid link'});
