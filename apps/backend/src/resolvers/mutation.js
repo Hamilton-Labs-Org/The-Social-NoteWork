@@ -118,18 +118,7 @@ export default {
 				password: hashed,
 			});
 			// create and return the json web token
-			return await jwt.sign(
-				{id: user._id},
-				process.env.JWT_SECRET,
-				(err, email) => {
-					const url = `http://localhost:4000/confirmation/${email}`;
-					transporter.sendMail({
-						to: email,
-						subject: 'Confirm Email',
-						html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`,
-					});
-				},
-			);
+			return await jwt.sign({id: user._id}, process.env.JWT_SECRET);
 		} catch (err) {
 			console.log(err);
 			throw new GraphQLError('Error creating account', {
