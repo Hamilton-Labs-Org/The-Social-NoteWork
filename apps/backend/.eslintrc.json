@@ -5,7 +5,7 @@
 		"unicorn/template-indent": [
 			"error",
 			{
-				"tags": ["outdent", "dedent", "sql", "gql", "styled"],
+				"tags": ["outdent", "dedent", "sql", "gql", "styled", "css"],
 				"functions": ["dedent", "stripIndent"],
 				"selectors": ["templateLiteral"],
 				"comments": ["indent"]

@@ -1,12 +1,12 @@
-import nodemailer from "nodemailer";
-import path, { dirname } from "path";
-import { fileURLToPath } from "url";
-import "dotenv/config";
+import nodemailer from 'nodemailer';
+import path, {dirname} from 'path';
+import {fileURLToPath} from 'url';
+import 'dotenv/config';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const blog = "https://blog.hamilton-labs.com/";
+const blog = 'https://blog.hamilton-labs.com/';
 
 const transporter = nodemailer.createTransport({
 	service: process.env.SERVICE,
@@ -24,8 +24,8 @@ const mailOptions = {
 		address: process.env.SMTP_USER,
 	}, // sender address
 	to: [process.env.TO], // list of receivers
-	subject: "Testing HTML template from nodemailer! 🧪", // Subject line
-	text: "Test from nodemailer", // plain text body
+	subject: 'Testing HTML template from nodemailer! 🧪', // Subject line
+	text: 'Test from nodemailer', // plain text body
 	html: `<!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background: #f1f1f1;margin: 0 auto !important;padding: 0 !important;height: 100% !important;width: 100% !important;">
 <head style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
@@ -90,14 +90,14 @@ const mailOptions = {
 </html>`, // html body
 	attachments: [
 		{
-			filename: "resume.pdf",
-			path: path.join(__dirname, "resume.pdf"),
-			contentType: "application/pdf",
+			filename: 'resume.pdf',
+			path: path.join(__dirname, 'resume.pdf'),
+			contentType: 'application/pdf',
 		},
 		{
-			filename: "logo.png",
-			path: path.join(__dirname, "logo.png"),
-			contentType: "image/png",
+			filename: 'logo.png',
+			path: path.join(__dirname, 'logo.png'),
+			contentType: 'image/png',
 		},
 	],
 };
@@ -105,9 +105,9 @@ const mailOptions = {
 const sendMail = async (transporter, mailOptions) => {
 	try {
 		await transporter.sendMail(mailOptions);
-		console.log("You got mail!");
+		console.log('You got mail!');
 	} catch (error) {
-		console.error("Email not sent");
+		console.error('Email not sent');
 		console.error(error);
 	}
 };

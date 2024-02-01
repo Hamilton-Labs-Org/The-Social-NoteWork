@@ -10,9 +10,20 @@
     },
     {
       "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nx/javascript"],
-      "rules": {}
+      "extends": ["plugin:@nx/javascript", "prettier"],
+      "rules": {
+		"indent": "error",
+		"unicorn/template-indent": [
+			"error",
+			{
+				"tags": ["outdent", "dedent", "sql", "gql", "styled", "css"],
+				"functions": ["dedent", "stripIndent"],
+				"selectors": ["templateLiteral"],
+				"comments": ["indent"]
+			}
+		]
+	}
     }
   ],
-  "extends": ["plugin:@nx/react"]
+  "extends": ["plugin:@nx/react", "prettier"]
 }

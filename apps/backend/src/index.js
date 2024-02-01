@@ -8,6 +8,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import jwt from 'jsonwebtoken';
 import depthLimit from 'graphql-depth-limit';
+import nodemailer from 'nodemailer';
 import {createComplexityLimitRule} from 'graphql-validation-complexity';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -83,12 +84,21 @@ app.use(
 			// 	console.log(user);
 			// }
 			// add the db models and the user to the context
-			return {models, user};
+			const transporter = nodemailer.createTransport({
+				service: process.env.SERVICE,
+				auth: {
+					user: process.env.GMAIL_USER,
+					pass: process.env.GMAIL_PASS,
+				},
+			});
+			return {models, user, transporter};
 		},
 	}),
 );
 
 // Modified server startup
-await new Promise((resolve) => httpServer.listen({port: port}, resolve));
+await new Promise((resolve) =>
+	httpServer.listen({port: port}, resolve),
+);
 
 console.log(`🚀 Server ready at ${host}${port}${endpoint}`);

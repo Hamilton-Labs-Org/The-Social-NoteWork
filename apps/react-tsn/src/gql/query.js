@@ -1,4 +1,4 @@
-import { gql } from "@apollo/client";
+import { gql } from "@apollo/client;";
 
 const GET_NOTES = gql`
 query noteFeed($cursor: String) {

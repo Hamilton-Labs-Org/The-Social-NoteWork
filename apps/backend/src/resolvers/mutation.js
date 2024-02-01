@@ -1,20 +1,20 @@
 // prettier-ignore
 
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
-import mongoose from 'mongoose';
-import {GraphQLError} from 'graphql';
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import mongoose from "mongoose";
+import { GraphQLError } from "graphql";
 
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
 dotenv.config();
 
 export default {
-	newNote: async (parent, args, {models, user}) => {
+	newNote: async (parent, args, { models, user }) => {
 		if (!user) {
 			// throw new Error('You must be signed in to create a note');
-			throw new GraphQLError('You must be signed in to create a note', {
+			throw new GraphQLError("You must be signed in to create a note", {
 				extensions: {
-					code: 'UNAUTHENTICATED',
+					code: "UNAUTHENTICATED",
 				},
 			});
 		}
@@ -24,13 +24,13 @@ export default {
 			author: new mongoose.Types.ObjectId(user.id),
 		});
 	},
-	deleteNote: async (parent, {id}, {models, user}) => {
+	deleteNote: async (parent, { id }, { models, user }) => {
 		// if not a user, throw an Authentication Error
 		if (!user) {
 			// throw new Error('You must be signed in to create a note');
-			throw new GraphQLError('You must be signed in to create a note', {
+			throw new GraphQLError("You must be signed in to create a note", {
 				extensions: {
-					code: 'UNAUTHENTICATED',
+					code: "UNAUTHENTICATED",
 				},
 			});
 		}
@@ -42,23 +42,23 @@ export default {
 		if (note && String(note.author) !== user.id) {
 			throw new GraphQLError("You don't have permissions to delete this note", {
 				extensions: {
-					code: 'FORBIDDEN',
+					code: "FORBIDDEN",
 				},
 			});
 		}
 
 		try {
-			await models.Note.findOneAndDelete({_id: id});
+			await models.Note.findOneAndDelete({ _id: id });
 			return true;
 		} catch (err) {
 			return false;
 		}
 	},
-	updateNote: async (parent, {content, id}, {models, user}) => {
+	updateNote: async (parent, { content, id }, { models, user }) => {
 		if (!user) {
-			throw new GraphQLError('You must be signed in to update a note', {
+			throw new GraphQLError("You must be signed in to update a note", {
 				extensions: {
-					code: 'FORBIDDEN',
+					code: "FORBIDDEN",
 				},
 			});
 		}
@@ -69,7 +69,7 @@ export default {
 		if (note && String(note.author) !== user.id) {
 			throw new GraphQLError("You don't have permissions to update the note", {
 				extensions: {
-					code: 'FORBIDDEN',
+					code: "FORBIDDEN",
 				},
 			});
 		}
@@ -88,10 +88,14 @@ export default {
 				},
 			);
 		} catch (err) {
-			throw new Error('Error updating note');
+			throw new Error("Error updating note");
 		}
 	},
-	signUp: async (parent, {username, email, password}, {models}) => {
+	signUp: async (
+		parent,
+		{ username, email, password, confirmed },
+		{ models },
+	) => {
 		// normalize email address
 		email = email.trim().toLowerCase();
 		// hash the password
@@ -103,32 +107,44 @@ export default {
 				email,
 				// avatar,
 				password: hashed,
+				confirmed,
 			});
 			// create and return the json web token
-			return jwt.sign({id: user._id}, process.env.JWT_SECRET);
+			return await jwt.sign(
+				{ id: user._id },
+				process.env.JWT_SECRET,
+				(err, email) => {
+					const url = `http://localhost:4000/confirmation/${email}`;
+					transporter.sendMail({
+						to: email,
+						subject: "Confirm Email",
+						html: `Please click this email to confirm your email: <a href="${url}">${url}</a>`,
+					});
+				},
+			);
 		} catch (err) {
 			console.log(err);
-			throw new GraphQLError('Error creating account', {
+			throw new GraphQLError("Error creating account", {
 				extensions: {
-					code: 'FORBIDDEN',
+					code: "FORBIDDEN",
 				},
 			});
 		}
 	},
-	signIn: async (parent, {username, email, password}, {models}) => {
+	signIn: async (parent, { username, email, password }, { models }) => {
 		if (email) {
 			// normalize email address
 			email = email.trim().toLowerCase();
 		}
 		const user = await models.User.findOne({
-			$or: [{email}, {username}],
+			$or: [{ email }, { username }],
 		});
 		// if no user is found, throw an authentication error
 		if (!user) {
 			// throw new AuthenticationError('Error signing in');
-			throw new GraphQLError('Error signing in', {
+			throw new GraphQLError("Error signing in", {
 				extensions: {
-					code: 'UNAUTHENTICATED',
+					code: "UNAUTHENTICATED",
 				},
 			});
 		}
@@ -136,21 +152,21 @@ export default {
 		const valid = await bcrypt.compare(password, user.password);
 		if (!valid) {
 			// throw new AuthenticationError('Error signing in');
-			throw new GraphQLError('Error signing in', {
+			throw new GraphQLError("Error signing in", {
 				extensions: {
-					code: 'UNAUTHENTICATED',
+					code: "UNAUTHENTICATED",
 				},
 			});
 		}
 		// create and return the json web token
-		return jwt.sign({id: user._id}, process.env.JWT_SECRET);
+		return jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 	},
-	toggleFavorite: async (parent, {id}, {models, user}) => {
+	toggleFavorite: async (parent, { id }, { models, user }) => {
 		// if no user context is passed, throw auth error
 		if (!user) {
-			throw new GraphQLError('You must sign in to favorite a note.', {
+			throw new GraphQLError("You must sign in to favorite a note.", {
 				extensions: {
-					code: 'UNAUTHENTICATED',
+					code: "UNAUTHENTICATED",
 				},
 			});
 		}
