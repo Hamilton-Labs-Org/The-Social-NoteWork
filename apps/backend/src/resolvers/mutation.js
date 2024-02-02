@@ -10,6 +10,9 @@ import {GraphQLError} from 'graphql';
 
 import 'dotenv/config';
 
+const HOST = process.env.BASE_URL;
+const PORT = process.env.HOST_PORT;
+
 export default {
 	newNote: async (parent, args, {models, user}) => {
 		if (!user) {
@@ -134,17 +137,14 @@ export default {
 						token: crypto.randomBytes(32).toString('hex'),
 					}).save();
 
-					const url = `${process.env.BASE_URL}users/${user.id}/verify/${token.token}`;
+					const url = `${HOST}${PORT}/users/${user.id}/verify/${token.token}`;
 
 					await sendEmail(user.email, 'Verify Email', url);
 				}
-
-				return res.status(400).send({
-					message: 'An Email was sent to your account please verify',
-				});
 			}
 
 			// create and return the json web token
+			// Move this to where the user verifies the token link.
 			return await jwt.sign({id: user._id}, process.env.JWT_SECRET);
 		} catch (err) {
 			console.log(JSON.stringify(err));
@@ -189,7 +189,7 @@ export default {
 					id: user._id,
 					token: crypto.randomBytes(32).toString('hex'),
 				}).save();
-				const url = `${process.env.BASE_URL}users/${user.id}/verify/${token.token}`;
+				const url = `${process.env.BASE_URL}/${user.id}/verify/${token.token}`;
 				await sendEmail(user.email, 'Verify Email', url);
 			}
 
