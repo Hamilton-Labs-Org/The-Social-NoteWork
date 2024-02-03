@@ -24,12 +24,18 @@ const SignUp = (props) => {
 	const [signUp, {loading, error}] = useMutation(SIGNUP_USER, {
 		onCompleted: (data) => {
 			refreshPage();
+			//collect the garbage
+			client.cache.gc();
+			//remove the token and everything in local storage
+			localStorage.clear();
+			//change isLoggedIn to false
+			isLoggedInVar(false);
+			navigate('/');
 			// console.log the JSON Web Token when the mutation is complete
-			localStorage.setItem('token', data.signUp);
-			isLoggedInVar(true);
+			// localStorage.setItem('token', data.signUp);
+			// isLoggedInVar(true);
 			// redirect the user to the homepage
 			// props.history.push("/");
-			navigate('/');
 		},
 	});
 

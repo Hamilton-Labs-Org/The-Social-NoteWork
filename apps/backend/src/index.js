@@ -8,7 +8,6 @@ import helmet from 'helmet';
 import cors from 'cors';
 import jwt from 'jsonwebtoken';
 import depthLimit from 'graphql-depth-limit';
-import nodemailer from 'nodemailer';
 import {createComplexityLimitRule} from 'graphql-validation-complexity';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -79,26 +78,32 @@ app.use(
 	}),
 );
 
-app.get('${endpoint}/:id/verify/:token/', async (req, res) => {
-	try {
-		const user = await models.User.findOne({id: req.params.id});
-		if (!user) return res.status(400).send({message: 'Invalid link'});
+app.get(
+	'${localhost}4200/users/:id/verify/:token/',
+	async (req, res) => {
+		try {
+			const user = await models.User.findOne({_id: req.params.id});
+			console.log(user);
+			if (!user)
+				return res.status(400).send({message: 'Invalid link'});
 
-		const token = await models.Token.findOne({
-			userId: models.User.id,
-			token: req.params.token,
-		});
-		if (!token)
-			return res.status(400).send({message: 'Invalid link'});
+			const token = await models.Token.findOne({
+				userId: models.User._id,
+				token: req.params.token,
+			});
+			if (!token)
+				return res.status(400).send({message: 'Invalid link'});
 
-		await models.User.updateOne({id: user.id, verified: true});
-		await token.remove();
+			await models.User.updateOne({_id: user._id, verified: true});
+			await token.remove();
 
-		res.status(200).send({message: 'Email verified successfully'});
-	} catch (error) {
-		res.status(500).send({message: 'Internal Server Error'});
-	}
-});
+			res.status(200).send({message: 'Email verified successfully'});
+			res.redirect('/');
+		} catch (error) {
+			res.status(500).send({message: 'Internal Server Error'});
+		}
+	},
+);
 
 // Modified server startup
 await new Promise((resolve) =>
