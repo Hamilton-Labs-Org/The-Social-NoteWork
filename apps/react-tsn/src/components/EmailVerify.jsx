@@ -63,21 +63,23 @@ const EmailVerify = () => {
 	useEffect(() => {
 		const verifyEmailUrl = async () => {
 			try {
-				const url = `http://localhost:4200/users/${param.id}/verify/${param.token}`;
-				const {data} = await axios({
-					method: 'get',
+				const url = `http://localhost:4000/api/users/${param.id}/verify/${param.token}`;
+				const options = {
+					method: 'GET',
 					url: url,
-					// headers: {
-					// 	credentials: true,
-					// 	fetchOptions: {
-					// 		mode: 'no-cors',
-					// 	},
-					// },
-				}).then((response) => {
-					console.log(response);
+					headers: {
+						'content-type': [
+							'application/json',
+							'application/x-www-form-urlencoded',
+						],
+						// 'Apollo-Require-Preflight': 'true',
+					},
+				};
+				const data = await axios(options).then((response) => {
+					console.log(response.data);
 				});
-				console.log(data);
-				setValidUrl(true);
+				await console.log(data);
+				await setValidUrl(true);
 			} catch (error) {
 				console.log(error);
 				setValidUrl(false);

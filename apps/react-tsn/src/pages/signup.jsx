@@ -25,7 +25,7 @@ const SignUp = (props) => {
 		onCompleted: (data) => {
 			refreshPage();
 			//collect the garbage
-			client.cache.gc();
+			// client.cache.gc();
 			//remove the token and everything in local storage
 			localStorage.clear();
 			//change isLoggedIn to false

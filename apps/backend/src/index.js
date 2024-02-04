@@ -24,6 +24,7 @@ const host = 'http://localhost:';
 const DB_HOST = process.env.DB_HOST;
 const endpoint = '/api';
 const app = express();
+const router = express.Router();
 const httpServer = http.createServer(app);
 db.connect(DB_HOST);
 
@@ -31,6 +32,7 @@ db.connect(DB_HOST);
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
+	csrfPrevention: false,
 	validationRules: [depthLimit(5), createComplexityLimitRule(1000)],
 	plugins: [ApolloServerPluginDrainHttpServer({httpServer})],
 });
@@ -60,7 +62,12 @@ app.use(
 			reportOnly: true,
 		},
 	}),
-	cors(),
+	cors({
+		origin: 'http://localhost:4200',
+		allowMethods: '*',
+		allowedHeaders: '*',
+		// credentials: true,
+	}),
 	express.json(),
 	expressMiddleware(server, {
 		context: async ({req}) => {
@@ -78,32 +85,31 @@ app.use(
 	}),
 );
 
-app.get(
-	'${localhost}4200/users/:id/verify/:token/',
-	async (req, res) => {
-		try {
-			const user = await models.User.findOne({_id: req.params.id});
-			console.log(user);
-			if (!user)
-				return res.status(400).send({message: 'Invalid link'});
+router.get('/users/:id/verify/:token/', async (req, res, next) => {
+	try {
+		const user = await models.User.findOne({id: req.params.id});
+		console.log(user);
+		if (!user) return res.status(400).send({message: 'Invalid link'});
 
-			const token = await models.Token.findOne({
-				userId: models.User._id,
-				token: req.params.token,
-			});
-			if (!token)
-				return res.status(400).send({message: 'Invalid link'});
+		const token = await models.Token.findOne({
+			userId: user.id,
+			token: req.params.token,
+		});
 
-			await models.User.updateOne({_id: user._id, verified: true});
-			await token.remove();
+		if (!token)
+			return res.status(400).send({message: 'Invalid link'});
 
-			res.status(200).send({message: 'Email verified successfully'});
-			res.redirect('/');
-		} catch (error) {
-			res.status(500).send({message: 'Internal Server Error'});
-		}
-	},
-);
+		await user.updateOne({userId: user.id, verified: true});
+
+		await token.remove();
+
+		res.status(200).send({message: 'Email verified successfully'});
+		// res.redirect('/');
+		next();
+	} catch (error) {
+		res.status(500).send({message: 'Internal Server Error'});
+	}
+});
 
 // Modified server startup
 await new Promise((resolve) =>

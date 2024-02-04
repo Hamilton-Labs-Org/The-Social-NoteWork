@@ -11,7 +11,7 @@ import {GraphQLError} from 'graphql';
 import 'dotenv/config';
 
 const HOST = process.env.BASE_URL;
-const PORT = process.env.HOST_PORT;
+const CLIENT = process.env.CLIENT_PORT;
 
 export default {
 	newNote: async (parent, args, {models, user}) => {
@@ -137,7 +137,7 @@ export default {
 						token: crypto.randomBytes(32).toString('hex'),
 					}).save();
 
-					const url = `${HOST}${PORT}/users/${user.id}/verify/${token.token}`;
+					const url = `${HOST}${CLIENT}/users/${user.id}/verify/${token.token}`;
 
 					await sendEmail(user.email, 'Verify Email', url);
 				}
