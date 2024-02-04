@@ -101,7 +101,7 @@ app.use('/:id/verify/:token/', cors(), async (req, res, next) => {
 
 		await user.updateOne({_id: user._id, verified: true});
 
-		await token.remove();
+		await token.deleteOne();
 
 		res.status(200).send({message: 'Email verified successfully'});
 		// res.redirect('/');
