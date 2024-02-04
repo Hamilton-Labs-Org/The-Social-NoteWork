@@ -63,7 +63,7 @@ const EmailVerify = () => {
 	useEffect(() => {
 		const verifyEmailUrl = async () => {
 			try {
-				const url = `http://localhost:4000/api/users/${param.id}/verify/${param.token}`;
+				const url = `http://localhost:4000/${param.id}/verify/${param.token}`;
 				const options = {
 					method: 'GET',
 					url: url,
@@ -73,9 +73,11 @@ const EmailVerify = () => {
 							'application/x-www-form-urlencoded',
 						],
 						// 'Apollo-Require-Preflight': 'true',
+						csrfPrevention: 'false',
+						// Authoriaztion: 'Bearer ${token}',
 					},
 				};
-				const data = await axios(options).then((response) => {
+				const {data} = await axios(options).then((response) => {
 					console.log(response.data);
 				});
 				await console.log(data);
