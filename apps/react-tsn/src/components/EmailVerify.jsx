@@ -57,7 +57,7 @@ const Container = styled.div`
 `;
 
 const EmailVerify = () => {
-	const [validUrl, setValidUrl] = useState(true);
+	const [validUrl, setValidUrl] = useState('');
 	const param = useParams();
 
 	useEffect(() => {
@@ -72,16 +72,17 @@ const EmailVerify = () => {
 							'application/json',
 							'application/x-www-form-urlencoded',
 						],
+						// csrfPrevention: 'false',
 						// 'Apollo-Require-Preflight': 'true',
-						csrfPrevention: 'false',
 						// Authoriaztion: 'Bearer ${token}',
 					},
 				};
-				const {data} = await axios(options).then((response) => {
-					console.log(response.data);
-				});
-				await console.log(data);
-				await setValidUrl(true);
+				const data = await axios(options);
+
+				console.log(data);
+				if (data) {
+					setValidUrl(true);
+				}
 			} catch (error) {
 				console.log(error);
 				setValidUrl(false);
@@ -96,12 +97,17 @@ const EmailVerify = () => {
 				<Container>
 					<img src={success} alt="success_img" />
 					<h1>Email verified!</h1>
+					<h2>Thank you for registering!</h2>
 					<Link to="/signin">
 						<GreenBtn>Sign In</GreenBtn>
 					</Link>
 				</Container>
 			) : (
-				<h1>404 Not Found</h1>
+				<div>
+					<h1>404 Not Found</h1>
+					<p></p>
+					<h2>Please Try again.</h2>
+				</div>
 			)}
 		</>
 	);

@@ -25,11 +25,11 @@ const root = ReactDOM.createRoot(
 	document.getElementById("root") as HTMLElement,
 );
 root.render(
-	<StrictMode>
+	// <StrictMode>
 		<PostHogProvider client={posthog}>
 			<Router>
 				<App />
 			</Router>
 		</PostHogProvider>
-	</StrictMode>,
+	// </StrictMode>,
 );
