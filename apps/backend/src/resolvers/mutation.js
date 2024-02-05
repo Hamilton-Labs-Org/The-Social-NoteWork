@@ -1,22 +1,30 @@
 // prettier-ignore
 
-import bcrypt from 'bcrypt';
+import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
+import crypto from 'crypto';
 import mongoose from 'mongoose';
+import Token from '../models/token.js';
+import sendEmail from '../utils/sendEmail.js';
 import {GraphQLError} from 'graphql';
 
-import dotenv from 'dotenv';
-dotenv.config();
+import 'dotenv/config';
+
+const HOST = process.env.BASE_URL;
+const CLIENT = process.env.CLIENT_PORT;
 
 export default {
 	newNote: async (parent, args, {models, user}) => {
 		if (!user) {
 			// throw new Error('You must be signed in to create a note');
-			throw new GraphQLError('You must be signed in to create a note', {
-				extensions: {
-					code: 'UNAUTHENTICATED',
+			throw new GraphQLError(
+				'You must be signed in to create a note',
+				{
+					extensions: {
+						code: 'UNAUTHENTICATED',
+					},
 				},
-			});
+			);
 		}
 		return await models.Note.create({
 			content: args.content,
@@ -28,11 +36,14 @@ export default {
 		// if not a user, throw an Authentication Error
 		if (!user) {
 			// throw new Error('You must be signed in to create a note');
-			throw new GraphQLError('You must be signed in to create a note', {
-				extensions: {
-					code: 'UNAUTHENTICATED',
+			throw new GraphQLError(
+				'You must be signed in to create a note',
+				{
+					extensions: {
+						code: 'UNAUTHENTICATED',
+					},
 				},
-			});
+			);
 		}
 
 		// find the note
@@ -42,7 +53,7 @@ export default {
 		if (note && String(note.author) !== user.id) {
 			throw new GraphQLError("You don't have permissions to delete this note", {
 				extensions: {
-					code: 'FORBIDDEN',
+					code: "FORBIDDEN",
 				},
 			});
 		}
@@ -56,11 +67,14 @@ export default {
 	},
 	updateNote: async (parent, {content, id}, {models, user}) => {
 		if (!user) {
-			throw new GraphQLError('You must be signed in to update a note', {
-				extensions: {
-					code: 'FORBIDDEN',
+			throw new GraphQLError(
+				'You must be signed in to update a note',
+				{
+					extensions: {
+						code: 'FORBIDDEN',
+					},
 				},
-			});
+			);
 		}
 		// find the note
 		const note = await models.Note.findById(id);
@@ -69,7 +83,7 @@ export default {
 		if (note && String(note.author) !== user.id) {
 			throw new GraphQLError("You don't have permissions to update the note", {
 				extensions: {
-					code: 'FORBIDDEN',
+					code: "FORBIDDEN",
 				},
 			});
 		}
@@ -95,7 +109,8 @@ export default {
 		// normalize email address
 		email = email.trim().toLowerCase();
 		// hash the password
-		const hashed = await bcrypt.hash(password, 10); // create the gravatar url
+		const hashed = await bcrypt.hash(password, 10);
+		// create the gravatar url
 		// const avatar = gravatar(email);
 		try {
 			const user = await models.User.create({
@@ -103,11 +118,36 @@ export default {
 				email,
 				// avatar,
 				password: hashed,
+				verified: false,
 			});
+
+			const name = models.User.findOne({username});
+
+			if (username === name) {
+				return () => {
+					console.log(name, ' already exists please sign in.');
+				};
+			}
+
+			if (!user.verified) {
+				const token = await Token.findOne({id: user._id});
+				if (!token) {
+					const token = await new Token({
+						userId: user._id,
+						token: crypto.randomBytes(32).toString('hex'),
+					}).save();
+
+					const url = `${HOST}${CLIENT}/users/${user.id}/verify/${token.token}`;
+
+					await sendEmail(user.email, 'Verify Email', url);
+				}
+			}
+
 			// create and return the json web token
-			return jwt.sign({id: user._id}, process.env.JWT_SECRET);
+			// Move this to where the user verifies the token link.
+			return await jwt.sign({id: user._id}, process.env.JWT_SECRET);
 		} catch (err) {
-			console.log(err);
+			console.log(JSON.stringify(err));
 			throw new GraphQLError('Error creating account', {
 				extensions: {
 					code: 'FORBIDDEN',
@@ -125,7 +165,6 @@ export default {
 		});
 		// if no user is found, throw an authentication error
 		if (!user) {
-			// throw new AuthenticationError('Error signing in');
 			throw new GraphQLError('Error signing in', {
 				extensions: {
 					code: 'UNAUTHENTICATED',
@@ -142,6 +181,23 @@ export default {
 				},
 			});
 		}
+
+		if (!user.verified) {
+			let token = await Token.findOne({id: user._id});
+			if (!token) {
+				token = await new Token({
+					userId: user._id,
+					token: crypto.randomBytes(32).toString('hex'),
+				}).save();
+				const url = `${HOST}${CLIENT}/users/${user.id}/verify/${token.token}`;
+				await sendEmail(user.email, 'Verify Email', url);
+			}
+
+			return res.status(400).send({
+				message: 'An Email sent to your account please verify',
+			});
+		}
+
 		// create and return the json web token
 		return jwt.sign({id: user._id}, process.env.JWT_SECRET);
 	},

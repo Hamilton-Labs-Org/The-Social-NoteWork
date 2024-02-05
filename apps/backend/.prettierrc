@@ -4,5 +4,6 @@
 	"useTabs": true,
 	"semi": true,
 	"singleQuote": true,
-	"bracketSpacing": false
+	"bracketSpacing": false,
+	"htmlWhitespaceSensitivity": "css"
 }

@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 // new dependencies
-import { useApolloClient } from "@apollo/client";
-import { Link, useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import logo from "../img/logo.png";
-import { isLoggedInVar } from "../app/cache";
-import ButtonAsLink from "./ButtonAsLink";
+import {useApolloClient} from '@apollo/client';
+import {Link, useNavigate} from 'react-router-dom';
+import styled from 'styled-components';
+import logo from '../img/logo.png';
+import {isLoggedInVar} from '../app/cache';
+import ButtonAsLink from './ButtonAsLink';
 
-const HeaderBar = styled.header` 
+const HeaderBar = styled.header`
 	width: 100%;
 	padding: 0.5em 1em;
 	display: flex;
@@ -16,27 +16,27 @@ const HeaderBar = styled.header`
 	align-items: center;
 
 	// background-color: #fff;
-	background-color: #0D1B2A;
-	color: #E5E5E5;
+	background-color: #0d1b2a;
+	color: #e5e5e5;
 	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25);
 	z-index: 1;
 `;
 
-const LogoText = styled.h1` 
-margin: 0;
-padding: 0;
-display: inline;
+const LogoText = styled.h1`
+	margin: 0;
+	padding: 0;
+	display: inline;
 `;
 
-const UserState = styled.div` 
-margin-left: auto;
+const UserState = styled.div`
+	margin-left: auto;
 `;
 
 function refreshPage() {
 	setTimeout(() => {
 		window.location.reload(false);
 	}, 35);
-	console.log("page to reload");
+	console.log('page to reload');
 }
 
 const Header = () => {
@@ -52,12 +52,12 @@ const Header = () => {
 				{isLoggedInVar() ? (
 					<div>
 						Logged in as: &nbsp;
-						{localStorage.getItem("username")}
+						{localStorage.getItem('username')}
 						&nbsp; &nbsp;
 						<ButtonAsLink
 							onClick={() => {
 								// navigate to homepage
-								navigate("/");
+								navigate('/');
 								refreshPage();
 								//collect the garbage
 								client.cache.gc();
@@ -72,8 +72,8 @@ const Header = () => {
 					</div>
 				) : (
 					<p>
-						<Link to={"/signin"}>Sign In</Link> or{" "}
-						<Link to={"/signup"}>Sign Up</Link>
+						<Link to={'/signin'}>Sign In</Link> or{' '}
+						<Link to={'/signup'}>Sign Up</Link>
 					</p>
 				)}
 			</UserState>

@@ -182,13 +182,13 @@ You will need the following installed and configured on your machine.
   pnpm add nx -D -w
   ```
 
-### Commit Signing Key (Required)
+### Commit Signing Key (Required for contributors)
 
 Configure your [verified](https://docs.github.com/en/authentication/managing-commit-signature-verification/displaying-verification-statuses-for-all-of-your-commits) commit siging key.
 
 I recommend following these [instructions](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key#telling-git-about-your-ssh-key) to use your current SSH key for signing commits, if you havent already configured this.
 
-If not, you could use these [instrutions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to generate a separate SSH key, add it to your GitHub account [as a signing key](https://github.com/orgs/community/discussions/40047#discussioncomment-4234972), and then use it for [signing your commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key#telling-git-about-your-ssh-key).
+If not, you could use these [instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to generate a separate SSH key, add it to your GitHub account [as a signing key](https://github.com/orgs/community/discussions/40047#discussioncomment-4234972), and then use it for [signing your commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key#telling-git-about-your-ssh-key).
 
 Optionally, you could sign all of your commits with this.
 
@@ -229,7 +229,8 @@ you can use this command.
 
 2. Create a new database
 
-   Enter the mongo-shell.
+   Enter the mongo-shell.  
+  You will need to [install](https://www.mongodb.com/docs/mongodb-shell/install/) it if you don't already have it.
 
    ```sh
    mongosh
@@ -389,7 +390,7 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
 - [X] Add User Accounts and Authentication
   - [X] User Sign up
   - [X] User Sign in
-  - [ ] User Sign out
+  - [X] User Sign out
   - [X] User Auth Tokens ([JWT](https://jwt.io/))
 - [X] Link Users to their Notes  
   - [X] User Permissions for Updates & Deletes
@@ -402,7 +403,15 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
   - [X] Helmet Security
   - [X] Apollo 4's GraphQL Error Handlers
 - [ ] Develop Mobile clients
-  - [X] Web ([React](https://reactjs.org/))
+  - [X] Web ([React](https://reactjs.org/))  
+    - [X] Added Authentication
+    - [X] Added Authorization
+    - [X] Added CRUD
+    - [X] Added Note Editing
+    - [X] Added Favoriting
+    - [X] Added Sorting by Favorites
+    - [X] Added Sorting by User
+    - [X] Added Metrics Tracking
   - [ ] Android (React Native - [Expo](https://expo.dev/))
   - [ ] iOS (React Native - [Expo](https://expo.dev/))
 - [ ] Develop Desktop clients
@@ -412,7 +421,7 @@ _More [Documentation](https://blog.hamilton-labs.com/projects/notework) is comin
 
 See the [open issues](https://github.com/HamiltonMultimedia/The-Social-NoteWork/issues) for a full list of proposed features (and known issues), when I get some. 😆  
 
-Check out the [change log](https://github.com/HamiltonMultimedia/The-Social-NoteWork/CHANGELOG.md) for a full list of updates.
+Check out the [change log](https://github.com/HamiltonMultimedia/The-Social-NoteWork/blob/main/CHANGELOG.md) for a full list of updates.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
