@@ -186,7 +186,7 @@ export default {
 			let token = await Token.findOne({id: user._id});
 			if (!token) {
 				token = await new Token({
-					id: user._id,
+					userId: user._id,
 					token: crypto.randomBytes(32).toString('hex'),
 				}).save();
 				const url = `${process.env.BASE_URL}/${user.id}/verify/${token.token}`;
