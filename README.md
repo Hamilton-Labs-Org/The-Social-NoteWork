@@ -77,7 +77,6 @@ See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
-    <li><a href="#acknowledgments">Testing the commit keywords</a></li>
   </ol>
 </details>
 
