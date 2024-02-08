@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import {
-	ApolloClient,
-	NormalizedCacheObject,
-	ApolloProvider,
-	HttpLink,
-	gql,
+  ApolloClient,
+  NormalizedCacheObject,
+  ApolloProvider,
+  HttpLink,
+  gql,
 } from "@apollo/client";
 
 import GlobalStyle from "../components/GlobalStyle.jsx";
@@ -25,28 +25,28 @@ export const typeDefs = gql`
 
 // configure Apollo Client
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
-	link: new HttpLink({
-		uri: uri,
-		headers: {
-			authorization: localStorage.getItem("token"),
-		},
-	}),
-	cache,
-	resolvers: {},
-	typeDefs,
-	connectToDevTools: true,
+  link: new HttpLink({
+    uri: uri,
+    headers: {
+      authorization: localStorage.getItem("token"),
+    },
+  }),
+  cache,
+  resolvers: {},
+  typeDefs,
+  connectToDevTools: true,
 });
 
 export function App() {
-	return (
-		<ApolloProvider client={client}>
-			<StyledApp>
-				{/* <NxWelcome title="react-tsn" /> */}
-				<GlobalStyle />
-				<Pages />
-			</StyledApp>
-		</ApolloProvider>
-	);
+  return (
+    <ApolloProvider client={client}>
+      <StyledApp>
+        {/* <NxWelcome title="react-tsn" /> */}
+        <GlobalStyle />
+        <Pages />
+      </StyledApp>
+    </ApolloProvider>
+  );
 }
 
 export default App;

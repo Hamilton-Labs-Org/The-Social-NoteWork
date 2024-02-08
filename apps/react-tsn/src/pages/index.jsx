@@ -21,57 +21,57 @@ import EmailVerify from '../components/EmailVerify';
 
 // define routes and export the module
 const Pages = () => {
-	return (
-		<Layout>
-			<Routes>
-				<Route
-					exact
-					path="/*"
-					element={
-						<ProtectedRoute isAllowed={isLoggedInVar()} redirectTo="/signin">
-							<Home />
-						</ProtectedRoute>
-					}
-				/>
-				<Route
-					path="/mynotes/*"
-					element={
-						<ProtectedRoute isAllowed={isLoggedInVar()} redirectTo="/signin">
-							<MyNotes />
-						</ProtectedRoute>
-					}
-				/>
-				<Route
-					path="/favorites/*"
-					element={
-						<ProtectedRoute isAllowed={isLoggedInVar()} redirectTo="/signin">
-							<Favorites />
-						</ProtectedRoute>
-					}
-				/>
-				<Route
-					path="/new/*"
-					element={
-						<ProtectedRoute isAllowed={isLoggedInVar()} redirectTo="/signin">
-							<NewNote />
-						</ProtectedRoute>
-					}
-				/>
-				<Route
-					path="/edit/:id/*"
-					element={
-						<ProtectedRoute isAllowed={isLoggedInVar()} redirectTo="/signin">
-							<EditNote />
-						</ProtectedRoute>
-					}
-				/>
-				<Route path="/note/:id" element={<NotePage />} />
-				<Route path="/signup" element={<SignUp />} />
-				<Route path="/signin" element={<SignIn />} />
-				<Route path="/users/:id/verify/:token" element={<EmailVerify />} />
-			</Routes>
-		</Layout>
-	);
+  return (
+    <Layout>
+      <Routes>
+        <Route
+          exact
+          path="/*"
+          element={
+            <ProtectedRoute isAllowed={isLoggedInVar()} redirectTo="/signin">
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/mynotes/*"
+          element={
+            <ProtectedRoute isAllowed={isLoggedInVar()} redirectTo="/signin">
+              <MyNotes />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/favorites/*"
+          element={
+            <ProtectedRoute isAllowed={isLoggedInVar()} redirectTo="/signin">
+              <Favorites />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/new/*"
+          element={
+            <ProtectedRoute isAllowed={isLoggedInVar()} redirectTo="/signin">
+              <NewNote />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/edit/:id/*"
+          element={
+            <ProtectedRoute isAllowed={isLoggedInVar()} redirectTo="/signin">
+              <EditNote />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/note/:id" element={<NotePage />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/users/:id/verify/:token" element={<EmailVerify />} />
+      </Routes>
+    </Layout>
+  );
 };
 
 export default Pages;

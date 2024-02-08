@@ -38,3 +38,12 @@ jobs:
 
       - name: Lint
         run: pnpm nx lint tsn-gql-backend
+
+      - name: Initialize
+        run: |
+          cd apps/react-tsn
+          pnpm i --no-frozen-lockfile
+          touch node_modules/.modules.yaml
+
+      - name: Lint
+        run: pnpm nx lint react-tsn

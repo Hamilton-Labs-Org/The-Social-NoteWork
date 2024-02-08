@@ -1,29 +1,30 @@
 {
-  "root": true,
-  "ignorePatterns": ["!**/*"],
-  "plugins": ["@nx"],
-  "overrides": [
-    {
-      "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nx/typescript"],
-      "rules": {}
-    },
-    {
-      "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nx/javascript", "prettier"],
-      "rules": {
-		"indent": "error",
-		"unicorn/template-indent": [
-			"error",
-			{
-				"tags": ["outdent", "dedent", "sql", "gql", "styled", "css"],
-				"functions": ["dedent", "stripIndent"],
-				"selectors": ["templateLiteral"],
-				"comments": ["indent"]
+	"root": true,
+	"ignorePatterns": ["!**/*"],
+	"plugins": ["@nx"],
+	"overrides": [
+		{
+			"files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
+			"extends": ["plugin:@nx/typescript", "plugin:@nx/javascript", "prettier"],
+			"rules": {
+				"indent": ["error", 2, {"ignoredNodes": ["TemplateLiteral *"]}],
+				"unicorn/template-indent": [
+					0,
+					"warn",
+					{
+						"indent": 8
+					},
+					{
+						"tags": ["outdent", "dedent", "sql", "gql", "styled", "css"],
+						"functions": ["dedent", "stripIndent"],
+						"selectors": ["TemplateLiteral"],
+						"comments": ["indent"]
+					}
+				],
+				"no-unused-vars": "off",
+				"@typescript-eslint/no-unused-vars": "warn"
 			}
-		]
-	}
-    }
-  ],
-  "extends": ["plugin:@nx/react", "prettier"]
+		}
+	],
+	"extends": ["plugin:@nx/react", "prettier"]
 }

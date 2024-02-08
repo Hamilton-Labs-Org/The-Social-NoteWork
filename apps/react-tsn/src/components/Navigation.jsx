@@ -1,6 +1,6 @@
-import React from "react";
-import { Link, Outlet } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react';
+import {Link, Outlet} from 'react-router-dom';
+import styled from 'styled-components';
 
 const Nav = styled.nav` 
 padding: 1em; 
@@ -51,51 +51,51 @@ a:focus {
 `;
 
 const Navigation = () => {
-	return (
-		<>
-			<Nav>
-				<NavList>
-					<li>
-						<Link to="/">
-							<span aria-hidden="true" role="img">
+  return (
+    <>
+      <Nav>
+        <NavList>
+          <li>
+            <Link to="/">
+              <span aria-hidden="true" role="img">
 								🏠
-							</span>
-							<span>&nbsp;</span>
+              </span>
+              <span>&nbsp;</span>
 							Home
-						</Link>
-					</li>
-					<li>
-						<Link to="/new">
-							<span aria-hidden="true" role="img">
+            </Link>
+          </li>
+          <li>
+            <Link to="/new">
+              <span aria-hidden="true" role="img">
 								📝
-							</span>
-							<span>&nbsp;</span>
+              </span>
+              <span>&nbsp;</span>
 							New Note
-						</Link>
-					</li>
-					<li>
-						<Link to="/mynotes">
-							<span aria-hidden="true" role="img">
+            </Link>
+          </li>
+          <li>
+            <Link to="/mynotes">
+              <span aria-hidden="true" role="img">
 								📓
-							</span>
-							<span>&nbsp;</span>
+              </span>
+              <span>&nbsp;</span>
 							My Notes
-						</Link>
-					</li>
-					<li>
-						<Link to="/favorites">
-							<span aria-hidden="true" role="img">
+            </Link>
+          </li>
+          <li>
+            <Link to="/favorites">
+              <span aria-hidden="true" role="img">
 								⭐️
-							</span>
-							<span>&nbsp;</span>
+              </span>
+              <span>&nbsp;</span>
 							Favorites
-						</Link>
-					</li>
-				</NavList>
-			</Nav>
-			<Outlet />
-		</>
-	);
+            </Link>
+          </li>
+        </NavList>
+      </Nav>
+      <Outlet />
+    </>
+  );
 };
 
 export default Navigation;
