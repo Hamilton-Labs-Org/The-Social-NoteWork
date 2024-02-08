@@ -10,8 +10,8 @@
       "cache": true,
       "inputs": [
         "default",
-        "./.eslintrc.json",
-        "./.eslintignore"
+        "!{projectRoot}/.eslintrc.json",
+        "!{projectRoot}/.eslintignore"
       ]
     },
     "@nx/vite:test": {

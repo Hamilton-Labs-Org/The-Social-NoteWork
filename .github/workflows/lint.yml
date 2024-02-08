@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Initialize
+      - name: Initialize Backend
         run: |
           cd apps/backend
           pnpm i --no-frozen-lockfile
@@ -36,10 +36,10 @@ jobs:
       #   with:
       #     path: apps/backend/node_modules/.modules.yaml
 
-      - name: Lint
+      - name: Lint Backend
         run: pnpm nx lint tsn-gql-backend
 
-      - name: Initialize
+      - name: Initialize Frontend
         run: |
           cd apps/react-tsn
           pnpm i --no-frozen-lockfile
@@ -54,5 +54,7 @@ jobs:
           cd apps/react-tsn/
           pnpm nx report react-tsn
 
-      - name: Lint
-        run: pnpm nx lint react-tsn
+      - name: Lint Backend
+        run: |
+         cd apps/react-tsn/
+         pnpm nx lint react-tsn
