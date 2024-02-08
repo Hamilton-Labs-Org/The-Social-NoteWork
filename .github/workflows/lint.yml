@@ -45,5 +45,14 @@ jobs:
           pnpm i --no-frozen-lockfile
           touch node_modules/.modules.yaml
 
+      - name: Version dump
+        run: |
+          echo Node version:
+          node --version
+          echo pnpm version:
+          pnpm --version
+          cd apps/react-tsn/
+          pnpm nx report react-tsn
+
       - name: Lint
         run: pnpm nx lint react-tsn
