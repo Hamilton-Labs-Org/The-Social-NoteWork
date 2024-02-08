@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import Header from "./Header";
-import Navigation from "./Navigation";
+import React from 'react';
+import styled from 'styled-components';
+import Header from './Header';
+import Navigation from './Navigation';
 
 // component styles
 const Wrapper = styled.div`
@@ -37,16 +37,16 @@ const Main = styled.main`
 }
 `;
 
-const Layout = ({ children }) => {
-	return (
-		<>
-			<Header />
-			<Wrapper>
-				<Navigation />
-				<Main>{children}</Main>
-			</Wrapper>
-		</>
-	);
+const Layout = ({children}) => {
+  return (
+    <>
+      <Header />
+      <Wrapper>
+        <Navigation />
+        <Main>{children}</Main>
+      </Wrapper>
+    </>
+  );
 };
 
 export default Layout;

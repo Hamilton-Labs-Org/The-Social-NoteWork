@@ -57,60 +57,60 @@ const Container = styled.div`
 `;
 
 const EmailVerify = () => {
-	const [validUrl, setValidUrl] = useState('');
-	const param = useParams();
+  const [validUrl, setValidUrl] = useState('');
+  const param = useParams();
 
-	useEffect(() => {
-		const verifyEmailUrl = async () => {
-			try {
-				const url = `http://localhost:4000/${param.id}/verify/${param.token}`;
-				const options = {
-					method: 'GET',
-					url: url,
-					headers: {
-						'content-type': [
-							'application/json',
-							'application/x-www-form-urlencoded',
-						],
-						// csrfPrevention: 'false',
-						// 'Apollo-Require-Preflight': 'true',
-						// Authoriaztion: 'Bearer ${token}',
-					},
-				};
-				const data = await axios(options);
+  useEffect(() => {
+    const verifyEmailUrl = async () => {
+      try {
+        const url = `http://localhost:4000/${param.id}/verify/${param.token}`;
+        const options = {
+          method: 'GET',
+          url: url,
+          headers: {
+            'content-type': [
+              'application/json',
+              'application/x-www-form-urlencoded',
+            ],
+            // csrfPrevention: 'false',
+            // 'Apollo-Require-Preflight': 'true',
+            // Authoriaztion: 'Bearer ${token}',
+          },
+        };
+        const data = await axios(options);
 
-				console.log(data);
-				if (data) {
-					setValidUrl(true);
-				}
-			} catch (error) {
-				console.log(error);
-				setValidUrl(false);
-			}
-		};
-		verifyEmailUrl();
-	}, [param]);
+        console.log(data);
+        if (data) {
+          setValidUrl(true);
+        }
+      } catch (error) {
+        console.log(error);
+        setValidUrl(false);
+      }
+    };
+    verifyEmailUrl();
+  }, [param]);
 
-	return (
-		<>
-			{validUrl ? (
-				<Container>
-					<img src={success} alt="success_img" />
-					<h1>Email verified!</h1>
-					<h2>Thank you for registering!</h2>
-					<Link to="/signin">
-						<GreenBtn>Sign In</GreenBtn>
-					</Link>
-				</Container>
-			) : (
-				<div>
-					<h1>404 Not Found</h1>
-					<p></p>
-					<h2>Please Try again.</h2>
-				</div>
-			)}
-		</>
-	);
+  return (
+    <>
+      {validUrl ? (
+        <Container>
+          <img src={success} alt="success_img" />
+          <h1>Email verified!</h1>
+          <h2>Thank you for registering!</h2>
+          <Link to="/signin">
+            <GreenBtn>Sign In</GreenBtn>
+          </Link>
+        </Container>
+      ) : (
+        <div>
+          <h1>404 Not Found</h1>
+          <p></p>
+          <h2>Please Try again.</h2>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default EmailVerify;

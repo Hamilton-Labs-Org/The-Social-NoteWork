@@ -251,4 +251,16 @@ export default {
 			);
 		}
 	},
+	resetPassword: async (parent, {userId, newPassword}, {models}) => {
+		try {
+			const hashedPassword = await bcrypt.hash(newPassword, 12);
+			await models.User.update(
+				{password: hashedPassword},
+				{where: {id: userId}},
+			);
+			return true;
+		} catch (e) {
+			return false;
+		}
+	},
 };

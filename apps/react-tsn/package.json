@@ -1,11 +1,12 @@
 {
   "name": "@react-tsn/source",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "scripts": {
     "start": "nx serve",
     "build": "nx build",
-    "test": "nx test"
+    "test": "nx test",
+    "lint": "biome lint ./src"
   },
   "private": true,
   "dependencies": {
@@ -57,9 +58,10 @@
     "eslint-plugin-playwright": "^0.15.3",
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-unicorn": "^51.0.1",
     "jsdom": "~22.1.0",
     "nx": "17.2.8",
-    "prettier": "^2.6.2",
+    "prettier": "3.2.1",
     "typescript": "~5.2.2",
     "vite": "^5.0.0",
     "vitest": "~0.34.6"

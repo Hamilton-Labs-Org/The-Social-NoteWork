@@ -33,52 +33,52 @@ const UserState = styled.div`
 `;
 
 function refreshPage() {
-	setTimeout(() => {
-		window.location.reload(false);
-	}, 35);
-	console.log('page to reload');
+  setTimeout(() => {
+    window.location.reload(false);
+  }, 35);
+  console.log('page to reload');
 }
 
 const Header = () => {
-	const client = new useApolloClient();
-	// query hook for user logged in state
-	const navigate = useNavigate();
-	return (
-		<HeaderBar>
-			<img src={logo} alt="NoteWork Logo" height="40" />
-			<span>&nbsp;&nbsp;</span>
-			<LogoText>The Social NoteWork</LogoText>
-			<UserState>
-				{isLoggedInVar() ? (
-					<div>
+  const client = new useApolloClient();
+  // query hook for user logged in state
+  const navigate = useNavigate();
+  return (
+    <HeaderBar>
+      <img src={logo} alt="NoteWork Logo" height="40" />
+      <span>&nbsp;&nbsp;</span>
+      <LogoText>The Social NoteWork</LogoText>
+      <UserState>
+        {isLoggedInVar() ? (
+          <div>
 						Logged in as: &nbsp;
-						{localStorage.getItem('username')}
+            {localStorage.getItem('username')}
 						&nbsp; &nbsp;
-						<ButtonAsLink
-							onClick={() => {
-								// navigate to homepage
-								navigate('/');
-								refreshPage();
-								//collect the garbage
-								client.cache.gc();
-								//remove the token and everything in local storage
-								localStorage.clear();
-								//change isLoggedIn to false
-								isLoggedInVar(false);
-							}}
-						>
+            <ButtonAsLink
+              onClick={() => {
+                // navigate to homepage
+                navigate('/');
+                refreshPage();
+                // collect the garbage
+                client.cache.gc();
+                // remove the token and everything in local storage
+                localStorage.clear();
+                // change isLoggedIn to false
+                isLoggedInVar(false);
+              }}
+            >
 							Logout
-						</ButtonAsLink>
-					</div>
-				) : (
-					<p>
-						<Link to={'/signin'}>Sign In</Link> or{' '}
-						<Link to={'/signup'}>Sign Up</Link>
-					</p>
-				)}
-			</UserState>
-		</HeaderBar>
-	);
+            </ButtonAsLink>
+          </div>
+        ) : (
+          <p>
+            <Link to={'/signin'}>Sign In</Link> or{' '}
+            <Link to={'/signup'}>Sign Up</Link>
+          </p>
+        )}
+      </UserState>
+    </HeaderBar>
+  );
 };
 
 export default Header;

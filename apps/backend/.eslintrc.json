@@ -3,7 +3,10 @@
 	"rules": {
 		"indent": "error",
 		"unicorn/template-indent": [
-			"error",
+			"warn",
+			{
+				"indent": 8
+			},
 			{
 				"tags": ["outdent", "dedent", "sql", "gql", "styled", "css"],
 				"functions": ["dedent", "stripIndent"],
