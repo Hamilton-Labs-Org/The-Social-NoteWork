@@ -251,12 +251,28 @@ export default {
 			);
 		}
 	},
-	resetPassword: async (parent, {userId, newPassword}, {models}) => {
+	resetPassword: async (
+		parent,
+		{username, email, newPassword},
+		{models},
+	) => {
+		const user = await models.User.findOne({
+			$or: [{email}, {username}],
+		});
+		// if no user is found, throw an authentication error
+		if (!user) {
+			throw new GraphQLError('Error signing in', {
+				extensions: {
+					code: 'UNAUTHENTICATED',
+				},
+			});
+		}
+
 		try {
 			const hashedPassword = await bcrypt.hash(newPassword, 12);
-			await models.User.update(
+			await user.updateOne(
 				{password: hashedPassword},
-				{where: {id: userId}},
+				{where: {_id: user.id}},
 			);
 			return true;
 		} catch (e) {
