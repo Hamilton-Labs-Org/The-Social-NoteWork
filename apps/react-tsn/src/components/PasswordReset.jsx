@@ -1,8 +1,29 @@
 import {useEffect, useState} from 'react';
 import {useParams, Link} from 'react-router-dom';
 import UserForm from '../components/UserForm';
+import Button from './Button';
 import axios from 'axios';
 import styled from 'styled-components';
+
+const Wrapper = styled.div`
+	border: 1px solid #fca311;
+	max-width: 500px;
+	padding: 1em;
+	margin: 0 auto;
+	margin-top: 10%;
+`;
+
+const Form = styled.form`
+	label,
+	input {
+		display: block;
+		line-height: 2em;
+	}
+	input {
+		width: 100%;
+		margin-bottom: 1em;
+	}
+`;
 
 const GreenBtn = styled.button`
 	border: outline 1px #fca311;
@@ -57,57 +78,91 @@ const Container = styled.div`
 `;
 
 const PasswordReset = () => {
+	// set the default state of the form
+	const [values, setValues] = useState();
+	// update the state when a user types in the form
+	const onChange = (event) => {
+		setValues({
+			...values,
+			[event.target.name]: event.target.value,
+		});
+	};
 	const [validUrl, setValidUrl] = useState('');
 	const param = useParams();
+	// useEffect(() => {
+	// 	const passwordResetUrl = async () => {
+	// 		try {
+	// 			const url = `http://localhost:4000/${param.id}/reset/${param.token}`;
+	// 			const options = {
+	// 				method: 'GET',
+	// 				url: url,
+	// 				headers: {
+	// 					'content-type': [
+	// 						'application/json',
+	// 						'application/x-www-form-urlencoded',
+	// 					],
+	// 					// csrfPrevention: 'false',
+	// 					// 'Apollo-Require-Preflight': 'true',
+	// 					// Authoriaztion: 'Bearer ${token}',
+	// 				},
+	// 			};
+	// 			const data = await axios(options);
 
-	useEffect(() => {
-		const passwordResetUrl = async () => {
-			try {
-				const url = `http://localhost:4000/${param.id}/reset/${param.token}`;
-				const options = {
-					method: 'GET',
-					url: url,
-					headers: {
-						'content-type': [
-							'application/json',
-							'application/x-www-form-urlencoded',
-						],
-						// csrfPrevention: 'false',
-						// 'Apollo-Require-Preflight': 'true',
-						// Authoriaztion: 'Bearer ${token}',
-					},
-				};
-				const data = await axios(options);
-
-				console.log(data);
-				if (data) {
-					setValidUrl(true);
-				}
-			} catch (error) {
-				console.log(error);
-				setValidUrl(false);
-			}
-		};
-		passwordResetUrl();
-	}, [param]);
+	// 			console.log(data);
+	// 			if (data) {
+	// 				setValidUrl(true);
+	// 			}
+	// 		} catch (error) {
+	// 			console.log(error);
+	// 			setValidUrl(false);
+	// 		}
+	// 	};
+	// 	passwordResetUrl();
+	// }, [param]);
 
 	return (
 		<>
-			{validUrl ? (
-				<Container>
-					<h1>Reset password</h1>
-					<h2>Enter your new password.</h2>
-					<Link to="/signin">
-						<GreenBtn>Sign In</GreenBtn>
-					</Link>
-				</Container>
-			) : (
-				<div>
-					<h1>404 Not Found</h1>
-					<p></p>
-					<h2>Please Try again.</h2>
-				</div>
-			)}
+			<Wrapper>
+				<h2>Reset Password</h2>
+				<Form>
+					<>
+						<label htmlFor="username">Username:</label>
+						<input
+							required
+							type="text"
+							id="username"
+							name="username"
+							placeholder="username"
+							onChange={onChange}
+						/>
+					</>
+					<label htmlFor="email">Email:</label>
+					<input
+						required
+						type="email"
+						id="email"
+						name="email"
+						placeholder="Email"
+						onChange={onChange}
+					/>
+					<Button type="submit">Submit</Button>
+				</Form>
+			</Wrapper>
+			{/* {validUrl ? (
+        <Container>
+          <h1>Reset password</h1>
+          <h2>Enter your new password.</h2>
+          <Link to="/signin">
+            <GreenBtn>Sign In</GreenBtn>
+          </Link>
+        </Container>
+      ) : (
+        <div>
+          <h1>404 Not Found</h1>
+          <p></p>
+          <h2>Please Try again.</h2>
+        </div>
+      )} */}
 		</>
 	);
 };
