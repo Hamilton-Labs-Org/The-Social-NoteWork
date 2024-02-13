@@ -6,7 +6,6 @@ import crypto from 'crypto';
 import mongoose from 'mongoose';
 import Token from '../models/token.js';
 import sendEmail from '../utils/sendEmail.js';
-import sendResetEmail from '../utils/sendResetEmail.js';
 import {GraphQLError} from 'graphql';
 
 import 'dotenv/config';
@@ -252,58 +251,16 @@ export default {
 			);
 		}
 	},
-	resetPassword: async (
-		parent,
-		{username, email, newPassword},
-		{models},
-	) => {
-		// normalize email address
-		email = email.trim().toLowerCase();
+	resetPassword: async (parent, {userId, newPassword}, {models}) => {
 		try {
-			const user = await models.User.findOne({
-				$or: [{email}, {username}],
-			});
-			// if no user is found, throw an authentication error
-			if (!user) {
-				throw new GraphQLError('We can not find that user!', {
-					extensions: {
-						code: 'UNAUTHENTICATED',
-					},
-				});
-			}
-
-			if (!user.reset) {
-				const token = await Token.findOne({id: user._id});
-				if (!token) {
-					const token = await new Token({
-						userId: user._id,
-						token: crypto.randomBytes(32).toString('hex'),
-					}).save();
-
-					const url = `${HOST}${CLIENT}/users/${user.id}/reset/${token.token}`;
-
-					await sendResetEmail(
-						user.email,
-						'Reset password link.',
-						url,
-					);
-				}
-			}
-
 			const hashedPassword = await bcrypt.hash(newPassword, 12);
-			await user.updateOne(
+			await models.User.update(
 				{password: hashedPassword},
-				{where: {_id: user.id}},
+				{where: {id: userId}},
 			);
-
-			return await jwt.sign({id: user._id}, process.env.JWT_SECRET);
-		} catch (err) {
-			console.log(JSON.stringify(err));
-			throw new GraphQLError('Error resetting password', {
-				extensions: {
-					code: 'FORBIDDEN',
-				},
-			});
+			return true;
+		} catch (e) {
+			return false;
 		}
 	},
 };
