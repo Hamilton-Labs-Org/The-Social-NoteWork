@@ -1,8 +1,6 @@
-import {useEffect, useState} from 'react';
-import {useParams, Link} from 'react-router-dom';
-import UserForm from '../components/UserForm';
+import {useState} from 'react';
+import {useParams} from 'react-router-dom';
 import Button from './Button';
-import axios from 'axios';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
