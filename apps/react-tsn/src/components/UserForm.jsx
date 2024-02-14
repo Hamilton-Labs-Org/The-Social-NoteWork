@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import Button from './Button';
@@ -37,7 +38,6 @@ const UserForm = (props) => {
 		<Wrapper>
 			{/* Display the appropriate form header */}
 			{props.formType === 'signup' ? <h2>Sign Up</h2> : <h2>Sign In</h2>}
-			{props.formType === 'reset' && <h2>Reset Password</h2>}
 			{/* perform the mutation when a user submits the form */}
 			<Form
 				onSubmit={(event) => {
@@ -62,28 +62,6 @@ const UserForm = (props) => {
 						/>
 					</>
 				)}
-				{props.formType === 'reset' && (
-					<>
-						<label htmlFor="username">Username:</label>
-						<input
-							required
-							type="text"
-							id="username"
-							name="username"
-							placeholder="username"
-							onChange={onChange}
-						/>
-						<label htmlFor="email">Email:</label>
-						<input
-							required
-							type="email"
-							id="email"
-							name="email"
-							placeholder="Email"
-							onChange={onChange}
-						/>
-					</>
-				)}
 				<label htmlFor="email">Email:</label>
 				<input
 					required
@@ -104,6 +82,13 @@ const UserForm = (props) => {
 				/>
 				<Button type="submit">Submit</Button>
 			</Form>
+			{
+				<Link to={'/reset'}>
+					<p>
+						<Button>Reset Password</Button>
+					</p>
+				</Link>
+			}
 		</Wrapper>
 	);
 };

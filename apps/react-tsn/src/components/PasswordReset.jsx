@@ -1,5 +1,8 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
+import {useQuery} from '@apollo/client';
+import {GET_ME} from '../gql/query';
+import UserForm from '../components/UserForm';
 import Button from './Button';
 import styled from 'styled-components';
 
@@ -76,6 +79,11 @@ const Container = styled.div`
 `;
 
 const PasswordReset = () => {
+	useEffect(() => {
+		// update the document title
+		document.title = 'Sign In — Reset Password';
+	});
+
 	// set the default state of the form
 	const [values, setValues] = useState();
 	// update the state when a user types in the form
@@ -85,8 +93,9 @@ const PasswordReset = () => {
 			[event.target.name]: event.target.value,
 		});
 	};
-	const [validUrl, setValidUrl] = useState('');
-	const param = useParams();
+	// 	onCompleted: (data) => {
+	// const [validUrl, setValidUrl] = useState('');
+	// const param = useParams();
 	// useEffect(() => {
 	// 	const passwordResetUrl = async () => {
 	// 		try {
@@ -120,6 +129,10 @@ const PasswordReset = () => {
 
 	return (
 		<>
+			{/* if the data is loading, display a loading message*/}
+			{/* {loading && <p>Loading...</p>} */}
+			{/* if there is an error, display a error message*/}
+			{/* {error && <p>Error signing in!</p>} */}
 			<Wrapper>
 				<h2>Reset Password</h2>
 				<Form>
