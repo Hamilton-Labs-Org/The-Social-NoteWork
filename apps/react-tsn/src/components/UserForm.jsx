@@ -38,6 +38,7 @@ const UserForm = (props) => {
 		<Wrapper>
 			{/* Display the appropriate form header */}
 			{props.formType === 'signup' ? <h2>Sign Up</h2> : <h2>Sign In</h2>}
+			{props.formType === 'reset' && <h2>Reset Password</h2>}
 			{/* perform the mutation when a user submits the form */}
 			<Form
 				onSubmit={(event) => {
@@ -60,6 +61,29 @@ const UserForm = (props) => {
 							placeholder="username"
 							onChange={onChange}
 						/>
+					</>
+				)}
+				{props.formType === 'reset' && (
+					<>
+						<label htmlFor="username">Username:</label>
+						<input
+							required
+							type="text"
+							id="username"
+							name="username"
+							placeholder="username"
+							onChange={onChange}
+						/>
+						<label htmlFor="email">Email:</label>
+						<input
+							required
+							type="email"
+							id="email"
+							name="email"
+							placeholder="Email"
+							onChange={onChange}
+						/>
+						<Button type="submit">Reset Password</Button>
 					</>
 				)}
 				<label htmlFor="email">Email:</label>
@@ -85,7 +109,7 @@ const UserForm = (props) => {
 			{
 				<Link to={'/reset'}>
 					<p>
-						<Button>Reset Password</Button>
+						<Button>Password Reset</Button>
 					</p>
 				</Link>
 			}

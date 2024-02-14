@@ -67,11 +67,18 @@ const TOGGLE_FAVORITE = gql`
 	}
 `;
 
+const RESET_PASSWORD = gql`
+	mutation resetPassword($email: String, $username: String!) {
+		resetPassword(email: $email, username: $username)
+	}
+`;
+
 export {
-  SIGNUP_USER,
-  SIGNIN_USER,
-  NEW_NOTE,
-  EDIT_NOTE,
-  DELETE_NOTE,
-  TOGGLE_FAVORITE,
+	SIGNUP_USER,
+	SIGNIN_USER,
+	NEW_NOTE,
+	EDIT_NOTE,
+	DELETE_NOTE,
+	TOGGLE_FAVORITE,
+	RESET_PASSWORD,
 };

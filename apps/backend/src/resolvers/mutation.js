@@ -6,6 +6,7 @@ import crypto from 'crypto';
 import mongoose from 'mongoose';
 import Token from '../models/token.js';
 import sendEmail from '../utils/sendEmail.js';
+import sendResetEmail from '../utils/sendResetEmail.js';
 import {GraphQLError} from 'graphql';
 
 import 'dotenv/config';
@@ -251,16 +252,54 @@ export default {
 			);
 		}
 	},
-	resetPassword: async (parent, {userId, newPassword}, {models}) => {
+	resetPassword: async (parent, {username, email}, {models}) => {
+		if (email) {
+			// normalize email address
+			email = email.trim().toLowerCase();
+		}
 		try {
-			const hashedPassword = await bcrypt.hash(newPassword, 12);
-			await models.User.update(
-				{password: hashedPassword},
-				{where: {id: userId}},
-			);
-			return true;
-		} catch (e) {
-			return false;
+			const user = await models.User.findOne({email: email});
+			// if no user is found, throw an authentication error
+			if (!user) {
+				throw new GraphQLError('Error signing in', {
+					extensions: {
+						code: 'UNAUTHENTICATED',
+					},
+				});
+			}
+
+			if (user) {
+				const token = await Token.findOne({id: user._id});
+				if (!token) {
+					const token = await new Token({
+						userId: user._id,
+						token: crypto.randomBytes(32).toString('hex'),
+					}).save();
+
+					const url = `${HOST}${CLIENT}/users/${user.id}/reset/${token.token}`;
+
+					await sendResetEmail(
+						user.email,
+						'Reset Password Email',
+						url,
+					);
+				}
+			}
+			console.log(username);
+			// const hashedPassword = await bcrypt.hash(newPassword, 12);
+			// await models.User.update(
+			// 	{password: hashedPassword},
+			// 	{where: {id: userId}},
+			// );
+			// return true;
+			// return user;
+			return jwt.sign({id: user._id}, process.env.JWT_SECRET);
+		} catch (err) {
+			throw new GraphQLError('Error resetting password', {
+				extensions: {
+					code: 'FORBIDDEN',
+				},
+			});
 		}
 	},
 };

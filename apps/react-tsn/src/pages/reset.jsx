@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {useMutation} from '@apollo/client';
 import UserForm from '../components/UserForm';
-import {PASSWORD_RESET} from '../gql/mutation';
+import {RESET_PASSWORD} from '../gql/mutation';
 
 function refreshPage() {
 	setTimeout(() => {
@@ -20,29 +20,26 @@ const ResetPassword = (props) => {
 	const navigate = useNavigate();
 
 	// add the mutation hook
-	const [resetPassword, {loading, error}] = useMutation(PASSWORD_RESET, {
+	const [resetPassword, {loading, error}] = useMutation(RESET_PASSWORD, {
 		onCompleted: (data) => {
-			// refreshPage(
+			// refreshPage();
 			// collect the garbage
 			// client.cache.gc();
 			// remove the token and everything in local storage
 			localStorage.clear();
 			// change isLoggedIn to false
 			isLoggedInVar(false);
+			localStorage.setItem('token', data.resetPassword);
 			navigate('/');
 			// console.log the JSON Web Token when the mutation is complete
 			// localStorage.setItem('token', data.signUp);
 			// isLoggedInVar(true);
 			// redirect the user to the homepage
 			// props.history.push("/");
+			console.log(data);
 		},
 	});
 
-	if (loading) return <p>Loading</p>;
-	if (error) {
-		console.log(JSON.stringify(error));
-		return <p>An error occurred</p>;
-	}
 	return (
 		<>
 			<UserForm action={resetPassword} formType="reset" />

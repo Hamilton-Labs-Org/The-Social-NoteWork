@@ -2,16 +2,15 @@ import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import {useQuery} from '@apollo/client';
 import {GET_ME} from '../gql/query';
-import UserForm from '../components/UserForm';
 import Button from './Button';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
 	border: 1px solid #fca311;
 	max-width: 500px;
-	padding: 1em;
+	padding: 1.1em;
 	margin: 0 auto;
-	margin-top: 10%;
+	margin-top: 0.5%;
 `;
 
 const Form = styled.form`
@@ -50,38 +49,35 @@ const GreenBtn = styled.button`
 const Container = styled.div`
 	height: 100vh;
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	// align-items: center;
+	// justify-content: center;
 	flex-direction: column;
+  // margin: 0 auto;
+	flex-direction: column;
+	font-size: 1.1em;
 	img {
 			border-radius: 50%;
 			width: -50%;
 		}
 	@media (max-width: 700px) {
-		padding-top: .03%;
+		// padding-top: .01%;
 	}
 	@media (min-width: 700px) {
 		position: 
 		width: 100px;
 		display: flex;
-		height: calc(100% - 7%);
 		overflow-y: scroll;
 		align-items: center;
 		img {
 			border-radius: 50%;
-			
-		}
-	justify-content: center;
-	margin: 0 auto;
-	flex-direction: column;
-	font-size: 1.1em;
+		}	
 	}
 `;
 
 const PasswordReset = () => {
 	useEffect(() => {
 		// update the document title
-		document.title = 'Sign In — Reset Password';
+		document.title = 'Sign In — Confirm Reset Password';
 	});
 
 	// set the default state of the form
@@ -93,87 +89,80 @@ const PasswordReset = () => {
 			[event.target.name]: event.target.value,
 		});
 	};
-	// 	onCompleted: (data) => {
-	// const [validUrl, setValidUrl] = useState('');
-	// const param = useParams();
-	// useEffect(() => {
-	// 	const passwordResetUrl = async () => {
-	// 		try {
-	// 			const url = `http://localhost:4000/${param.id}/reset/${param.token}`;
-	// 			const options = {
-	// 				method: 'GET',
-	// 				url: url,
-	// 				headers: {
-	// 					'content-type': [
-	// 						'application/json',
-	// 						'application/x-www-form-urlencoded',
-	// 					],
-	// 					// csrfPrevention: 'false',
-	// 					// 'Apollo-Require-Preflight': 'true',
-	// 					// Authoriaztion: 'Bearer ${token}',
-	// 				},
-	// 			};
-	// 			const data = await axios(options);
+	const [validUrl, setValidUrl] = useState('');
+	const param = useParams();
+	useEffect(() => {
+		const passwordResetUrl = async () => {
+			try {
+				const url = `http://localhost:4000/${param.id}/reset/${param.token}`;
+				const options = {
+					method: 'GET',
+					url: url,
+					headers: {
+						'content-type': [
+							'application/json',
+							'application/x-www-form-urlencoded',
+						],
+						// csrfPrevention: 'false',
+						// 'Apollo-Require-Preflight': 'true',
+						// Authoriaztion: 'Bearer ${token}',
+					},
+				};
 
-	// 			console.log(data);
-	// 			if (data) {
-	// 				setValidUrl(true);
-	// 			}
-	// 		} catch (error) {
-	// 			console.log(error);
-	// 			setValidUrl(false);
-	// 		}
-	// 	};
-	// 	passwordResetUrl();
-	// }, [param]);
+				// const data = await axios(options);
+
+				console.log(validUrl);
+				if (url) {
+					setValidUrl(true);
+				}
+				console.log(validUrl);
+			} catch (error) {
+				console.log(error);
+				setValidUrl(false);
+			}
+		};
+		passwordResetUrl();
+	}, [param]);
 
 	return (
 		<>
-			{/* if the data is loading, display a loading message*/}
-			{/* {loading && <p>Loading...</p>} */}
-			{/* if there is an error, display a error message*/}
-			{/* {error && <p>Error signing in!</p>} */}
-			<Wrapper>
-				<h2>Reset Password</h2>
-				<Form>
-					<>
-						<label htmlFor="username">Username:</label>
-						<input
-							required
-							type="text"
-							id="username"
-							name="username"
-							placeholder="username"
-							onChange={onChange}
-						/>
-					</>
-					<label htmlFor="email">Email:</label>
-					<input
-						required
-						type="email"
-						id="email"
-						name="email"
-						placeholder="Email"
-						onChange={onChange}
-					/>
-					<Button type="submit">Submit</Button>
-				</Form>
-			</Wrapper>
-			{/* {validUrl ? (
-        <Container>
-          <h1>Reset password</h1>
-          <h2>Enter your new password.</h2>
-          <Link to="/signin">
-            <GreenBtn>Sign In</GreenBtn>
-          </Link>
-        </Container>
-      ) : (
-        <div>
-          <h1>404 Not Found</h1>
-          <p></p>
-          <h2>Please Try again.</h2>
-        </div>
-      )} */}
+			{validUrl ? (
+				<Container>
+					<h1>Confirm Password Reset</h1>
+					<Wrapper>
+						<h2>Enter Your New Password</h2>
+						<Form>
+							<>
+								<label htmlFor="newPassword">New Password:</label>
+								<input
+									required
+									type="password"
+									id="newPassword"
+									name="new password"
+									placeholder="new password"
+									onChange={onChange}
+								/>
+							</>
+							<label htmlFor="confirmPassword">Confirm Password: {}</label>
+							<input
+								required
+								type="password"
+								id="confirmPassword"
+								name="confirm Password"
+								placeholder="confirm password"
+								onChange={onChange}
+							/>
+							<Button type="submit">Submit</Button>
+						</Form>
+					</Wrapper>
+				</Container>
+			) : (
+				<div>
+					<h1>Password Reset Link Not Found</h1>
+					<p></p>
+					<h2>Please Try again.</h2>
+				</div>
+			)}
 		</>
 	);
 };
