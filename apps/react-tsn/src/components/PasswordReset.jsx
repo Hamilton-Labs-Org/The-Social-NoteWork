@@ -94,7 +94,7 @@ const PasswordReset = () => {
 	useEffect(() => {
 		const passwordResetUrl = async () => {
 			try {
-				const url = `http://localhost:4000/${param.id}/reset/${param.token}`;
+				// const url = `http://localhost:4000/${param.id}/reset/${param.token}`;
 				const options = {
 					method: 'GET',
 					url: url,
