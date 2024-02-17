@@ -95,19 +95,19 @@ const PasswordReset = () => {
 		const passwordResetUrl = async () => {
 			try {
 				// const url = `http://localhost:4000/${param.id}/reset/${param.token}`;
-				const options = {
-					method: 'GET',
-					url: url,
-					headers: {
-						'content-type': [
-							'application/json',
-							'application/x-www-form-urlencoded',
-						],
-						// csrfPrevention: 'false',
-						// 'Apollo-Require-Preflight': 'true',
-						// Authoriaztion: 'Bearer ${token}',
-					},
-				};
+				// const options = {
+				// 	method: 'GET',
+				// 	url: url,
+				// 	headers: {
+				// 		'content-type': [
+				// 			'application/json',
+				// 			'application/x-www-form-urlencoded',
+				// 		],
+				// 		// csrfPrevention: 'false',
+				// 		// 'Apollo-Require-Preflight': 'true',
+				// 		// Authoriaztion: 'Bearer ${token}',
+				// 	},
+				// };
 
 				// const data = await axios(options);
 
