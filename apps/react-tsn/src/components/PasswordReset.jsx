@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import {useQuery} from '@apollo/client';
 import {GET_ME} from '../gql/query';
+import {RESET_PASSWORD} from '../gql/mutation';
 import Button from './Button';
 import styled from 'styled-components';
 
