@@ -100,6 +100,7 @@ const PasswordReset = () => {
 				// Show the reset form only if the user is verified
 				// Update the database once the user submits the form.
 				// Notify the user upon successful db update.
+				// Return the user to the login screen.
 
 				// const url = `http://localhost:4000/${param.id}/reset/${param.token}`;
 				// const options = {
