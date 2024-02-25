@@ -95,7 +95,7 @@ const PasswordReset = () => {
 	useEffect(() => {
 		const passwordResetUrl = async () => {
 			try {
-				// Read in user's token from the link
+				// Read in user's token from the email link
 				// Verify if it is an actual user
 				// Show the reset form only if the user is verified
 				// Update the database once the user submits the form.
