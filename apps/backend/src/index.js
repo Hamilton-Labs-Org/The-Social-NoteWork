@@ -125,7 +125,7 @@ app.use('/:id/reset/:token/', cors(), async (req, res, next) => {
 		if (!token)
 			return res.status(400).send({message: 'Invalid link'});
 
-		await user.updateOne({_id: user._id, verified: true});
+		await user.updateOne({_id: user._id, reset: true});
 
 		await token.deleteOne();
 

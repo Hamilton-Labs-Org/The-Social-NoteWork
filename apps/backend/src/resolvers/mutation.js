@@ -256,27 +256,49 @@ export default {
 		{username, email, newPassword},
 		{models},
 	) => {
-		const user = await models.User.findOne({
-			$or: [{email}, {username}],
-		});
-		// if no user is found, throw an authentication error
-		if (!user) {
-			throw new GraphQLError('Error signing in', {
-				extensions: {
-					code: 'UNAUTHENTICATED',
-				},
-			});
-		}
-
+		// normalize email address
+		email = email.trim().toLowerCase();
 		try {
+			const user = await models.User.findOne({
+				$or: [{email}, {username}],
+			});
+			// if no user is found, throw an authentication error
+			if (!user) {
+				throw new GraphQLError('We can not find that user!', {
+					extensions: {
+						code: 'UNAUTHENTICATED',
+					},
+				});
+			}
+
+			if (!user.verified) {
+				const token = await Token.findOne({id: user._id});
+				if (!token) {
+					const token = await new Token({
+						userId: user._id,
+						token: crypto.randomBytes(32).toString('hex'),
+					}).save();
+
+					const url = `${HOST}${CLIENT}/reset/${user.id}/verify/${token.token}`;
+
+					await sendEmail(user.email, 'Verify Email', url);
+				}
+			}
+
 			const hashedPassword = await bcrypt.hash(newPassword, 12);
 			await user.updateOne(
 				{password: hashedPassword},
 				{where: {_id: user.id}},
 			);
-			return true;
-		} catch (e) {
-			return false;
+
+			return await jwt.sign({id: user._id}, process.env.JWT_SECRET);
+		} catch (err) {
+			console.log(JSON.stringify(err));
+			throw new GraphQLError('Error creating account', {
+				extensions: {
+					code: 'FORBIDDEN',
+				},
+			});
 		}
 	},
 };
