@@ -271,7 +271,7 @@ export default {
 				});
 			}
 
-			if (!user.verified) {
+			if (!user.reset) {
 				const token = await Token.findOne({id: user._id});
 				if (!token) {
 					const token = await new Token({
