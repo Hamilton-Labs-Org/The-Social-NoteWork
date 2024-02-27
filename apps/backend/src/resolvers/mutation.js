@@ -6,6 +6,7 @@ import crypto from 'crypto';
 import mongoose from 'mongoose';
 import Token from '../models/token.js';
 import sendEmail from '../utils/sendEmail.js';
+import sendResetEmail from '../utils/sentResetEmail.js';
 import {GraphQLError} from 'graphql';
 
 import 'dotenv/config';
@@ -279,9 +280,13 @@ export default {
 						token: crypto.randomBytes(32).toString('hex'),
 					}).save();
 
-					const url = `${HOST}${CLIENT}/reset/${user.id}/verify/${token.token}`;
+					const url = `${HOST}${CLIENT}/users/${user.id}/reset/${token.token}`;
 
-					await sendEmail(user.email, 'Verify Email', url);
+					await sendResetEmail(
+						user.email,
+						'Click to reset your password',
+						url,
+					);
 				}
 			}
 
