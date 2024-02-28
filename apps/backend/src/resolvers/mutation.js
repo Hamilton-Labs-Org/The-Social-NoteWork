@@ -6,7 +6,7 @@ import crypto from 'crypto';
 import mongoose from 'mongoose';
 import Token from '../models/token.js';
 import sendEmail from '../utils/sendEmail.js';
-import sendResetEmail from '../utils/sentResetEmail.js';
+import sendResetEmail from '../utils/sendResetEmail.js';
 import {GraphQLError} from 'graphql';
 
 import 'dotenv/config';
