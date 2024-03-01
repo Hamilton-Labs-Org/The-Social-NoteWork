@@ -284,7 +284,7 @@ export default {
 
 					await sendResetEmail(
 						user.email,
-						'Click to reset your password',
+						'Reset password link.',
 						url,
 					);
 				}
