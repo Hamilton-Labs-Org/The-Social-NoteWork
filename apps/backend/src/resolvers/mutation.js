@@ -299,7 +299,7 @@ export default {
 			return await jwt.sign({id: user._id}, process.env.JWT_SECRET);
 		} catch (err) {
 			console.log(JSON.stringify(err));
-			throw new GraphQLError('Error creating account', {
+			throw new GraphQLError('Error resetting password', {
 				extensions: {
 					code: 'FORBIDDEN',
 				},
