@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {View, useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -34,59 +34,119 @@ const UserForm = (props) => {
 			[event.target.name]: event.target.value,
 		});
 	};
+
+	const [isPasswordReset, setIsPasswordReset] = useState(false);
+
+	const [isUserForm, setIsUserForm] = useState(true);
+
+	let user_form;
+	if (isUserForm) {
+		user_form = (
+			<>
+				{/* Display the appropriate form header */}
+				{props.formType === 'signup' ? <h2>Sign Up</h2> : <h2>Sign In</h2>}
+				{/* perform the mutation when a user submits the form */}
+				<Form
+					onSubmit={(event) => {
+						event.preventDefault();
+						props.action({
+							variables: {
+								...values,
+							},
+						});
+					}}
+				>
+					{props.formType === 'signup' && (
+						<>
+							<label htmlFor="username">Username:</label>
+							<input
+								required
+								type="text"
+								id="username"
+								name="username"
+								placeholder="username"
+								onChange={onChange}
+							/>
+						</>
+					)}
+					<label htmlFor="email">Email:</label>
+					<input
+						required
+						type="email"
+						id="email"
+						name="email"
+						placeholder="Email"
+						onChange={onChange}
+					/>
+					<label htmlFor="password">Password:</label>
+					<input
+						required
+						type="password"
+						id="password"
+						name="password"
+						placeholder="Password"
+						onChange={onChange}
+					/>
+					<Button type="submit">Submit</Button>
+				</Form>
+			</>
+		);
+	}
+
+	let pr_form;
+	if (isPasswordReset) {
+		pr_form = (
+			<>
+				<h2>Reset Password</h2>
+				<Form>
+					<label htmlFor="username">Username:</label>
+					<input
+						required
+						type="text"
+						id="username"
+						name="username"
+						placeholder="username"
+						onChange={onChange}
+					/>
+					<label htmlFor="email">Email:</label>
+					<input
+						required
+						type="email"
+						id="email"
+						name="email"
+						placeholder="Email"
+						onChange={onChange}
+					/>
+					<Button type="submit">Submit</Button>
+				</Form>
+			</>
+		);
+	}
+
 	return (
-		<Wrapper>
-			{/* Display the appropriate form header */}
-			{props.formType === 'signup' ? <h2>Sign Up</h2> : <h2>Sign In</h2>}
-			{/* perform the mutation when a user submits the form */}
-			<Form
-				onSubmit={(event) => {
-					event.preventDefault();
-					props.action({
-						variables: {
-							...values,
-						},
-					});
-				}}
-			>
-				{props.formType === 'signup' && (
-					<>
-						<label htmlFor="username">Username:</label>
-						<input
-							required
-							type="text"
-							id="username"
-							name="username"
-							placeholder="username"
-							onChange={onChange}
-						/>
-					</>
-				)}
-				<label htmlFor="email">Email:</label>
-				<input
-					required
-					type="email"
-					id="email"
-					name="email"
-					placeholder="Email"
-					onChange={onChange}
-				/>
-				<label htmlFor="password">Password:</label>
-				<input
-					required
-					type="password"
-					id="password"
-					name="password"
-					placeholder="Password"
-					onChange={onChange}
-				/>
-				<Button type="submit">Submit</Button>
-			</Form>
-			<p></p>
-			<Link to={'/reset'}>
-				<Button type="submit">Reset Password</Button>
-			</Link>
-		</Wrapper>
+		<>
+			<Wrapper>
+				{isUserForm && user_form}
+				{isPasswordReset && pr_form}
+				<p></p>
+				<Link to={'/reset_password'}>
+					<Button
+						onClick={() => {
+							setIsPasswordReset(!isPasswordReset);
+							setIsUserForm(!isUserForm);
+						}}
+					>
+						Reset Password
+					</Button>
+				</Link>
+				{/* <Button onClick={this.handlePasswordResetClick} type="submit">
+				Reset Password
+			</Button> */}
+				{/* <Link to={'/reset_password'}>
+			</Link> */}
+			</Wrapper>
+		</>
 	);
 };
+
 export default UserForm;

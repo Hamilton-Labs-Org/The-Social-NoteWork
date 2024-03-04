@@ -69,7 +69,7 @@ const Pages = () => {
 				<Route path="/note/:id" element={<NotePage />} />
 				<Route path="/signup" element={<SignUp />} />
 				<Route path="/signin" element={<SignIn />} />
-				<Route path="/reset" element={<PasswordReset />} />
+				<Route path="/reset_password" element={<PasswordReset />} />
 				<Route path="/users/:id/verify/:token" element={<EmailVerify />} />
 			</Routes>
 		</Layout>

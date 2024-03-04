@@ -11,6 +11,15 @@ const SIGNIN_USER = gql`
 		signIn(email: $email, password: $password)
 	}
 `;
+const PASSWORD_RESET = gql`
+	mutation resetPassword(
+		$email: String
+		$username: String!
+		$newPassword: String!
+	) {
+		resetPassword(email: $email, username: $username, newPassword: $newPassword)
+	}
+`;
 
 // our new note query
 const NEW_NOTE = gql`
@@ -68,10 +77,11 @@ const TOGGLE_FAVORITE = gql`
 `;
 
 export {
-  SIGNUP_USER,
-  SIGNIN_USER,
-  NEW_NOTE,
-  EDIT_NOTE,
-  DELETE_NOTE,
-  TOGGLE_FAVORITE,
+	SIGNUP_USER,
+	SIGNIN_USER,
+	NEW_NOTE,
+	EDIT_NOTE,
+	DELETE_NOTE,
+	TOGGLE_FAVORITE,
+	PASSWORD_RESET,
 };
