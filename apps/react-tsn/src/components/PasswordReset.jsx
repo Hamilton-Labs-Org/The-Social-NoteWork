@@ -1,5 +1,5 @@
 import {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom';
 import {useQuery} from '@apollo/client';
 import {GET_ME} from '../gql/query';
 import {UPDATE_PASSWORD} from '../gql/mutation';
@@ -82,6 +82,13 @@ const PasswordReset = () => {
 		document.title = 'Sign In — Confirm Reset Password';
 	});
 
+	function refreshPage() {
+		setTimeout(() => {
+			window.location.reload(false);
+		}, 35);
+		console.log('page to reload');
+	}
+
 	// set the default state of the form
 	const [values, setValues] = useState();
 	// update the state when a user types in the form
@@ -135,6 +142,14 @@ const PasswordReset = () => {
 		passwordResetUrl();
 	}, [param]);
 
+	const navigate = useNavigate();
+	const [updatePassword, {loading, error}] = useMutation(UPDATE_PASSWORD, {
+		onCompleted: (data) => {
+			// refreshPage();
+			// navigate('/');
+			console.log(data);
+		},
+	});
 	return (
 		<>
 			{validUrl ? (
@@ -173,7 +188,7 @@ const PasswordReset = () => {
 								placeholder="confirm password"
 								onChange={onChange}
 							/>
-							<Button type="submit">Submit</Button>
+							<Button action={updatePassword}>Submit</Button>
 						</Form>
 					</Wrapper>
 				</Container>
