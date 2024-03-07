@@ -1,7 +1,6 @@
 import {useState, useEffect} from 'react';
 import {useParams, useNavigate} from 'react-router-dom';
-import {useQuery} from '@apollo/client';
-import {GET_ME} from '../gql/query';
+import {useMutation} from '@apollo/client';
 import {UPDATE_PASSWORD} from '../gql/mutation';
 import axios from 'axios';
 import Button from './Button';

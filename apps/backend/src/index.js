@@ -88,6 +88,7 @@ app.use(
 app.use('/:id/verify/:token/', cors(), async (req, res, next) => {
 	try {
 		const user = await models.User.findOne({_id: req.params.id});
+		console.log('From verify-token');
 		console.log(user);
 		if (!user) return res.status(400).send({message: 'Invalid link'});
 
@@ -114,6 +115,7 @@ app.use('/:id/verify/:token/', cors(), async (req, res, next) => {
 app.use('/:id/reset/:token/', cors(), async (req, res, next) => {
 	try {
 		const user = await models.User.findOne({_id: req.params.id});
+		console.log('From reset-token');
 		console.log(user);
 		if (!user) return res.status(400).send({message: 'Invalid link'});
 
