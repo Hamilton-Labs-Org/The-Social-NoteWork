@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom';
 import {useQuery} from '@apollo/client';
 import {GET_ME} from '../gql/query';
 import {UPDATE_PASSWORD} from '../gql/mutation';
+import axios from 'axios';
 import Button from './Button';
 import styled from 'styled-components';
 

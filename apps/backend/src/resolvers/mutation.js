@@ -12,7 +12,7 @@ import {GraphQLError} from 'graphql';
 import 'dotenv/config';
 
 const HOST = process.env.BASE_URL;
-const HOST_PORT = process.env.HOST_PORT;
+const CLIENT_PORT = process.env.CLIENT_PORT;
 
 export default {
 	newNote: async (parent, args, {models, user}) => {
@@ -138,7 +138,7 @@ export default {
 						token: crypto.randomBytes(32).toString('hex'),
 					}).save();
 
-					const url = `${HOST}${HOST_PORT}/users/${user.id}/verify/${token.token}`;
+					const url = `${HOST}${CLIENT_PORT}/users/${user.id}/verify/${token.token}`;
 
 					await sendEmail(user.email, 'Verify Email', url);
 				}
@@ -190,7 +190,7 @@ export default {
 					userId: user._id,
 					token: crypto.randomBytes(32).toString('hex'),
 				}).save();
-				const url = `${HOST}${HOST_PORT}/users/${user.id}/verify/${token.token}`;
+				const url = `${HOST}${CLIENT_PORT}/users/${user.id}/verify/${token.token}`;
 				await sendEmail(user.email, 'Verify Email', url);
 			}
 
@@ -276,7 +276,7 @@ export default {
 						token: crypto.randomBytes(32).toString('hex'),
 					}).save();
 
-					const url = `${HOST}${HOST_PORT}/users/${user.id}/reset/${token.token}`;
+					const url = `${HOST}${CLIENT_PORT}/users/${user.id}/reset/${token.token}`;
 
 					await sendResetEmail(
 						user.email,

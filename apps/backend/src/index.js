@@ -129,6 +129,7 @@ app.use('/:id/reset/:token/', cors(), async (req, res, next) => {
 
 		await token.deleteOne();
 
+		console.log('Reset link verified successfully');
 		res
 			.status(200)
 			.send({message: 'Reset link verified successfully'});
