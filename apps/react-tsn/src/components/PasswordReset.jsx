@@ -104,22 +104,23 @@ const PasswordReset = () => {
 				// Send a notification email that the user's password was updated? (optional)
 
 				const url = `http://localhost:4000/${param.id}/reset/${param.token}`;
-				// const options = {
-				// 	method: 'GET',
-				// 	url: url,
-				// 	headers: {
-				// 		'content-type': [
-				// 			'application/json',
-				// 			'application/x-www-form-urlencoded',
-				// 		],
-				// 		// csrfPrevention: 'false',
-				// 		// 'Apollo-Require-Preflight': 'true',
-				// 		// Authoriaztion: 'Bearer ${token}',
-				// 	},
-				// };
+				const options = {
+					method: 'GET',
+					url: url,
+					headers: {
+						'content-type': [
+							'application/json',
+							'application/x-www-form-urlencoded',
+						],
+						// csrfPrevention: 'false',
+						// 'Apollo-Require-Preflight': 'true',
+						// Authoriaztion: 'Bearer ${token}',
+					},
+				};
 
-				// const data = await axios(options);
+				const data = await axios(options);
 
+				console.log(data);
 				console.log(validUrl);
 				if (url) {
 					setValidUrl(true);

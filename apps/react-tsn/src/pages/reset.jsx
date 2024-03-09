@@ -27,7 +27,7 @@ const ResetPassword = (props) => {
 			// remove the token and everything in local storage
 			localStorage.clear();
 			// change isLoggedIn to false
-			isLoggedInVar(false);
+			// isLoggedInVar(false);
 			localStorage.setItem('token', data.resetPassword);
 			navigate('/');
 			// console.log the JSON Web Token when the mutation is complete
