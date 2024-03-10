@@ -17,8 +17,8 @@ import SignUp from './signup';
 import SignIn from './signin';
 import NewNote from './new';
 import EditNote from './edit';
+import ResetPassword from './reset';
 import EmailVerify from '../components/EmailVerify';
-import ResetPassword from '../components/PasswordReset';
 import PasswordReset from '../components/PasswordReset';
 
 // define routes and export the module

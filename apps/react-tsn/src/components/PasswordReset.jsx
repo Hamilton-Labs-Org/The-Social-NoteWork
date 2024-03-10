@@ -103,7 +103,7 @@ const PasswordReset = () => {
 				// Return the user to the login screen.
 				// Send a notification email that the user's password was updated? (optional)
 
-				// const url = `http://localhost:4000/${param.id}/reset/${param.token}`;
+				const url = `http://localhost:4000/${param.id}/reset/${param.token}`;
 				// const options = {
 				// 	method: 'GET',
 				// 	url: url,
