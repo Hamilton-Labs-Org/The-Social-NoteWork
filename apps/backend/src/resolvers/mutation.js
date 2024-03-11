@@ -259,9 +259,9 @@ export default {
 		}
 		try {
 			const user = await models.User.findOne({email: email});
-			// if no user is found, throw an authentication error
+			// if no user is found, throw an error
 			if (!user) {
-				throw new GraphQLError('Error signing in', {
+				throw new GraphQLError('No user found', {
 					extensions: {
 						code: 'UNAUTHENTICATED',
 					},
@@ -284,8 +284,9 @@ export default {
 						url,
 					);
 				}
+				console.log('reset link sent for email of user: ', username);
 			}
-			console.log(username);
+
 			// const hashedPassword = await bcrypt.hash(newPassword, 12);
 			// await models.User.update(
 			// 	{password: hashedPassword},
@@ -293,7 +294,7 @@ export default {
 			// );
 			// return true;
 			// return user;
-			return jwt.sign({id: user._id}, process.env.JWT_SECRET);
+			http: return jwt.sign({id: user._id}, process.env.JWT_SECRET);
 		} catch (err) {
 			throw new GraphQLError('Error resetting password', {
 				extensions: {

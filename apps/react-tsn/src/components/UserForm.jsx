@@ -134,7 +134,7 @@ const UserForm = (props) => {
 			{props.formType !== 'reset' && (
 				<Link to={'/reset'}>
 					<p>
-						<Button>Password Reset</Button>
+						<Button>Reset Password</Button>
 					</p>
 				</Link>
 			)}
