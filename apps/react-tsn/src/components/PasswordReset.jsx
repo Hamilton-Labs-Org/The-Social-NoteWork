@@ -75,7 +75,7 @@ const Container = styled.div`
 	}
 `;
 
-const PasswordReset = () => {
+const PasswordReset = (props) => {
 	useEffect(() => {
 		// update the document title
 		document.title = 'Sign In — Confirm Reset Password';
@@ -166,13 +166,22 @@ const PasswordReset = () => {
 					</p>
 					<Wrapper>
 						<h2>Enter Your New Password</h2>
-						<Form>
+						<Form
+							onSubmit={(event) => {
+								event.preventDefault();
+								props.action({
+									variables: {
+										...values,
+									},
+								});
+							}}
+						>
 							<>
 								<label htmlFor="newPassword">New Password:</label>
 								<input
 									required
 									type="password"
-									id="newPassword"
+									id="password"
 									name="new password"
 									placeholder="new password"
 									onChange={onChange}
@@ -193,7 +202,7 @@ const PasswordReset = () => {
 				</Container>
 			) : (
 				<div>
-					<h1>Password Reset Link Not Found</h1>
+					<h1>Password Reset Link Not Found or Invalid</h1>
 					<p></p>
 					<h2>Please Try again.</h2>
 				</div>

@@ -28,15 +28,15 @@ const ResetPassword = (props) => {
 			localStorage.clear();
 			// change isLoggedIn to false
 			// isLoggedInVar(false);
-			localStorage.setItem('token', data.resetPassword);
-			navigate('/');
+			// localStorage.setItem('token', data.resetPassword);
+			// navigate('/');
 			// console.log the JSON Web Token when the mutation is complete
 			// localStorage.setItem('token', data.signUp);
 			// isLoggedInVar(true);
 			// redirect the user to the homepage
 			// props.history.push("/");
 			console.log(data);
-			refreshPage();
+			// refreshPage();
 		},
 	});
 

@@ -294,7 +294,6 @@ export default {
 			// );
 			// return true;
 			// return user;
-			return jwt.sign({id: user._id}, process.env.JWT_SECRET);
 		} catch (err) {
 			throw new GraphQLError('Error resetting password', {
 				extensions: {
