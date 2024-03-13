@@ -143,6 +143,7 @@ const PasswordReset = (props) => {
 
 	const navigate = useNavigate();
 	const [updatePassword, {loading, error}] = useMutation(UPDATE_PASSWORD, {
+		errorPolicy: 'all',
 		variables: {
 			id: param.id,
 			...values,
