@@ -145,6 +145,7 @@ const PasswordReset = (props) => {
 	const [updatePassword, {loading, error}] = useMutation(UPDATE_PASSWORD, {
 		variables: {
 			id: param.id,
+			...values,
 		},
 		onCompleted: (data) => {
 			refreshPage();
@@ -174,12 +175,12 @@ const PasswordReset = (props) => {
 							onSubmit={(event) => {
 								event.preventDefault();
 								console.log(event);
-								updatePassword({
-									variables: {
-										...values,
-									},
-								});
-								setValues('');
+								updatePassword();
+								// updatePassword({
+								// 	variables: {
+								// 		...values,
+								// 	},
+								// });
 							}}
 						>
 							<>
