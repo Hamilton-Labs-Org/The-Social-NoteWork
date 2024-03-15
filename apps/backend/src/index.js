@@ -38,7 +38,10 @@ const server = new ApolloServer({
 	plugins: [ApolloServerPluginDrainHttpServer({httpServer})],
 	formatError: (formattedError, error) => {
 		// https://www.apollographql.com/docs/apollo-server/data/errors/#for-client-responses
-		return unwrapResolverError(error);
+		if (unwrapResolverError(error)) {
+			return unwrapResolverError(error);
+		}
+		return formattedError;
 	},
 });
 

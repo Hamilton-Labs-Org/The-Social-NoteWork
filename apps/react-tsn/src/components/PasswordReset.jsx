@@ -147,11 +147,12 @@ const PasswordReset = (props) => {
 			id: param.id,
 		},
 		onCompleted: (data) => {
-			// refreshPage();
+			refreshPage();
 			// navigate('/');
 			console.log(data);
 		},
 	});
+
 	return (
 		<>
 			{validUrl ? (
@@ -172,11 +173,13 @@ const PasswordReset = (props) => {
 						<Form
 							onSubmit={(event) => {
 								event.preventDefault();
+								console.log(event);
 								updatePassword({
 									variables: {
 										...values,
 									},
 								});
+								setValues('');
 							}}
 						>
 							<>
