@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import {useQuery} from '@apollo/client';
 import {GET_ME} from '../gql/query';
-import {RESET_PASSWORD} from '../gql/mutation';
+import {UPDATE_PASSWORD} from '../gql/mutation';
 import Button from './Button';
 import styled from 'styled-components';
 
@@ -90,7 +90,7 @@ const PasswordReset = () => {
 			[event.target.name]: event.target.value,
 		});
 	};
-	const [validUrl, setValidUrl] = useState('');
+	const [validUrl, setValidUrl] = useState();
 	const param = useParams();
 	useEffect(() => {
 		const passwordResetUrl = async () => {
@@ -138,6 +138,16 @@ const PasswordReset = () => {
 			{validUrl ? (
 				<Container>
 					<h1>Confirm Password Reset</h1>
+					<p>
+						Id:
+						<br />
+						{param.id}
+					</p>
+					<p>
+						Token:
+						<br />
+						{param.token}
+					</p>
 					<Wrapper>
 						<h2>Enter Your New Password</h2>
 						<Form>
@@ -152,7 +162,7 @@ const PasswordReset = () => {
 									onChange={onChange}
 								/>
 							</>
-							<label htmlFor="confirmPassword">Confirm Password: {}</label>
+							<label htmlFor="confirmPassword">Confirm Password:</label>
 							<input
 								required
 								type="password"

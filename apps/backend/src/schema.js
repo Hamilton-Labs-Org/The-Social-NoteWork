@@ -56,6 +56,7 @@ const typeDefs = gql`
 		): String!
 		toggleFavorite(id: ID!): Note!
 		resetPassword(username: String!, email: String!): String!
+		updatePassword(id: ID!, password: String!): String!
 	}
 `;
 

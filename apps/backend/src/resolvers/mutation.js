@@ -195,7 +195,7 @@ export default {
 			}
 
 			return res.status(400).send({
-				message: 'An Email sent to your account please verify',
+				message: 'An Email was sent to your account please verify',
 			});
 		}
 
@@ -294,7 +294,25 @@ export default {
 			// );
 			// return true;
 			// return user;
-			http: return jwt.sign({id: user._id}, process.env.JWT_SECRET);
+			return jwt.sign({id: user._id}, process.env.JWT_SECRET);
+		} catch (err) {
+			throw new GraphQLError('Error resetting password', {
+				extensions: {
+					code: 'FORBIDDEN',
+				},
+			});
+		}
+	},
+	updatePassword: async (parent, {id, password}, {models}) => {
+		try {
+			// hash the password
+			const hashed = await bcrypt.hash(password, 10);
+			// find the user by id and update the password
+			await models.User.findByIdAndUpdate(
+				{_id: id},
+				{password: hashed},
+			);
+			console.log('Password updated successfully.');
 		} catch (err) {
 			throw new GraphQLError('Error resetting password', {
 				extensions: {

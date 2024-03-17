@@ -72,6 +72,11 @@ const RESET_PASSWORD = gql`
 		resetPassword(username: $username, email: $email)
 	}
 `;
+const UPDATE_PASSWORD = gql`
+	mutation updatePassword($id: ID!, $password: String!) {
+		updatePassword(id: $id, password: $password)
+	}
+`;
 
 export {
 	SIGNUP_USER,
@@ -81,4 +86,5 @@ export {
 	DELETE_NOTE,
 	TOGGLE_FAVORITE,
 	RESET_PASSWORD,
+	UPDATE_PASSWORD,
 };

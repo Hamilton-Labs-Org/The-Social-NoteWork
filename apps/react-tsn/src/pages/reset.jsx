@@ -22,7 +22,6 @@ const ResetPassword = (props) => {
 	// add the mutation hook
 	const [resetPassword, {loading, error}] = useMutation(RESET_PASSWORD, {
 		onCompleted: (data) => {
-			// refreshPage();
 			// collect the garbage
 			// client.cache.gc();
 			// remove the token and everything in local storage
@@ -37,6 +36,7 @@ const ResetPassword = (props) => {
 			// redirect the user to the homepage
 			// props.history.push("/");
 			console.log(data);
+			refreshPage();
 		},
 	});
 
