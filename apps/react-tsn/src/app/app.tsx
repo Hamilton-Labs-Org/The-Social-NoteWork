@@ -62,7 +62,6 @@ export function App() {
 	return (
 		<ApolloProvider client={client}>
 			<StyledApp>
-				{/* <NxWelcome title="react-tsn" /> */}
 				<GlobalStyle />
 				<Pages />
 			</StyledApp>
