@@ -145,9 +145,9 @@ const PasswordReset = (props) => {
 	const [updatePassword, {loading, error}] = useMutation(UPDATE_PASSWORD, {
 		onCompleted: (data) => {
 			localStorage.clear();
-			refreshPage();
 			// navigate('/');
 			console.log(data);
+			refreshPage();
 		},
 	});
 

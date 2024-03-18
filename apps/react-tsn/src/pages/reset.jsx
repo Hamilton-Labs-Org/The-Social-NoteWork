@@ -24,7 +24,6 @@ const ResetPassword = (props) => {
 		onCompleted: (data) => {
 			// collect the garbage
 			// client.cache.gc();
-			// remove the token and everything in local storage
 			localStorage.clear();
 			// change isLoggedIn to false
 			// isLoggedInVar(false);
@@ -36,7 +35,7 @@ const ResetPassword = (props) => {
 			// redirect the user to the homepage
 			// props.history.push("/");
 			console.log(data);
-			// refreshPage();
+			refreshPage();
 		},
 	});
 
