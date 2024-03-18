@@ -253,11 +253,11 @@ export default {
 		}
 	},
 	resetPassword: async (parent, {username, email}, {models}) => {
-		if (email) {
-			// normalize email address
-			email = email.trim().toLowerCase();
-		}
 		try {
+			if (email) {
+				// normalize email address
+				email = email.trim().toLowerCase();
+			}
 			const user = await models.User.findOne({email: email});
 			// if no user is found, throw an error
 			if (!user) {
@@ -286,7 +286,6 @@ export default {
 				}
 				console.log('Reset link sent for email of user: ', username);
 			}
-
 			// const hashedPassword = await bcrypt.hash(newPassword, 12);
 			// await models.User.update(
 			// 	{password: hashedPassword},

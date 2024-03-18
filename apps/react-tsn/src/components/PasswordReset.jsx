@@ -143,7 +143,6 @@ const PasswordReset = (props) => {
 
 	const navigate = useNavigate();
 	const [updatePassword, {loading, error}] = useMutation(UPDATE_PASSWORD, {
-		errorPolicy: 'all',
 		variables: {
 			id: param.id,
 			...values,
@@ -176,7 +175,13 @@ const PasswordReset = (props) => {
 							onSubmit={(event) => {
 								event.preventDefault();
 								console.log(event);
-								updatePassword();
+								try {
+									updatePassword();
+								} catch {
+									error.graphQLErrors.map((error) => {
+										return error.message;
+									});
+								}
 								// updatePassword({
 								// 	variables: {
 								// 		...values,
