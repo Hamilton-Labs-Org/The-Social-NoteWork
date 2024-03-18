@@ -143,11 +143,12 @@ const PasswordReset = (props) => {
 
 	const navigate = useNavigate();
 	const [updatePassword, {loading, error}] = useMutation(UPDATE_PASSWORD, {
-		// onCompleted: (data) => {
-		// 	refreshPage();
-		// 	// navigate('/');
-		// 	console.log(data);
-		// },
+		onCompleted: (data) => {
+			localStorage.clear();
+			refreshPage();
+			// navigate('/');
+			console.log(data);
+		},
 	});
 
 	return (
