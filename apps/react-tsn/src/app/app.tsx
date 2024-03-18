@@ -58,23 +58,6 @@ const client = new ApolloClient({
 	connectToDevTools: true,
 });
 
-// // configure Apollo Client
-// const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
-// 	link: from([
-// 		new HttpLink({
-// 			uri: uri,
-// 			headers: {
-// 				authorization: localStorage.getItem('token'),
-// 			},
-// 		}),
-// 		errorLink,
-// 	]),
-// 	cache,
-// 	resolvers: {},
-// 	typeDefs,
-// 	connectToDevTools: true,
-// });
-
 export function App() {
 	return (
 		<ApolloProvider client={client}>
