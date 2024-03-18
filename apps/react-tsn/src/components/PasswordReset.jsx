@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import {useParams, useNavigate} from 'react-router-dom';
-import {useMutation} from '@apollo/client';
+import {ApolloError, useMutation} from '@apollo/client';
 import {UPDATE_PASSWORD} from '../gql/mutation';
 import axios from 'axios';
 import Button from './Button';
@@ -143,15 +143,11 @@ const PasswordReset = (props) => {
 
 	const navigate = useNavigate();
 	const [updatePassword, {loading, error}] = useMutation(UPDATE_PASSWORD, {
-		variables: {
-			id: param.id,
-			...values,
-		},
-		onCompleted: (data) => {
-			refreshPage();
-			// navigate('/');
-			console.log(data);
-		},
+		// onCompleted: (data) => {
+		// 	refreshPage();
+		// 	// navigate('/');
+		// 	console.log(data);
+		// },
 	});
 
 	return (
@@ -175,13 +171,12 @@ const PasswordReset = (props) => {
 							onSubmit={(event) => {
 								event.preventDefault();
 								console.log(event);
-								try {
-									updatePassword();
-								} catch {
-									error.graphQLErrors.map((error) => {
-										return error.message;
-									});
-								}
+								updatePassword({
+									variables: {
+										id: param.id,
+										...values,
+									},
+								});
 								// updatePassword({
 								// 	variables: {
 								// 		...values,

@@ -253,11 +253,11 @@ export default {
 		}
 	},
 	resetPassword: async (parent, {username, email}, {models}) => {
+		if (email) {
+			// normalize email address
+			email = email.trim().toLowerCase();
+		}
 		try {
-			if (email) {
-				// normalize email address
-				email = email.trim().toLowerCase();
-			}
 			const user = await models.User.findOne({email: email});
 			// if no user is found, throw an error
 			if (!user) {
@@ -286,14 +286,10 @@ export default {
 				}
 				console.log('Reset link sent for email of user: ', username);
 			}
-			// const hashedPassword = await bcrypt.hash(newPassword, 12);
-			// await models.User.update(
-			// 	{password: hashedPassword},
-			// 	{where: {id: userId}},
-			// );
-			// return true;
-			// return user;
+			// create and return the json web token
+			return jwt.sign({id: user._id}, process.env.JWT_SECRET);
 		} catch (err) {
+			console.log(err);
 			throw new GraphQLError('Error resetting password', {
 				extensions: {
 					code: 'FORBIDDEN',
@@ -311,9 +307,11 @@ export default {
 				{password: hashed},
 			);
 			console.log('Password updated successfully.');
+			// create and return the json web token
+			return jwt.sign({id: id}, process.env.JWT_SECRET);
 		} catch (err) {
-			console.log('Error resetting password');
-			throw new GraphQLError('Error resetting password', {
+			console.log(err);
+			throw new GraphQLError('Error updating password', {
 				extensions: {
 					code: 'FORBIDDEN',
 				},
