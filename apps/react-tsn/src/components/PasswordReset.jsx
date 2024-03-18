@@ -129,7 +129,7 @@ const PasswordReset = (props) => {
 
 				console.log(data);
 				console.log(validUrl);
-				if (url) {
+				if (data) {
 					setValidUrl(true);
 				}
 				console.log(validUrl);
@@ -143,6 +143,9 @@ const PasswordReset = (props) => {
 
 	const navigate = useNavigate();
 	const [updatePassword, {loading, error}] = useMutation(UPDATE_PASSWORD, {
+		variables: {
+			id: param.id,
+		},
 		onCompleted: (data) => {
 			// refreshPage();
 			// navigate('/');
@@ -169,7 +172,7 @@ const PasswordReset = (props) => {
 						<Form
 							onSubmit={(event) => {
 								event.preventDefault();
-								props.action({
+								updatePassword({
 									variables: {
 										...values,
 									},
@@ -182,7 +185,7 @@ const PasswordReset = (props) => {
 									required
 									type="password"
 									id="password"
-									name="new password"
+									name="password"
 									placeholder="new password"
 									onChange={onChange}
 								/>
@@ -196,7 +199,7 @@ const PasswordReset = (props) => {
 								placeholder="confirm password"
 								onChange={onChange}
 							/>
-							<Button action={updatePassword}>Submit</Button>
+							<Button type="submit">Submit</Button>
 						</Form>
 					</Wrapper>
 				</Container>
@@ -207,6 +210,9 @@ const PasswordReset = (props) => {
 					<h2>Please Try again.</h2>
 				</div>
 			)}
+			{loading && <p>Loading...</p>}
+			{/* if there is an error, display a error message*/}{' '}
+			{error && <p>Error updating password!</p>}
 		</>
 	);
 };

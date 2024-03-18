@@ -284,7 +284,7 @@ export default {
 						url,
 					);
 				}
-				console.log('reset link sent for email of user: ', username);
+				console.log('Reset link sent for email of user: ', username);
 			}
 
 			// const hashedPassword = await bcrypt.hash(newPassword, 12);
@@ -313,6 +313,7 @@ export default {
 			);
 			console.log('Password updated successfully.');
 		} catch (err) {
+			console.log('Error resetting password');
 			throw new GraphQLError('Error resetting password', {
 				extensions: {
 					code: 'FORBIDDEN',

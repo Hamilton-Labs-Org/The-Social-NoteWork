@@ -1,6 +1,7 @@
 // pnpm install @apollo/server express graphql cors http graphql-tag
 import {ApolloServer} from '@apollo/server';
 import {expressMiddleware} from '@apollo/server/express4';
+import {unwrapResolverError} from '@apollo/server/errors';
 import {ApolloServerPluginDrainHttpServer} from '@apollo/server/plugin/drainHttpServer';
 import express from 'express';
 import http from 'http';
@@ -35,6 +36,10 @@ const server = new ApolloServer({
 	csrfPrevention: false,
 	validationRules: [depthLimit(5), createComplexityLimitRule(1000)],
 	plugins: [ApolloServerPluginDrainHttpServer({httpServer})],
+	formatError: (formattedError, error) => {
+		// https://www.apollographql.com/docs/apollo-server/data/errors/#for-client-responses
+		return unwrapResolverError(error);
+	},
 });
 
 await server.start();
@@ -123,9 +128,12 @@ app.use('/:id/reset/:token/', cors(), async (req, res, next) => {
 			userId: user._id,
 			token: req.params.token,
 		});
+		console.log('Token value is ', token);
 
-		if (!token)
-			return res.status(400).send({message: 'Invalid link'});
+		if (!token) {
+			console.log('Token value is ', token);
+			return res.status(400).send({message: 'Invalid reset link'});
+		}
 
 		// await user.updateOne({_id: user._id, verified: true});
 

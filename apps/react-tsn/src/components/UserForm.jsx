@@ -115,7 +115,7 @@ const UserForm = (props) => {
 							type="text"
 							id="username"
 							name="username"
-							placeholder="username"
+							placeholder="Username"
 							onChange={onChange}
 						/>
 						<label htmlFor="email">Email:</label>
