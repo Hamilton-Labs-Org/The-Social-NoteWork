@@ -12,7 +12,7 @@ import {GET_ME} from '../gql/query';
 function refreshPage() {
 	setTimeout(() => {
 		window.location.reload(false);
-	}, 35);
+	}, 15);
 	console.log('page to reload');
 }
 
@@ -25,35 +25,37 @@ const SignIn = (props) => {
 	const navigate = useNavigate();
 	const [signIn, {loading, error}] = useMutation(SIGNIN_USER, {
 		onCompleted: (data) => {
+			// navigate to homepage
+			navigate('/');
+			refreshPage();
 			// remove the token and everything in local storage
 			localStorage.clear('token');
 			// store the token
 			localStorage.setItem('token', data.signIn);
 			// Update the local cache
+			isLoggedInVar(false);
 			isLoggedInVar(true);
+			const isLoggedIn = isLoggedInVar();
+			console.log(isLoggedIn);
 			// redirect the user to the homepage
-			// navigate('/');
+			navigate('/');
 			console.log(data);
 			// refreshPage();
 		},
 	});
-	function GetUser() {
-		const {data, loading, error, refetch, networkStatus} =
-			useQuery(GET_ME, {
-				notifyOnNetworkStatusChange: true,
-				onCompleted: (data) => {
-					const user = data.me.username;
-					localStorage.setItem('username', user);
-					// Posthog event
-					posthog.capture('Login', {property: user});
-					navigate('/');
-					refreshPage();
-				},
-			}) || {};
-		if (networkStatus === 4) return <p>fetching!</p>;
-	}
 
-	GetUser();
+	const {me} =
+		useQuery(GET_ME, {
+			notifyOnNetworkStatusChange: true,
+			onCompleted: (data) => {
+				const user = data.me.username;
+				localStorage.setItem('username', user);
+				// Posthog event
+				posthog.capture('Login', {property: user});
+				navigate('/');
+				refreshPage();
+			},
+		}) || {};
 	return (
 		<>
 			<UserForm action={signIn} formType="signIn" />
