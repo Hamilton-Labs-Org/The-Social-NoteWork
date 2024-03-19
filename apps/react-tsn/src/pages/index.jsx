@@ -28,7 +28,7 @@ const Pages = () => {
 			<Routes>
 				<Route
 					exact
-					path="/"
+					path="/*"
 					element={
 						<ProtectedRoute isAllowed={isLoggedInVar()} redirectTo="/signin">
 							<Home />

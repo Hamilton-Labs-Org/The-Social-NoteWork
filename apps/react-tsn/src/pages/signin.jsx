@@ -12,7 +12,7 @@ import {GET_ME} from '../gql/query';
 function refreshPage() {
 	setTimeout(() => {
 		window.location.reload(false);
-	}, 15);
+	}, 35);
 	console.log('page to reload');
 }
 
@@ -25,12 +25,9 @@ const SignIn = (props) => {
 	const navigate = useNavigate();
 	const [signIn, {loading, error}] = useMutation(SIGNIN_USER, {
 		onCompleted: (data) => {
-			// navigate to homepage
-			navigate('/');
-			refreshPage();
 			// remove the token and everything in local storage
 			localStorage.clear('token');
-			// store the token
+			// restore a new token
 			localStorage.setItem('token', data.signIn);
 			// Update the local cache
 			isLoggedInVar(false);
@@ -40,7 +37,7 @@ const SignIn = (props) => {
 			// redirect the user to the homepage
 			navigate('/');
 			console.log(data);
-			// refreshPage();
+			refreshPage();
 		},
 	});
 
@@ -52,8 +49,6 @@ const SignIn = (props) => {
 				localStorage.setItem('username', user);
 				// Posthog event
 				posthog.capture('Login', {property: user});
-				navigate('/');
-				refreshPage();
 			},
 		}) || {};
 	return (

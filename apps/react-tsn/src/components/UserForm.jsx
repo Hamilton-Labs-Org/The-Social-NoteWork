@@ -86,15 +86,6 @@ const UserForm = (props) => {
 				)}
 				{props.formType === 'signIn' && (
 					<>
-						<label htmlFor="username">Username:</label>
-						<input
-							required
-							type="text"
-							id="username"
-							name="username"
-							placeholder="username"
-							onChange={onChange}
-						/>
 						<label htmlFor="email">Email:</label>
 						<input
 							required
