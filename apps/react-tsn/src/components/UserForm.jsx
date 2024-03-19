@@ -95,6 +95,15 @@ const UserForm = (props) => {
 							placeholder="username"
 							onChange={onChange}
 						/>
+						<label htmlFor="email">Email:</label>
+						<input
+							required
+							type="email"
+							id="email"
+							name="email"
+							placeholder="Email"
+							onChange={onChange}
+						/>
 						<label htmlFor="password">Password:</label>
 						<input
 							required

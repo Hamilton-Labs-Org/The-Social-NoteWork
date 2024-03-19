@@ -166,7 +166,7 @@ export default {
 		});
 		// if no user is found, throw an authentication error
 		if (!user) {
-			throw new GraphQLError('Error signing in', {
+			throw new GraphQLError('User not here', {
 				extensions: {
 					code: 'UNAUTHENTICATED',
 				},
@@ -175,8 +175,7 @@ export default {
 		// if the passwords don't match, throw an authentication error
 		const valid = await bcrypt.compare(password, user.password);
 		if (!valid) {
-			// throw new AuthenticationError('Error signing in');
-			throw new GraphQLError('Error signing in', {
+			throw new GraphQLError('Password not here', {
 				extensions: {
 					code: 'UNAUTHENTICATED',
 				},

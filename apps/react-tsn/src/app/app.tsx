@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {
 	ApolloClient,
 	ApolloProvider,
-	createHttpLink,
+	HttpLink,
 	gql,
 	from,
 } from '@apollo/client';
@@ -19,7 +19,7 @@ const StyledApp = styled.div`
 
 const uri = import.meta.env.VITE_REACT_APP_API_URI;
 
-const httpLink = createHttpLink({
+const httpLink = new HttpLink({
 	uri: uri,
 });
 const authLink = setContext((_, {headers}) => {
@@ -51,7 +51,7 @@ const errorLink = onError(({graphQLErrors, networkError}) => {
 });
 
 const client = new ApolloClient({
-	link: from([authLink.concat(httpLink), errorLink]),
+	link: from([authLink, errorLink, httpLink]),
 	cache: cache,
 	resolvers: {},
 	typeDefs,
