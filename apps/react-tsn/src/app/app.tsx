@@ -40,6 +40,7 @@ export const typeDefs = gql`
 	}
 `;
 
+// TODO: Add location and paths to the errors.
 const errorLink = onError(({graphQLErrors, networkError}) => {
 	if (graphQLErrors)
 		graphQLErrors.forEach(({message, locations, path}) =>
