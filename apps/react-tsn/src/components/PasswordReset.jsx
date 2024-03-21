@@ -109,6 +109,7 @@ const PasswordReset = (props) => {
 				// Notify the user upon successful db update.
 				// Return the user to the login screen.
 				// Send a notification email that the user's password was updated? (optional)
+				// Remember to delete these comments
 
 				const url = `http://localhost:4000/${param.id}/reset/${param.token}`;
 				const options = {
