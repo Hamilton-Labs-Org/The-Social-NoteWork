@@ -31,33 +31,33 @@ const UserActions = styled.div`
 `;
 
 const Note = ({note}) => {
-	const {loading, error, data} = useQuery(IS_LOGGED_IN);
-	// if the data is loading, display a loading message
-	if (loading) return <p>Loading...</p>;
-	// if there is an error fetching the data, display an error message
-	if (error) return <p>Error!</p>;
-	return (
-		<StyledNote>
-			<MetaData>
-				<MetaInfo>
-					<em>by</em> {note.author.username}
-					<br />
-					{format(note.createdAt, 'MMM Do yyyy')}
-				</MetaInfo>
-				{data.isLoggedIn ? (
-					<UserActions>
-						<NoteUser note={note} />
-					</UserActions>
-				) : (
-					<UserActions>
-						<em>Favorites:</em> {note.favoriteCount}
-					</UserActions>
-				)}
-			</MetaData>
-			<Markdown children={note.content} />
-			<br />
-		</StyledNote>
-	);
+  const {loading, error, data} = useQuery(IS_LOGGED_IN);
+  // if the data is loading, display a loading message
+  if (loading) return <p>Loading...</p>;
+  // if there is an error fetching the data, display an error message
+  if (error) return <p>Error!</p>;
+  return (
+    <StyledNote>
+      <MetaData>
+        <MetaInfo>
+          <em>by</em> {note.author.username}
+          <br />
+          {format(note.createdAt, 'MMM Do yyyy')}
+        </MetaInfo>
+        {data.isLoggedIn ? (
+          <UserActions>
+            <NoteUser note={note} />
+          </UserActions>
+        ) : (
+          <UserActions>
+            <em>Favorites:</em> {note.favoriteCount}
+          </UserActions>
+        )}
+      </MetaData>
+      <Markdown children={note.content} />
+      <br />
+    </StyledNote>
+  );
 };
 
 export default Note;

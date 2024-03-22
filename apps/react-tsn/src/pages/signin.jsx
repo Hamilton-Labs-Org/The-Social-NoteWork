@@ -10,56 +10,56 @@ import {SIGNIN_USER} from '../gql/mutation';
 import {GET_ME} from '../gql/query';
 
 function refreshPage() {
-	setTimeout(() => {
-		window.location.reload(false);
-	}, 35);
-	console.log('page to reload');
+  setTimeout(() => {
+    window.location.reload(false);
+  }, 35);
+  console.log('page to reload');
 }
 
 const SignIn = (props) => {
-	useEffect(() => {
-		// update the document title
-		document.title = 'Sign In — NoteWork';
-	});
+  useEffect(() => {
+    // update the document title
+    document.title = 'Sign In — NoteWork';
+  });
 
-	const navigate = useNavigate();
-	const [signIn, {loading, error}] = useMutation(SIGNIN_USER, {
-		onCompleted: (data) => {
-			// remove the token and everything in local storage
-			localStorage.clear('token');
-			// restore a new token
-			localStorage.setItem('token', data.signIn);
-			// Update the local cache
-			isLoggedInVar(false);
-			isLoggedInVar(true);
-			const isLoggedIn = isLoggedInVar();
-			console.log(isLoggedIn);
-			// redirect the user to the homepage
-			navigate('/');
-			console.log(data);
-			refreshPage();
-		},
-	});
+  const navigate = useNavigate();
+  const [signIn, {loading, error}] = useMutation(SIGNIN_USER, {
+    onCompleted: (data) => {
+      // remove the token and everything in local storage
+      localStorage.clear('token');
+      // restore a new token
+      localStorage.setItem('token', data.signIn);
+      // Update the local cache
+      isLoggedInVar(false);
+      isLoggedInVar(true);
+      const isLoggedIn = isLoggedInVar();
+      console.log(isLoggedIn);
+      // redirect the user to the homepage
+      navigate('/');
+      console.log(data);
+      refreshPage();
+    },
+  });
 
-	const {me} =
+  const {me} =
 		useQuery(GET_ME, {
-			notifyOnNetworkStatusChange: true,
-			onCompleted: (data) => {
-				const user = data.me.username;
-				localStorage.setItem('username', user);
-				// Posthog event
-				posthog.capture('Login', {property: user});
-			},
+		  notifyOnNetworkStatusChange: true,
+		  onCompleted: (data) => {
+		    const user = data.me.username;
+		    localStorage.setItem('username', user);
+		    // Posthog event
+		    posthog.capture('Login', {property: user});
+		  },
 		}) || {};
-	return (
-		<>
-			<UserForm action={signIn} formType="signIn" />
-			{/* if the data is loading, display a loading message*/}{' '}
-			{loading && <p>Loading...</p>}
-			{/* if there is an error, display a error message*/}{' '}
-			{error && <p>Error signing in!</p>}
-		</>
-	);
+  return (
+    <>
+      <UserForm action={signIn} formType="signIn" />
+      {/* if the data is loading, display a loading message*/}{' '}
+      {loading && <p>Loading...</p>}
+      {/* if there is an error, display a error message*/}{' '}
+      {error && <p>Error signing in!</p>}
+    </>
+  );
 };
 
 export default SignIn;

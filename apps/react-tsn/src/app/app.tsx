@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import {
-	ApolloClient,
-	ApolloProvider,
-	HttpLink,
-	gql,
-	from,
+  ApolloClient,
+  ApolloProvider,
+  HttpLink,
+  gql,
+  from,
 } from '@apollo/client';
 import {setContext} from '@apollo/client/link/context';
 import {onError} from '@apollo/client/link/error';
@@ -20,18 +20,18 @@ const StyledApp = styled.div`
 const uri = import.meta.env.VITE_REACT_APP_API_URI;
 
 const httpLink = new HttpLink({
-	uri: uri,
+  uri: uri,
 });
 const authLink = setContext((_, {headers}) => {
-	// get the authentication token from local storage if it exists
-	const token = localStorage.getItem('token');
-	// return the headers to the context so httpLink can read them
-	return {
-		headers: {
-			...headers,
-			authorization: localStorage.getItem('token') || '',
-		},
-	};
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('token');
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: localStorage.getItem('token') || '',
+    },
+  };
 });
 
 export const typeDefs = gql`
@@ -42,32 +42,32 @@ export const typeDefs = gql`
 
 // TODO: Add location and paths to the errors.
 const errorLink = onError(({graphQLErrors, networkError}) => {
-	if (graphQLErrors)
-		graphQLErrors.forEach(({message, locations, path}) =>
-			console.log(
+  if (graphQLErrors)
+    graphQLErrors.forEach(({message, locations, path}) =>
+      console.log(
 				`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-			),
-		);
-	if (networkError) console.error(`[Network error]: ${networkError}`);
+      ),
+    );
+  if (networkError) console.error(`[Network error]: ${networkError}`);
 });
 
 const client = new ApolloClient({
-	link: from([authLink, errorLink, httpLink]),
-	cache: cache,
-	resolvers: {},
-	typeDefs,
-	connectToDevTools: true,
+  link: from([authLink, errorLink, httpLink]),
+  cache: cache,
+  resolvers: {},
+  typeDefs,
+  connectToDevTools: true,
 });
 
 export function App() {
-	return (
-		<ApolloProvider client={client}>
-			<StyledApp>
-				<GlobalStyle />
-				<Pages />
-			</StyledApp>
-		</ApolloProvider>
-	);
+  return (
+    <ApolloProvider client={client}>
+      <StyledApp>
+        <GlobalStyle />
+        <Pages />
+      </StyledApp>
+    </ApolloProvider>
+  );
 }
 
 export default App;
