@@ -1,5 +1,11 @@
 # Changelog
 
+### v0.2.62
+
+- Added [Password Reset](https://github.com/HamiltonMultimedia/The-Social-NoteWork/issues/31) feature
+- Added Email Verification feature
+- Added [Wiki / Docs](https://github.com/HamiltonMultimedia/The-Social-NoteWork/wiki)
+
 ### v0.2.28  
 
 - Integrated metrics & event tracking via [PostHog](https://posthog.com/)
