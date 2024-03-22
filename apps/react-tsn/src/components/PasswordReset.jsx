@@ -76,147 +76,147 @@ const Container = styled.div`
 `;
 
 const PasswordReset = (props) => {
-	useEffect(() => {
-		// update the document title
-		document.title = 'Sign In — Confirm Reset Password';
-	});
+  useEffect(() => {
+    // update the document title
+    document.title = 'Sign In — Confirm Reset Password';
+  });
 
-	function refreshPage() {
-		setTimeout(() => {
-			window.location.reload(false);
-		}, 35);
-		console.log('page to reload');
-	}
+  function refreshPage() {
+    setTimeout(() => {
+      window.location.reload(false);
+    }, 35);
+    console.log('page to reload');
+  }
 
-	// set the default state of the form
-	const [values, setValues] = useState();
-	// update the state when a user types in the form
-	const onChange = (event) => {
-		setValues({
-			...values,
-			[event.target.name]: event.target.value,
-		});
-	};
-	const [validUrl, setValidUrl] = useState();
-	const param = useParams();
-	useEffect(() => {
-		const passwordResetUrl = async () => {
-			try {
-				// Read in user's token from the email link
-				// Verify if it is an actual user
-				// Show the reset form only if the user is verified
-				// Update the database once the user submits the form.
-				// Notify the user upon successful db update.
-				// Return the user to the login screen.
-				// Send a notification email that the user's password was updated? (optional)
-				// Remember to delete these comments
+  // set the default state of the form
+  const [values, setValues] = useState();
+  // update the state when a user types in the form
+  const onChange = (event) => {
+    setValues({
+      ...values,
+      [event.target.name]: event.target.value,
+    });
+  };
+  const [validUrl, setValidUrl] = useState();
+  const param = useParams();
+  useEffect(() => {
+    const passwordResetUrl = async () => {
+      try {
+        // Read in user's token from the email link
+        // Verify if it is an actual user
+        // Show the reset form only if the user is verified
+        // Update the database once the user submits the form.
+        // Notify the user upon successful db update.
+        // Return the user to the login screen.
+        // Send a notification email that the user's password was updated? (optional)
+        // Remember to delete these comments
 
-				const url = `http://localhost:4000/${param.id}/reset/${param.token}`;
-				const options = {
-					method: 'GET',
-					url: url,
-					headers: {
-						'content-type': [
-							'application/json',
-							'application/x-www-form-urlencoded',
-						],
-						// csrfPrevention: 'false',
-						// 'Apollo-Require-Preflight': 'true',
-						// Authoriaztion: 'Bearer ${token}',
-					},
-				};
+        const url = `http://localhost:4000/${param.id}/reset/${param.token}`;
+        const options = {
+          method: 'GET',
+          url: url,
+          headers: {
+            'content-type': [
+              'application/json',
+              'application/x-www-form-urlencoded',
+            ],
+            // csrfPrevention: 'false',
+            // 'Apollo-Require-Preflight': 'true',
+            // Authoriaztion: 'Bearer ${token}',
+          },
+        };
 
-				const data = await axios(options);
+        const data = await axios(options);
 
-				console.log(data);
-				console.log(validUrl);
-				if (data) {
-					setValidUrl(true);
-				}
-				console.log(validUrl);
-			} catch (error) {
-				console.log(error);
-				setValidUrl(false);
-			}
-		};
-		passwordResetUrl();
-	}, [param]);
+        console.log(data);
+        console.log(validUrl);
+        if (data) {
+          setValidUrl(true);
+        }
+        console.log(validUrl);
+      } catch (error) {
+        console.log(error);
+        setValidUrl(false);
+      }
+    };
+    passwordResetUrl();
+  }, [param]);
 
-	const navigate = useNavigate();
-	const [updatePassword, {loading, error}] = useMutation(UPDATE_PASSWORD, {
-		onCompleted: (data) => {
-			localStorage.clear();
-			navigate('/');
-			console.log(data);
-			refreshPage();
-		},
-	});
+  const navigate = useNavigate();
+  const [updatePassword, {loading, error}] = useMutation(UPDATE_PASSWORD, {
+    onCompleted: (data) => {
+      localStorage.clear();
+      navigate('/');
+      console.log(data);
+      refreshPage();
+    },
+  });
 
-	return (
-		<>
-			{validUrl ? (
-				<Container>
-					<h1>Confirm Password Reset</h1>
-					<p>
+  return (
+    <>
+      {validUrl ? (
+        <Container>
+          <h1>Confirm Password Reset</h1>
+          <p>
 						Id:
-						<br />
-						{param.id}
-					</p>
-					<p>
+            <br />
+            {param.id}
+          </p>
+          <p>
 						Token:
-						<br />
-						{param.token}
-					</p>
-					<Wrapper>
-						<h2>Enter Your New Password</h2>
-						<Form
-							onSubmit={(event) => {
-								event.preventDefault();
-								console.log(event);
-								updatePassword({
-									variables: {
-										id: param.id,
-										...values,
-									},
-								});
-							}}
-						>
-							<>
-								<label htmlFor="newPassword">New Password:</label>
-								<input
-									required
-									type="password"
-									id="password"
-									name="password"
-									placeholder="new password"
-									onChange={onChange}
-								/>
-							</>
-							<label htmlFor="confirmPassword">Confirm Password:</label>
-							<input
-								required
-								type="password"
-								id="confirmPassword"
-								name="confirm Password"
-								placeholder="confirm password"
-								onChange={onChange}
-							/>
-							<Button type="submit">Submit</Button>
-						</Form>
-					</Wrapper>
-				</Container>
-			) : (
-				<div>
-					<h1>Password Reset Link Not Found or Invalid</h1>
-					<p></p>
-					<h2>Please Try again.</h2>
-				</div>
-			)}
-			{loading && <p>Loading...</p>}
-			{/* if there is an error, display a error message*/}{' '}
-			{error && <p>Error updating password!</p>}
-		</>
-	);
+            <br />
+            {param.token}
+          </p>
+          <Wrapper>
+            <h2>Enter Your New Password</h2>
+            <Form
+              onSubmit={(event) => {
+                event.preventDefault();
+                console.log(event);
+                updatePassword({
+                  variables: {
+                    id: param.id,
+                    ...values,
+                  },
+                });
+              }}
+            >
+              <>
+                <label htmlFor="newPassword">New Password:</label>
+                <input
+                  required
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="new password"
+                  onChange={onChange}
+                />
+              </>
+              <label htmlFor="confirmPassword">Confirm Password:</label>
+              <input
+                required
+                type="password"
+                id="confirmPassword"
+                name="confirm Password"
+                placeholder="confirm password"
+                onChange={onChange}
+              />
+              <Button type="submit">Submit</Button>
+            </Form>
+          </Wrapper>
+        </Container>
+      ) : (
+        <div>
+          <h1>Password Reset Link Not Found or Invalid</h1>
+          <p></p>
+          <h2>Please Try again.</h2>
+        </div>
+      )}
+      {loading && <p>Loading...</p>}
+      {/* if there is an error, display a error message*/}{' '}
+      {error && <p>Error updating password!</p>}
+    </>
+  );
 };
 
 export default PasswordReset;
