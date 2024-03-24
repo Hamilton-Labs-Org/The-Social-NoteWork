@@ -23,7 +23,7 @@ const typeDefs = gql`
 	type User {
 		id: ID!
 		username: String!
-		email: String!
+		email: String
 		avatar: String
 		notes: [Note!]!
 		favorites: [Note!]
@@ -55,7 +55,8 @@ const typeDefs = gql`
 			password: String!
 		): String!
 		toggleFavorite(id: ID!): Note!
-		resetPassword(userId: String!, newPassword: String!): String!
+		resetPassword(username: String!, email: String!): String!
+		updatePassword(id: ID!, password: String!): String!
 	}
 `;
 

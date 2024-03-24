@@ -32,11 +32,8 @@ const UserActions = styled.div`
 
 const Note = ({note}) => {
   const {loading, error, data} = useQuery(IS_LOGGED_IN);
-  if (loading)
   // if the data is loading, display a loading message
-  {
-    return <p>Loading...</p>;
-  }
+  if (loading) return <p>Loading...</p>;
   // if there is an error fetching the data, display an error message
   if (error) return <p>Error!</p>;
   return (

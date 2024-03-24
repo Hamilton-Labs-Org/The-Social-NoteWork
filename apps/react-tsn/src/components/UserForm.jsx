@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import Button from './Button';
@@ -33,10 +34,13 @@ const UserForm = (props) => {
       [event.target.name]: event.target.value,
     });
   };
+
   return (
     <Wrapper>
       {/* Display the appropriate form header */}
-      {props.formType === 'signup' ? <h2>Sign Up</h2> : <h2>Sign In</h2>}
+      {props.formType === 'signup' && <h2>Sign Up</h2>}
+      {props.formType === 'signIn' && <h2>Sign In</h2>}
+      {props.formType === 'reset' && <h2>Reset Password</h2>}
       {/* perform the mutation when a user submits the form */}
       <Form
         onSubmit={(event) => {
@@ -59,28 +63,81 @@ const UserForm = (props) => {
               placeholder="username"
               onChange={onChange}
             />
+            <label htmlFor="email">Email:</label>
+            <input
+              required
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              onChange={onChange}
+            />
+            <label htmlFor="password">Password:</label>
+            <input
+              required
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              onChange={onChange}
+            />
+            <Button type="submit">Submit</Button>
           </>
         )}
-        <label htmlFor="email">Email:</label>
-        <input
-          required
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Email"
-          onChange={onChange}
-        />
-        <label htmlFor="password">Password:</label>
-        <input
-          required
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Password"
-          onChange={onChange}
-        />
-        <Button type="submit">Submit</Button>
+        {props.formType === 'signIn' && (
+          <>
+            <label htmlFor="email">Email:</label>
+            <input
+              required
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              onChange={onChange}
+            />
+            <label htmlFor="password">Password:</label>
+            <input
+              required
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              onChange={onChange}
+            />
+            <Button type="submit">Submit</Button>
+          </>
+        )}
+        {props.formType === 'reset' && (
+          <>
+            <label htmlFor="username">Username:</label>
+            <input
+              required
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Username"
+              onChange={onChange}
+            />
+            <label htmlFor="email">Email:</label>
+            <input
+              required
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              onChange={onChange}
+            />
+            <Button type="submit">Reset Password</Button>
+          </>
+        )}
       </Form>
+      {props.formType !== 'reset' && (
+        <Link to={'/reset'}>
+          <p>
+            <Button>Reset Password</Button>
+          </p>
+        </Link>
+      )}
     </Wrapper>
   );
 };

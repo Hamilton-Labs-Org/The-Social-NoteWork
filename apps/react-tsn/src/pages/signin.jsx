@@ -25,26 +25,30 @@ const SignIn = (props) => {
   const navigate = useNavigate();
   const [signIn, {loading, error}] = useMutation(SIGNIN_USER, {
     onCompleted: (data) => {
-      refreshPage();
       // remove the token and everything in local storage
-      localStorage.clear();
-      // store the token
+      localStorage.clear('token');
+      // restore a new token
       localStorage.setItem('token', data.signIn);
       // Update the local cache
+      isLoggedInVar(false);
       isLoggedInVar(true);
+      const isLoggedIn = isLoggedInVar();
+      console.log(isLoggedIn);
       // redirect the user to the homepage
       navigate('/');
+      console.log(data);
+      refreshPage();
     },
   });
 
-  const {data} =
+  const {me} =
 		useQuery(GET_ME, {
+		  notifyOnNetworkStatusChange: true,
 		  onCompleted: (data) => {
 		    const user = data.me.username;
 		    localStorage.setItem('username', user);
 		    // Posthog event
 		    posthog.capture('Login', {property: user});
-		    navigate('/');
 		  },
 		}) || {};
   return (

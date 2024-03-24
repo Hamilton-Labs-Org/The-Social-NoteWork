@@ -1,37 +1,59 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import {
   ApolloClient,
-  NormalizedCacheObject,
   ApolloProvider,
   HttpLink,
   gql,
-} from "@apollo/client";
+  from,
+} from '@apollo/client';
+import {setContext} from '@apollo/client/link/context';
+import {onError} from '@apollo/client/link/error';
 
-import GlobalStyle from "../components/GlobalStyle.jsx";
-import { cache } from "./cache.js";
-import Pages from "../pages";
+import GlobalStyle from '../components/GlobalStyle.jsx';
+import {cache} from './cache.js';
+import Pages from '../pages';
 
 const StyledApp = styled.div`
-  // Your style here
+	// Your style here
 `;
 
 const uri = import.meta.env.VITE_REACT_APP_API_URI;
 
-export const typeDefs = gql`
-   extend type Query {
-     isLoggedIn: Boolean!
-   }
- `;
-
-// configure Apollo Client
-const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
-  link: new HttpLink({
-    uri: uri,
+const httpLink = new HttpLink({
+  uri: uri,
+});
+const authLink = setContext((_, {headers}) => {
+  // get the authentication token from local storage if it exists
+  const token = localStorage.getItem('token');
+  // return the headers to the context so httpLink can read them
+  return {
     headers: {
-      authorization: localStorage.getItem("token"),
+      ...headers,
+      authorization: localStorage.getItem('token') || '',
     },
-  }),
-  cache,
+  };
+});
+
+export const typeDefs = gql`
+	extend type Query {
+		isLoggedIn: Boolean!
+	}
+`;
+
+// TODO: Add location and paths to the errors.
+const errorLink = onError(({graphQLErrors, networkError}) => {
+  if (graphQLErrors)
+    graphQLErrors.forEach(({message, locations, path}) =>
+      console.log(
+				`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+      ),
+    );
+  if (networkError) console.error(`[Network error]: ${networkError}`);
+});
+
+const client = new ApolloClient({
+  link: from([authLink, errorLink, httpLink]),
+  cache: cache,
   resolvers: {},
   typeDefs,
   connectToDevTools: true,
@@ -41,7 +63,6 @@ export function App() {
   return (
     <ApolloProvider client={client}>
       <StyledApp>
-        {/* <NxWelcome title="react-tsn" /> */}
         <GlobalStyle />
         <Pages />
       </StyledApp>
